@@ -1,7 +1,10 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+const MAX_SPEED = 5.0
+const ACCELERATION = 8.0
+const FRICTION = 8.0
+const MOVING_FRICTION = 4.0
 const JUMP_VELOCITY = 4.5
 
 @onready var ink_trail_particles: GPUParticles3D = get_node("Ink Trail Particles")
@@ -17,12 +20,27 @@ func _physics_process(delta: float) -> void:
 	# TODO: Change this movement to acceleration-based to better fit a fluid creature
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction = Vector3(input_dir.x, 0, input_dir.y).normalized()
+
+	var horiz_vel = velocity
+	horiz_vel.y = 0
+
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		horiz_vel += direction * ACCELERATION * delta
+
+		if horiz_vel.length_squared() > MAX_SPEED*MAX_SPEED:
+			horiz_vel = horiz_vel.normalized() * MAX_SPEED
+	
+	horiz_vel -= min((MOVING_FRICTION if direction else FRICTION)*delta, horiz_vel.length()) * horiz_vel.normalized()
+	
+	#if direction:
+#		velocity.x = direction.x * SPEED
+		#velocity.z = direction.z * SPEED
+	#else:
+	#	velocity.x = move_toward(velocity.x, 0, SPEED)
+#		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	velocity.x = horiz_vel.x
+	velocity.z = horiz_vel.z
 
 	# Handle ink waterfall climbing
 	ink_waterfall_detection_raycast.target_position = direction

@@ -67,8 +67,6 @@ collide_with_bodies = false
 
 [node name="Googly Eye" parent="." instance=ExtResource("2_kn8ih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.241533, 0.504706, -0.220065)
-damping = 0.1
 
 [node name="Googly Eye2" parent="." instance=ExtResource("2_kn8ih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.178728, 0.504706, -0.220065)
-damping = 0.1
