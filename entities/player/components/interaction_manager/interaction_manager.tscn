@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drkibph2ps23s"]
+
+[ext_resource type="Script" path="res://entities/player/components/interaction_manager/interaction_manager.gd" id="1_57jr1"]
+
+[node name="Interaction Manager" type="Node3D"]
+script = ExtResource("1_57jr1")

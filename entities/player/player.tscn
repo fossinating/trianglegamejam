@@ -1,10 +1,12 @@
-[gd_scene load_steps=32 format=4 uid="uid://bqvbt7ofxnn0b"]
+[gd_scene load_steps=34 format=4 uid="uid://bqvbt7ofxnn0b"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_boxuu"]
 [ext_resource type="Texture2D" uid="uid://dajp6o4brj5i1" path="res://entities/player/blob_PS New Group 1 Image 3 (MAT_ Mat_Blob).png" id="2_dvct0"]
 [ext_resource type="PackedScene" uid="uid://kesgwtbvfg1h" path="res://entities/player/googly_eye.tscn" id="2_kn8ih"]
-[ext_resource type="AnimationLibrary" uid="uid://clu7brywt384c" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
+[ext_resource type="AnimationLibrary" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
 [ext_resource type="Script" path="res://entities/player/camera_controller.gd" id="5_dosi8"]
+[ext_resource type="PackedScene" uid="uid://drkibph2ps23s" path="res://entities/player/components/interaction_manager/interaction_manager.tscn" id="6_35t6f"]
+[ext_resource type="PackedScene" uid="uid://clyi4pgeg23vg" path="res://entities/player/components/item_grabber/item_grabber.tscn" id="7_bc2mm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vstp2"]
 
@@ -254,28 +256,28 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, -1.81971e-16, -5.60351e-17, -5.60351e-17, -0.562527, 0.826779, -1.81971e-16, -0.826779, -0.562527, 0, 0, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0.91839, -5.83297e-17, -7.07749e-17, -0.395676)
+bones/0/rotation = Quaternion(0.905037, -6.11599e-17, -6.89819e-17, -0.425332)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.001"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, -8.88178e-16, -2.38419e-07, -1.42303e-08, 0.998217, -0.0596863, 2.37994e-07, 0.0596863, 0.998217, 1.32349e-23, 3.89105, 1.19209e-07)
 bones/1/enabled = true
 bones/1/position = Vector3(1.32349e-23, 3.89105, 1.19209e-07)
-bones/1/rotation = Quaternion(-0.0897123, -1.18493e-07, 2.78537e-09, 0.995968)
+bones/1/rotation = Quaternion(-0.0572537, -1.19008e-07, 6.63082e-09, 0.99836)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Bone.002"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 3.18721e-08, 2.36279e-07, 0, 0.991024, -0.133681, -2.38419e-07, 0.133681, 0.991024, -2.62396e-14, 3.58134, 1.49012e-07)
 bones/2/enabled = true
 bones/2/position = Vector3(-2.62396e-14, 3.58134, 1.49012e-07)
-bones/2/rotation = Quaternion(-0.145691, 1.17937e-07, 1.73677e-08, 0.98933)
+bones/2/rotation = Quaternion(-0.113418, 1.1844e-07, 1.35206e-08, 0.993547)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Bone.003"
 bones/3/parent = -1
 bones/3/rest = Transform3D(-1, 4.26326e-14, -3.89414e-07, -2.99755e-07, 0.638336, 0.769758, 2.48577e-07, 0.769758, -0.638335, 0, 0, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 0, 0)
-bones/3/rotation = Quaternion(-9.6575e-08, 0.831276, 0.55586, -1.67331e-07)
+bones/3/rotation = Quaternion(-1.02619e-07, 0.848924, 0.528514, -1.65426e-07)
 bones/3/scale = Vector3(1, 1, 0.999999)
 
 [node name="mesh" type="MeshInstance3D" parent="blob/Armature/Skeleton3D"]
@@ -285,7 +287,7 @@ skin = SubResource("Skin_n0vob")
 surface_material_override/0 = SubResource("StandardMaterial3D_fnsiu")
 
 [node name="EyesBoneAttachment3D" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(-1, 2.54648e-08, -3.85561e-07, -3.46587e-07, 0.382039, 0.924145, 1.70833e-07, 0.924146, -0.382038, 0, 0, 0)
+transform = Transform3D(-1, 6.28077e-10, -3.89339e-07, -3.49092e-07, 0.441345, 0.897337, 1.72397e-07, 0.897337, -0.441345, 0, 0, 0)
 visible = false
 bone_name = "Bone.003"
 bone_idx = 3
@@ -297,7 +299,7 @@ transform = Transform3D(9.00925, -4.47136, -4.72199, 0.119311, 8.18023, -7.51841
 transform = Transform3D(9.01099, 4.47081, 4.71918, -0.114211, 8.17378, -7.52549, -6.49968, 6.05459, 6.67481, 1.95145, 4.09994, 3.26156)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(1, 1.45006e-08, 6.33813e-09, 1.15404e-08, -0.942247, 0.33492, 1.08286e-08, -0.33492, -0.942247, 5.62708e-08, -5.55817, -4.94922)
+transform = Transform3D(1, 3.69639e-10, 1.19911e-10, 2.56335e-10, -0.859369, 0.511356, 2.92047e-10, -0.511356, -0.859369, 1.38723e-09, -5.06899, -5.4735)
 bone_name = "Bone.002"
 bone_idx = 2
 
@@ -360,3 +362,7 @@ margin = 0.25
 [node name="Camera3D" type="Camera3D" parent="CamTwistPivot/CamPitchPivot/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6)
 current = true
+
+[node name="Interaction Manager" parent="." instance=ExtResource("6_35t6f")]
+
+[node name="Item Grabber" parent="." instance=ExtResource("7_bc2mm")]
