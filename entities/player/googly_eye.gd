@@ -32,8 +32,6 @@ func _physics_process(delta: float):
 
 		black_bit_velocity -= black_bit_velocity * damping * delta
 
-		print(black_bit_velocity)
-
 
 
 		
