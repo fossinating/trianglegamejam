@@ -20,10 +20,10 @@ var zoomStep := 0.01
 var maxZoom := 15.0		# to clarify: min and max zoom here refer to distance from pivot
 var minZoom := 3
 
-var desiredFov := 75.0
-var fovStep := 0.1
-var maxFov := 110.0
-var minFov := 30.0
+#var desiredFov := 75.0
+#var fovStep := 0.1
+#var maxFov := 110.0
+#var minFov := 30.0
 
 func _ready() -> void:
 	cam.make_current()
@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 	var zoom_input := -(Input.is_action_just_pressed("zoom_in_scroll") as float) * 2 + (Input.is_action_just_pressed("zoom_out_scroll") as float) * 2 # Input.is_action_just_pressed works; is_action_pressed does not.
 	if zoom_input == 0.0:
 		zoom_input += Input.get_axis("zoom_in_noscroll", "zoom_out_noscroll")
-	var fov_input := -(Input.is_action_just_pressed("fov_up_scroll") as float) * 2 + (Input.is_action_just_pressed("fov_down_scroll") as float) * 2
+	#var fov_input := -(Input.is_action_just_pressed("fov_up_scroll") as float) * 2 + (Input.is_action_just_pressed("fov_down_scroll") as float) * 2
 	#if fov_input == 0.0:
 		#fov_input += Input.get_axis("fov_down_noscroll", "fov_up_noscroll")
 	#if fov_input != 0.0:

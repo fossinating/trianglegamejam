@@ -10,8 +10,8 @@ const MOVING_FRICTION := 4.0
 @export var Jump_Height := 3.0
 @export var Jump_Distance := 12.0
 
-var max_speed := 5
-var jump_velocity := 8
+var max_speed := 5.0
+var jump_velocity := 8.0
 var jump_gravity := 1.0
 var fall_gravity := 1.2
 
