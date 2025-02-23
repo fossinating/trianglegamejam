@@ -10,8 +10,8 @@ const MOVING_FRICTION := 4.0
 @export var Jump_Height := 3.0
 @export var Jump_Distance := 12.0
 
-var max_speed := 5
-var jump_velocity := 8
+var max_speed := 5.0
+var jump_velocity := 8.0
 var jump_gravity := 1.0
 var fall_gravity := 1.2
 
@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not climbing_waterfall:
 		velocity.y = jump_velocity
-		print("jumping")
+		#print("jumping")
 		jumping = true
 		#add_child(ink_burst_particles_scene.instantiate())
 
@@ -109,5 +109,5 @@ func _physics_process(delta: float) -> void:
 	# We handle landing here since so animations can trigger immediately, rather than on next physics frame(~1/30th of a second later)
 
 	if jumping and (not was_on_surface) and is_on_floor():
-		print("landing")
+		#print("landing")
 		add_child(ink_burst_particles_scene.instantiate())
