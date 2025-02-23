@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 
-	ink_trail_particles.emitting = is_on_floor()
+	ink_trail_particles.emitting = is_on_floor() or climbing_waterfall
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not climbing_waterfall:
