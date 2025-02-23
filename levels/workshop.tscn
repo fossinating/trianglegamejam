@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw624l72ljxcx"]
+[gd_scene load_steps=8 format=3 uid="uid://bw624l72ljxcx"]
 
 [ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="1_tquhn"]
 
@@ -20,6 +20,9 @@ size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_t8iob"]
 size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5s17q"]
+size = Vector3(0.6, 1.1, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -52,3 +55,12 @@ mesh = SubResource("BoxMesh_t8iob")
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="StaticBody3D2"]
 size = Vector3(20, 1, 20)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.05, 0)
+shape = SubResource("BoxShape3D_5s17q")

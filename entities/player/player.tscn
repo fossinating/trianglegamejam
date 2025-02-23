@@ -57,3 +57,9 @@ lifetime = 1.5
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ow656")
 draw_pass_1 = SubResource("SphereMesh_46tcv")
+
+[node name="Ink Waterfall Detection" type="RayCast3D" parent="."]
+collision_mask = 16
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
