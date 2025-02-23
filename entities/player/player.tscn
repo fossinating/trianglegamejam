@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=4 uid="uid://bqvbt7ofxnn0b"]
+[gd_scene load_steps=32 format=4 uid="uid://bqvbt7ofxnn0b"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_boxuu"]
 [ext_resource type="Texture2D" uid="uid://dajp6o4brj5i1" path="res://entities/player/blob_PS New Group 1 Image 3 (MAT_ Mat_Blob).png" id="2_dvct0"]
 [ext_resource type="PackedScene" uid="uid://kesgwtbvfg1h" path="res://entities/player/googly_eye.tscn" id="2_kn8ih"]
 [ext_resource type="AnimationLibrary" uid="uid://clu7brywt384c" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
+[ext_resource type="Script" path="res://entities/player/camera_controller.gd" id="5_dosi8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vstp2"]
 
@@ -97,6 +98,12 @@ curve = SubResource("Curve_bnd7m")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ow656"]
 emission_shape = 1
 emission_sphere_radius = 0.2
+angle_min = -45.0
+angle_max = 45.0
+direction = Vector3(0, -2.5, 1)
+spread = 5.0
+flatness = 0.9
+initial_velocity_max = 5.0
 scale_curve = SubResource("CurveTexture_pe6qp")
 collision_mode = 1
 collision_friction = 1.0
@@ -109,8 +116,8 @@ disable_receive_shadows = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_46tcv"]
 material = SubResource("StandardMaterial3D_gku76")
-radius = 0.3
-height = 0.6
+radius = 0.1
+height = 0.2
 
 [sub_resource type="Animation" id="Animation_3uojp"]
 resource_name = "Airborne"
@@ -184,6 +191,45 @@ _data = {
 "Idle": SubResource("Animation_ltvnr")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_j2nxl"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"line_boil",
+"speed": 5.0
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cs53"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_vlv77"]
+material = SubResource("StandardMaterial3D_5cs53")
+radius = 5.3
+height = 0.01
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n1c3m"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+angle_min = -45.0
+angle_max = 45.0
+direction = Vector3(0, -0.5, 0.5)
+spread = 5.0
+flatness = 0.9
+scale_curve = SubResource("CurveTexture_pe6qp")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_0fh0x"]
+material = SubResource("StandardMaterial3D_gku76")
+radius = 0.3
+height = 0.01
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6m2ex"]
+margin = 0.05
+radius = 0.25
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_boxuu")
 
@@ -200,6 +246,7 @@ parameters/BlendTree/Blend2/blend_amount = 0.0
 transform = Transform3D(-0.09, 0, -7.86805e-09, 0, 0.09, 0, 7.86805e-09, 0, -0.09, 0, 0, 0)
 
 [node name="Armature" type="Node3D" parent="blob"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, -5, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="blob/Armature"]
 bones/0/name = "Bone"
@@ -207,52 +254,54 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, -1.81971e-16, -5.60351e-17, -5.60351e-17, -0.562527, 0.826779, -1.81971e-16, -0.826779, -0.562527, 0, 0, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0.905206, -6.0626e-17, -6.87544e-17, -0.424974)
+bones/0/rotation = Quaternion(0.91839, -5.83297e-17, -7.07749e-17, -0.395676)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.001"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, -8.88178e-16, -2.38419e-07, -1.42303e-08, 0.998217, -0.0596863, 2.37994e-07, 0.0596863, 0.998217, 1.32349e-23, 3.89105, 1.19209e-07)
 bones/1/enabled = true
 bones/1/position = Vector3(1.32349e-23, 3.89105, 1.19209e-07)
-bones/1/rotation = Quaternion(-0.0576721, -1.19002e-07, 6.5812e-09, 0.998336)
+bones/1/rotation = Quaternion(-0.0897123, -1.18493e-07, 2.78537e-09, 0.995968)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Bone.002"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 3.18721e-08, 2.36279e-07, 0, 0.991024, -0.133681, -2.38419e-07, 0.133681, 0.991024, -2.62396e-14, 3.58134, 1.49012e-07)
 bones/2/enabled = true
 bones/2/position = Vector3(-2.62396e-14, 3.58134, 1.49012e-07)
-bones/2/rotation = Quaternion(-0.113835, 1.18434e-07, 1.35702e-08, 0.9935)
+bones/2/rotation = Quaternion(-0.145691, 1.17937e-07, 1.73677e-08, 0.98933)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Bone.003"
 bones/3/parent = -1
 bones/3/rest = Transform3D(-1, 4.26326e-14, -3.89414e-07, -2.99755e-07, 0.638336, 0.769758, 2.48577e-07, 0.769758, -0.638335, 0, 0, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 0, 0)
-bones/3/rotation = Quaternion(-1.02542e-07, 0.848703, 0.52887, -1.65452e-07)
+bones/3/rotation = Quaternion(-9.6575e-08, 0.831276, 0.55586, -1.67331e-07)
 bones/3/scale = Vector3(1, 1, 0.999999)
 
 [node name="mesh" type="MeshInstance3D" parent="blob/Armature/Skeleton3D"]
+visible = false
 mesh = SubResource("ArrayMesh_2ahx0")
 skin = SubResource("Skin_n0vob")
 surface_material_override/0 = SubResource("StandardMaterial3D_fnsiu")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(-1, 9.49939e-10, -3.89301e-07, -3.4906e-07, 0.440593, 0.897706, 1.72377e-07, 0.897707, -0.440593, 0, 0, 0)
+[node name="EyesBoneAttachment3D" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
+transform = Transform3D(-1, 2.54648e-08, -3.85561e-07, -3.46587e-07, 0.382039, 0.924145, 1.70833e-07, 0.924146, -0.382038, 0, 0, 0)
+visible = false
 bone_name = "Bone.003"
 bone_idx = 3
 
-[node name="Googly Eye" parent="blob/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_kn8ih")]
+[node name="Googly Eye" parent="blob/Armature/Skeleton3D/EyesBoneAttachment3D" instance=ExtResource("2_kn8ih")]
 transform = Transform3D(9.00925, -4.47136, -4.72199, 0.119311, 8.18023, -7.51841, 6.50201, 6.04546, 6.68081, -1.951, 4.09985, 3.2619)
 
-[node name="Googly Eye2" parent="blob/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_kn8ih")]
+[node name="Googly Eye2" parent="blob/Armature/Skeleton3D/EyesBoneAttachment3D" instance=ExtResource("2_kn8ih")]
 transform = Transform3D(9.01099, 4.47081, 4.71918, -0.114211, 8.17378, -7.52549, -6.49968, 6.05459, 6.67481, 1.95145, 4.09994, 3.26156)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(1, 5.58714e-10, 1.82553e-10, 3.87914e-10, -0.860629, 0.509233, 4.41617e-10, -0.509233, -0.860629, 2.09742e-09, -5.07539, -5.46732)
+transform = Transform3D(1, 1.45006e-08, 6.33813e-09, 1.15404e-08, -0.942247, 0.33492, 1.08286e-08, -0.33492, -0.942247, 5.62708e-08, -5.55817, -4.94922)
 bone_name = "Bone.002"
 bone_idx = 2
 
-[node name="Ink Trail Particles" type="GPUParticles3D" parent="blob/Armature/Skeleton3D/BoneAttachment3D2"]
+[node name="Ink Airborne Trail Particles" type="GPUParticles3D" parent="blob/Armature/Skeleton3D/BoneAttachment3D2"]
 transform = Transform3D(-11.1111, 7.80699e-08, 8.92493e-07, 2.88775e-07, -10.166, 4.48438, 8.48084e-07, 4.48438, 10.166, 4.93798e-07, 1.92806, 0.0447056)
 amount = 150
 lifetime = 1.5
@@ -266,14 +315,48 @@ libraries = {
 "blob_anims": ExtResource("3_ygj2r")
 }
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="blob"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+sprite_frames = SubResource("SpriteFrames_j2nxl")
+animation = &"line_boil"
 
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+[node name="placeholder" type="MeshInstance3D" parent="blob/AnimatedSprite3D"]
+mesh = SubResource("SphereMesh_vlv77")
+
+[node name="Googly Eye" parent="blob/AnimatedSprite3D" instance=ExtResource("2_kn8ih")]
+transform = Transform3D(11.1111, 0, 0, 0, 11.1111, 0, 0, 0, 11.1111, -1.951, 0.05, 2.286)
+
+[node name="Googly Eye2" parent="blob/AnimatedSprite3D" instance=ExtResource("2_kn8ih")]
+transform = Transform3D(11.1111, 0, 0, 0, 11.1111, 0, 0, 0, 11.1111, 1.951, 0.05, 2.286)
+
+[node name="Ink Trail Particles" type="GPUParticles3D" parent="blob"]
+transform = Transform3D(-11.1111, 4.38627e-08, 9.24633e-07, 1.11094e-07, 11.0816, 0.809309, -9.18981e-07, 0.809309, -11.0816, 0, -6.877, -1.5)
+amount = 150
+lifetime = 1.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_n1c3m")
+draw_pass_1 = SubResource("SphereMesh_0fh0x")
 
 [node name="Ink Waterfall Detection" type="RayCast3D" parent="."]
 collision_mask = 16
 hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="CamTwistPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("5_dosi8")
+
+[node name="CamPitchPivot" type="Node3D" parent="CamTwistPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766045, 0, -0.766045, 0.642788, 0, 0, -0.5)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CamTwistPivot/CamPitchPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.49012e-08, 0, -1.49012e-08, 1, 0, 0, 0)
+collision_mask = 2
+shape = SubResource("SphereShape3D_6m2ex")
+spring_length = 6.0
+margin = 0.25
+
+[node name="Camera3D" type="Camera3D" parent="CamTwistPivot/CamPitchPivot/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6)
+current = true
