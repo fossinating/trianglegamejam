@@ -1,17 +1,21 @@
 extends CharacterBody3D
 
 
-const MAX_SPEED = 5.0
-const ACCELERATION = 8.0
-const FRICTION = 8.0
-const MOVING_FRICTION = 4.0
-const JUMP_VELOCITY = 4.5
+const MAX_SPEED := 5.0
+const ACCELERATION := 8.0
+const FRICTION := 8.0
+const MOVING_FRICTION := 4.0
+const JUMP_VELOCITY := 4.5
 
-@onready var ink_trail_particles: GPUParticles3D = get_node("Ink Trail Particles")
+@onready var visuals := $blob
+@export var ROT_SPEED : float = TAU * 2
+var _theta : float
+
+@onready var ink_trail_particles: GPUParticles3D = $"blob/Armature/Skeleton3D/BoneAttachment3D2/Ink Trail Particles"
 @onready var ink_waterfall_detection_raycast: RayCast3D = get_node("Ink Waterfall Detection")
 @onready var ink_burst_particles_scene: PackedScene = preload("res://entities/effects/ink_burst_particles.tscn")
 
-var jumping = false
+var jumping := false
 
 
 func _physics_process(delta: float) -> void:
@@ -29,6 +33,9 @@ func _physics_process(delta: float) -> void:
 
 		if horiz_vel.length_squared() > MAX_SPEED*MAX_SPEED:
 			horiz_vel = horiz_vel.normalized() * MAX_SPEED
+		
+		_theta = wrapf(atan2(direction.x, direction.z) - visuals.rotation.y, -PI, PI)
+		visuals.rotation.y += clamp(ROT_SPEED * delta, 0, abs(_theta)) * sign(_theta)
 	
 	horiz_vel -= min((MOVING_FRICTION if direction else FRICTION)*delta, horiz_vel.length()) * horiz_vel.normalized()
 	
