@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://bw624l72ljxcx"]
+
+[ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="1_tquhn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wg4r2"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ggh0i"]
+sky_material = SubResource("ProceduralSkyMaterial_wg4r2")
+
+[sub_resource type="Environment" id="Environment_0dfgu"]
+background_mode = 2
+sky = SubResource("Sky_ggh0i")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eapep"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t8iob"]
+size = Vector3(20, 1, 20)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0dfgu")
+
+[node name="Player" parent="." instance=ExtResource("1_tquhn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59108, 0.5, -0.132736)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_eapep")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_t8iob")
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="StaticBody3D"]
+size = Vector3(20, 1, 20)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_eapep")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("BoxMesh_t8iob")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="StaticBody3D2"]
+size = Vector3(20, 1, 20)
