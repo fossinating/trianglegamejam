@@ -81,4 +81,3 @@ func _physics_process(delta: float) -> void:
 	if jumping and (not was_on_surface) and is_on_floor():
 		print("landing")
 		add_child(ink_burst_particles_scene.instantiate())
-
