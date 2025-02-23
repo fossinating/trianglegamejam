@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://kesgwtbvfg1h"]
+
+[ext_resource type="Script" path="res://entities/player/googly_eye.gd" id="1_eosx3"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_53mh5"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.005
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v14tw"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a3t0e"]
+material = SubResource("StandardMaterial3D_v14tw")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0v3b"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.0352941)
+clearcoat_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_e6dsa"]
+material = SubResource("StandardMaterial3D_y0v3b")
+radius = 0.1
+height = 0.02
+is_hemisphere = true
+
+[node name="Googly Eye" type="Node3D"]
+script = ExtResource("1_eosx3")
+
+[node name="White bit" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005, 0)
+mesh = SubResource("CylinderMesh_53mh5")
+
+[node name="Black bit" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045, 0, 0)
+mesh = SubResource("CylinderMesh_a3t0e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005, 0)
+visible = false
+mesh = SubResource("SphereMesh_e6dsa")

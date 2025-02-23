@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqvbt7ofxnn0b"]
+[gd_scene load_steps=11 format=3 uid="uid://bqvbt7ofxnn0b"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_boxuu"]
+[ext_resource type="PackedScene" uid="uid://kesgwtbvfg1h" path="res://entities/player/googly_eye.tscn" id="2_kn8ih"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vstp2"]
 
@@ -49,7 +50,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_0o6ps")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0598e-07, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 
 [node name="Ink Trail Particles" type="GPUParticles3D" parent="."]
 amount = 150
@@ -63,3 +64,11 @@ collision_mask = 16
 hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Googly Eye" parent="." instance=ExtResource("2_kn8ih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.241533, 0.504706, -0.220065)
+damping = 0.1
+
+[node name="Googly Eye2" parent="." instance=ExtResource("2_kn8ih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.178728, 0.504706, -0.220065)
+damping = 0.1
