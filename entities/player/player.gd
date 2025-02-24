@@ -40,6 +40,7 @@ var currentAnim = ModelStates.JUMP
 var blend_speed = 15
 
 var landing_velocity: Vector3
+@export var landing_force := 50.0
 
 @onready var item_grabber := $"Item Grabber"
 
@@ -152,7 +153,7 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_floor():
 		skeleton.position.y = max(-17, skeleton.position.y + landing_velocity.y*delta)
-		landing_velocity.y -= 2*fall_gravity*delta
+		landing_velocity.y -= landing_force*fall_gravity*delta
 	elif velocity.y > 0:
 		skeleton.position.y = min(0, skeleton.position.y + 5*velocity.y*delta)
 
