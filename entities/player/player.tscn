@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://kesgwtbvfg1h" path="res://entities/player/googly_eye.tscn" id="2_kn8ih"]
 [ext_resource type="Script" path="res://libraries/better_animation_tree.gd" id="2_x8lhm"]
 [ext_resource type="Texture2D" uid="uid://cakdw32wvyfjc" path="res://entities/player/blob_layersmerged_New Group 1_bake.png" id="3_rbppb"]
-[ext_resource type="AnimationLibrary" uid="uid://clu7brywt384c" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
+[ext_resource type="AnimationLibrary" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
 [ext_resource type="Script" path="res://entities/player/camera_controller.gd" id="5_dosi8"]
 [ext_resource type="PackedScene" uid="uid://drkibph2ps23s" path="res://entities/player/components/interaction_manager/interaction_manager.tscn" id="6_35t6f"]
 [ext_resource type="PackedScene" uid="uid://clyi4pgeg23vg" path="res://entities/player/components/item_grabber/item_grabber.tscn" id="7_bc2mm"]
@@ -290,7 +290,7 @@ skin = SubResource("Skin_n0vob")
 surface_material_override/0 = SubResource("StandardMaterial3D_fnsiu")
 
 [node name="EyesBoneAttachment3D" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(-1, 1.69551e-09, -3.89212e-07, -3.48987e-07, 0.438851, 0.898559, 1.7233e-07, 0.89856, -0.43885, 0, 0, 0)
+transform = Transform3D(-1, 1.69645e-09, -3.89212e-07, -3.48986e-07, 0.43885, 0.898559, 1.7233e-07, 0.89856, -0.43885, 0, 0, 0)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -301,7 +301,7 @@ transform = Transform3D(9.00925, -4.47136, -4.72199, 0.119311, 8.18023, -7.51841
 transform = Transform3D(9.01099, 4.47081, 4.71918, -0.114211, 8.17378, -7.52549, -6.49968, 6.05459, 6.67481, 1.95145, 4.09994, 3.26156)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(1, 9.96064e-10, 3.29067e-10, 6.94286e-10, -0.86358, 0.504212, 7.86386e-10, -0.504212, -0.86358, 3.74189e-09, -5.09079, -5.45242)
+transform = Transform3D(1, 9.95986e-10, 3.29109e-10, 6.94172e-10, -0.86358, 0.504212, 7.864e-10, -0.504212, -0.86358, 3.74182e-09, -5.09079, -5.45241)
 bone_name = "Bone.002"
 bone_idx = 2
 

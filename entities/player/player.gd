@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 	var climbing_waterfall = ink_waterfall_detection_raycast.is_colliding() and direction.length_squared() > 0.1
 
 	if climbing_waterfall:
-		velocity -= get_gravity() * delta
+		velocity.y += jump_gravity * delta
 		currentAnim = ModelStates.SWIM
 	else:
 		currentAnim = ModelStates.JUMP
@@ -136,6 +136,19 @@ func _physics_process(delta: float) -> void:
 	if jumping and (not was_on_surface) and is_on_floor():
 		#print("landing")
 		add_child(ink_burst_particles_scene.instantiate())
+
+
+	# Push skeleton into the wall if swimming up a waterfall
+	if climbing_waterfall:
+		skeleton.position.x = ink_waterfall_detection_raycast.get_collision_normal().x * 5
+		skeleton.position.z = ink_waterfall_detection_raycast.get_collision_normal().z * 5
+		skeleton.rotation_degrees.x = -75
+	else:
+		skeleton.position.x = 0
+		skeleton.position.z = 0
+	
+	print(global_position)
+	print(velocity)
 
 	if is_on_floor():
 		skeleton.position.y = max(-17, skeleton.position.y + landing_velocity.y*delta)
