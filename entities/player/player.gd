@@ -40,6 +40,7 @@ var currentAnim = ModelStates.JUMP
 var blend_speed = 15
 
 var landing_velocity: Vector3
+@export var landing_force := 50.0
 
 @onready var item_grabber := $"Item Grabber"
 
@@ -60,7 +61,7 @@ func _ready() -> void:
 	print("fall_gravity: ", fall_gravity)
 	print("jump_velocity: ", jump_velocity)
 
-	#Engine.time_scale = 0.1
+	#Engine.time_scale = 0.3
 
 
 func _physics_process(delta: float) -> void:
@@ -87,14 +88,16 @@ func _physics_process(delta: float) -> void:
 	velocity.z = horiz_vel.z
 
 	# Handle ink waterfall climbing
-	ink_waterfall_detection_raycast.target_position = direction
+	# Multiplying by 0.51 to set the length to slightly larger than the size of the character
+	ink_waterfall_detection_raycast.target_position = direction * 0.51
+	
 
 
 	# Technically this will be a single physics frame behind, but shouldn't be too much of a problem hopefully
 	var climbing_waterfall = ink_waterfall_detection_raycast.is_colliding() and direction.length_squared() > 0.1
 
 	if climbing_waterfall:
-		velocity -= get_gravity() * delta
+		velocity.y += jump_gravity * delta
 		currentAnim = ModelStates.SWIM
 	else:
 		currentAnim = ModelStates.JUMP
@@ -137,11 +140,27 @@ func _physics_process(delta: float) -> void:
 		#print("landing")
 		add_child(ink_burst_particles_scene.instantiate())
 
-	if is_on_floor():
+
+	# Push skeleton into the wall if swimming up a waterfall
+	if climbing_waterfall:
+		# Define a "goal point" inside the wall and move towards it
+		skeleton.position.y = max(-10, skeleton.position.y)
+		var goal_point = visuals.global_position - ink_waterfall_detection_raycast.get_collision_normal() * .5
+		var goal_vector = goal_point - skeleton.global_position
+		skeleton.global_position += min(3*delta, goal_vector.length()) * goal_vector.normalized()
+		skeleton.rotation = Vector3(deg_to_rad(-75), 0, 0)
+	else:
+		# Move back towards a "reset" position
+		skeleton.position -= min(3*delta, skeleton.position.length()) * skeleton.position.normalized()
+		
+	# this handles pulling the model in and out of the floor
+	if not (is_on_floor() or climbing_waterfall):
+		if velocity.y > 0:
+			skeleton.position.y = min(0, skeleton.position.y + 5*velocity.y*delta)
+	elif is_on_floor():
 		skeleton.position.y = max(-17, skeleton.position.y + landing_velocity.y*delta)
-		landing_velocity.y -= 2*fall_gravity*delta
-	elif velocity.y > 0:
-		skeleton.position.y = min(0, skeleton.position.y + 5*velocity.y*delta)
+		landing_velocity.y -= landing_force*fall_gravity*delta
+
 
 	painting_visuals.visible = is_on_floor() and skeleton.position.y <= -5
 	ink_trail_painting.emitting = painting_visuals.visible
