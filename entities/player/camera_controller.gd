@@ -7,7 +7,7 @@ var twist_input := 0.0
 var pitch_input := 0.0
 var cam_invert_y := true
 var cam_invert_x := false
-var min_pitch_angle := 20
+var min_pitch_angle := 0
 var max_pitch_angle := 90
 
 @onready var twist_pivot := self

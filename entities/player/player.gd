@@ -31,10 +31,15 @@ var _theta : float
 @onready var ink_burst_particles_scene: PackedScene = preload("res://entities/effects/ink_burst_particles.tscn")
 
 @onready var animation_tree: AnimationTree = $AnimationTree
+
+@onready var skeleton: Skeleton3D = $"blob/Armature/Skeleton3D"
+
 var swim_val := 0.0
 enum ModelStates { JUMP, SWIM }
 var currentAnim = ModelStates.JUMP
 var blend_speed = 15
+
+var landing_velocity: Vector3
 
 @onready var item_grabber := $"Item Grabber"
 
@@ -54,6 +59,8 @@ func _ready() -> void:
 	print("jump gravity: ", jump_gravity)
 	print("fall_gravity: ", fall_gravity)
 	print("jump_velocity: ", jump_velocity)
+
+	#Engine.time_scale = 0.1
 
 
 func _physics_process(delta: float) -> void:
@@ -98,13 +105,6 @@ func _physics_process(delta: float) -> void:
 	if not is_on_surface:
 		velocity += -Vector3(0, 1, 0) * (jump_gravity if (velocity.y > 0) else fall_gravity) * delta
 
-
-	painting_visuals.visible = is_on_floor()
-	ink_trail_painting.emitting = painting_visuals.visible
-	airborne_visuals.visible = !painting_visuals.visible
-	ink_trail_airborne.emitting = airborne_visuals.visible
-	airborne_eyes.visible = airborne_visuals.visible
-
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not climbing_waterfall:
 		velocity.y = jump_velocity
@@ -115,12 +115,20 @@ func _physics_process(delta: float) -> void:
 		
 	handle_animations(delta)
 
-
 	# Setup handling of landing
 
 	var was_on_surface = is_on_floor() or climbing_waterfall
 
+	if not was_on_surface:
+		landing_velocity = velocity
+
 	move_and_slide()
+
+	if not (is_on_floor() or climbing_waterfall):
+		if velocity.y > 0:
+			skeleton.rotation_degrees.x = clamp(remap(velocity.y, 0, 5, 0, -35), -35, 0)
+		else:
+			skeleton.rotation_degrees.x = clamp(remap(velocity.y, 0, -10, 0, 125), 0, 125)
 
 	# Handle landing
 	# We handle landing here since so animations can trigger immediately, rather than on next physics frame(~1/30th of a second later)
@@ -128,6 +136,19 @@ func _physics_process(delta: float) -> void:
 	if jumping and (not was_on_surface) and is_on_floor():
 		#print("landing")
 		add_child(ink_burst_particles_scene.instantiate())
+
+	if is_on_floor():
+		skeleton.position.y = max(-17, skeleton.position.y + landing_velocity.y*delta)
+		landing_velocity.y -= 2*fall_gravity*delta
+	elif velocity.y > 0:
+		skeleton.position.y = min(0, skeleton.position.y + 5*velocity.y*delta)
+
+	painting_visuals.visible = is_on_floor() and skeleton.position.y <= -5
+	ink_trail_painting.emitting = painting_visuals.visible
+	airborne_visuals.visible = (not is_on_floor()) or skeleton.position.y > -17
+	ink_trail_airborne.emitting = not painting_visuals.visible
+	airborne_eyes.visible = airborne_visuals.visible
+
 
 func handle_animations(delta):
 	match currentAnim:

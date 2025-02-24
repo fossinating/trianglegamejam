@@ -1,8 +1,9 @@
-[gd_scene load_steps=34 format=4 uid="uid://bqvbt7ofxnn0b"]
+[gd_scene load_steps=35 format=4 uid="uid://bqvbt7ofxnn0b"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_boxuu"]
 [ext_resource type="Texture2D" uid="uid://dajp6o4brj5i1" path="res://entities/player/blob_PS New Group 1 Image 3 (MAT_ Mat_Blob).png" id="2_dvct0"]
 [ext_resource type="PackedScene" uid="uid://kesgwtbvfg1h" path="res://entities/player/googly_eye.tscn" id="2_kn8ih"]
+[ext_resource type="Script" path="res://libraries/better_animation_tree.gd" id="2_x8lhm"]
 [ext_resource type="Texture2D" uid="uid://cakdw32wvyfjc" path="res://entities/player/blob_layersmerged_New Group 1_bake.png" id="3_rbppb"]
 [ext_resource type="AnimationLibrary" uid="uid://clu7brywt384c" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
 [ext_resource type="Script" path="res://entities/player/camera_controller.gd" id="5_dosi8"]
@@ -239,45 +240,48 @@ script = ExtResource("1_boxuu")
 shape = SubResource("SphereShape3D_vstp2")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 root_node = NodePath("../blob")
 tree_root = SubResource("AnimationNodeStateMachine_s0b7s")
 anim_player = NodePath("../blob/AnimationPlayer")
 parameters/BlendTree/Swim/blend_amount = 0.0
+script = ExtResource("2_x8lhm")
 
 [node name="blob" type="Node3D" parent="."]
 transform = Transform3D(-0.09, 0, -7.86805e-09, 0, 0.09, 0, 7.86805e-09, 0, -0.09, 0, 0, 0)
 
 [node name="Armature" type="Node3D" parent="blob"]
-transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, -5, 0)
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 0, 0, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="blob/Armature"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, -1, 0)
 bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, -1.81971e-16, -5.60351e-17, -5.60351e-17, -0.562527, 0.826779, -1.81971e-16, -0.826779, -0.562527, 0, 0, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0.883891, -6.73177e-17, -6.73177e-17, -0.467693)
+bones/0/rotation = Quaternion(0.905618, -6.10946e-17, -6.90848e-17, -0.424095)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.001"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, -8.88178e-16, -2.38419e-07, -1.42303e-08, 0.998217, -0.0596863, 2.37994e-07, 0.0596863, 0.998217, 1.32349e-23, 3.89105, 1.19209e-07)
 bones/1/enabled = true
 bones/1/position = Vector3(1.32349e-23, 3.89105, 1.19209e-07)
-bones/1/rotation = Quaternion(0.0298565, -1.19156e-07, -3.55915e-09, 0.999554)
+bones/1/rotation = Quaternion(-0.058641, -1.18988e-07, 6.46629e-09, 0.998279)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Bone.002"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 3.18721e-08, 2.36279e-07, 0, 0.991024, -0.133681, -2.38419e-07, 0.133681, 0.991024, -2.62396e-14, 3.58134, 1.49012e-07)
 bones/2/enabled = true
 bones/2/position = Vector3(-2.62396e-14, 3.58134, 1.49012e-07)
-bones/2/rotation = Quaternion(0.066991, 1.18942e-07, -7.98597e-09, 0.997754)
+bones/2/rotation = Quaternion(-0.114799, 1.18421e-07, 1.36851e-08, 0.993389)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Bone.003"
 bones/3/parent = -1
 bones/3/rest = Transform3D(-1, 4.26326e-14, -3.89414e-07, -2.99755e-07, 0.638336, 0.769758, 2.48577e-07, 0.769758, -0.638335, 0, 0, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 0, 0)
-bones/3/rotation = Quaternion(-8.27981e-08, 0.905079, 0.425243, -1.76225e-07)
+bones/3/rotation = Quaternion(-1.02362e-07, 0.848189, 0.529693, -1.65512e-07)
 bones/3/scale = Vector3(1, 1, 0.999999)
 
 [node name="mesh" type="MeshInstance3D" parent="blob/Armature/Skeleton3D"]
@@ -286,7 +290,7 @@ skin = SubResource("Skin_n0vob")
 surface_material_override/0 = SubResource("StandardMaterial3D_fnsiu")
 
 [node name="EyesBoneAttachment3D" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(-1, -2.70006e-13, -3.89414e-07, -2.99755e-07, 0.638336, 0.769757, 2.48577e-07, 0.769758, -0.638335, 0, 0, 0)
+transform = Transform3D(-1, 1.69551e-09, -3.89212e-07, -3.48987e-07, 0.438851, 0.898559, 1.7233e-07, 0.89856, -0.43885, 0, 0, 0)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -297,7 +301,7 @@ transform = Transform3D(9.00925, -4.47136, -4.72199, 0.119311, 8.18023, -7.51841
 transform = Transform3D(9.01099, 4.47081, 4.71918, -0.114211, 8.17378, -7.52549, -6.49968, 6.05459, 6.67481, 1.95145, 4.09994, 3.26156)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(1, -6.03961e-14, -4.26326e-14, 2.84217e-14, -0.392764, 0.91964, -9.9476e-14, -0.91964, -0.392764, -2.5558e-13, -4.0231, -6.29298)
+transform = Transform3D(1, 9.96064e-10, 3.29067e-10, 6.94286e-10, -0.86358, 0.504212, 7.86386e-10, -0.504212, -0.86358, 3.74189e-09, -5.09079, -5.45242)
 bone_name = "Bone.002"
 bone_idx = 2
 

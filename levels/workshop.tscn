@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bw624l72ljxcx"]
+[gd_scene load_steps=16 format=3 uid="uid://bw624l72ljxcx"]
 
 [ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="1_tquhn"]
 [ext_resource type="PackedScene" uid="uid://b6sgojl10sbf2" path="res://entities/items/grabbable_item.tscn" id="2_gteoe"]
@@ -62,6 +62,11 @@ light_indirect_energy = 0.5
 
 [node name="Player" parent="." instance=ExtResource("1_tquhn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59108, 0.5, -0.132736)
+Jump_Peak_Time = 0.8
+Jump_Fall_Time = 0.6
+Jump_Height = 3.0
+Jump_Distance = 12.0
+ROT_SPEED = 12.5664
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
