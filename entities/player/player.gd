@@ -141,8 +141,8 @@ func _physics_process(delta: float) -> void:
 
 	# Push skeleton into the wall if swimming up a waterfall
 	if climbing_waterfall:
-		skeleton.position.x = ink_waterfall_detection_raycast.get_collision_normal().x * 5
-		skeleton.position.z = ink_waterfall_detection_raycast.get_collision_normal().z * 5
+		skeleton.global_position.x = visuals.global_position.x - ink_waterfall_detection_raycast.get_collision_normal().x * .5
+		skeleton.global_position.z = visuals.global_position.z - ink_waterfall_detection_raycast.get_collision_normal().z * .5
 		skeleton.rotation_degrees.x = -75
 	else:
 		skeleton.position.x = 0
