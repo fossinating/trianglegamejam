@@ -27,7 +27,7 @@ var _theta : float
 
 @onready var airborne_eyes := $blob/Armature/Skeleton3D/EyesBoneAttachment3D
 
-@onready var ink_waterfall_detection_raycast: RayCast3D = get_node("Ink Waterfall Detection")
+@onready var ink_waterfall_detection_raycast: RayCast3D = $"Ink Waterfall Detection"
 @onready var ink_burst_particles_scene: PackedScene = preload("res://entities/effects/ink_burst_particles.tscn")
 
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -35,6 +35,9 @@ var swim_val := 0.0
 enum ModelStates { JUMP, SWIM }
 var currentAnim = ModelStates.JUMP
 var blend_speed = 15
+
+@onready var item_grabber := $"Item Grabber"
+
 
 var jumping := false
 
@@ -107,6 +110,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_velocity
 		#print("jumping")
 		jumping = true
+		item_grabber.drop_current_item()
 		#add_child(ink_burst_particles_scene.instantiate())
 		
 	handle_animations(delta)
