@@ -1,8 +1,9 @@
-[gd_scene load_steps=32 format=4 uid="uid://bqvbt7ofxnn0b"]
+[gd_scene load_steps=33 format=4 uid="uid://bqvbt7ofxnn0b"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_boxuu"]
 [ext_resource type="Texture2D" uid="uid://dajp6o4brj5i1" path="res://entities/player/blob_PS New Group 1 Image 3 (MAT_ Mat_Blob).png" id="2_dvct0"]
 [ext_resource type="PackedScene" uid="uid://kesgwtbvfg1h" path="res://entities/player/googly_eye.tscn" id="2_kn8ih"]
+[ext_resource type="Texture2D" uid="uid://cakdw32wvyfjc" path="res://entities/player/blob_layersmerged_New Group 1_bake.png" id="3_rbppb"]
 [ext_resource type="AnimationLibrary" uid="uid://clu7brywt384c" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
 [ext_resource type="Script" path="res://entities/player/camera_controller.gd" id="5_dosi8"]
 
@@ -84,9 +85,12 @@ bind/3/bone = -1
 bind/3/pose = Transform3D(-1, -2.99755e-07, 2.48577e-07, 1.5632e-13, 0.638336, 0.769758, -3.89415e-07, 0.769758, -0.638336, 0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fnsiu"]
-albedo_color = Color(0, 0, 0, 1)
-metallic = 1.0
-metallic_specular = 1.0
+albedo_texture = ExtResource("3_rbppb")
+metallic = 0.97
+metallic_specular = 0.05
+roughness = 0.9
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.1
 
 [sub_resource type="Curve" id="Curve_bnd7m"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.8956, 0.0, 0, 0]
@@ -254,39 +258,37 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, -1.81971e-16, -5.60351e-17, -5.60351e-17, -0.562527, 0.826779, -1.81971e-16, -0.826779, -0.562527, 0, 0, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0.90783, -6.04165e-17, -6.9266e-17, -0.419338)
+bones/0/rotation = Quaternion(0.914335, -5.90607e-17, -7.01458e-17, -0.40496)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.001"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, -8.88178e-16, -2.38419e-07, -1.42303e-08, 0.998217, -0.0596863, 2.37994e-07, 0.0596863, 0.998217, 1.32349e-23, 3.89105, 1.19209e-07)
 bones/1/enabled = true
 bones/1/position = Vector3(1.32349e-23, 3.89105, 1.19209e-07)
-bones/1/rotation = Quaternion(-0.0638784, -1.18913e-07, 5.84539e-09, 0.997958)
+bones/1/rotation = Quaternion(-0.0796183, -1.18666e-07, 3.98059e-09, 0.996825)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Bone.002"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 3.18721e-08, 2.36279e-07, 0, 0.991024, -0.133681, -2.38419e-07, 0.133681, 0.991024, -2.62396e-14, 3.58134, 1.49012e-07)
 bones/2/enabled = true
 bones/2/position = Vector3(-2.62396e-14, 3.58134, 1.49012e-07)
-bones/2/rotation = Quaternion(-0.12001, 1.18348e-07, 1.43063e-08, 0.992773)
+bones/2/rotation = Quaternion(-0.135661, 1.18107e-07, 1.61721e-08, 0.990755)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Bone.003"
 bones/3/parent = -1
 bones/3/rest = Transform3D(-1, 4.26326e-14, -3.89414e-07, -2.99755e-07, 0.638336, 0.769758, 2.48577e-07, 0.769758, -0.638335, 0, 0, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 0, 0)
-bones/3/rotation = Quaternion(-1.01391e-07, 0.845398, 0.534137, -1.65831e-07)
+bones/3/rotation = Quaternion(-9.84631e-08, 0.836864, 0.54741, -1.66759e-07)
 bones/3/scale = Vector3(1, 1, 0.999999)
 
 [node name="mesh" type="MeshInstance3D" parent="blob/Armature/Skeleton3D"]
-visible = false
 mesh = SubResource("ArrayMesh_2ahx0")
 skin = SubResource("Skin_n0vob")
 surface_material_override/0 = SubResource("StandardMaterial3D_fnsiu")
 
 [node name="EyesBoneAttachment3D" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(-1, 5.72055e-09, -3.88699e-07, -3.48584e-07, 0.429396, 0.903115, 1.72072e-07, 0.903116, -0.429395, 0, 0, 0)
-visible = false
+transform = Transform3D(-1, 1.77712e-08, -3.86909e-07, -3.47372e-07, 0.400684, 0.916215, 1.71311e-07, 0.916216, -0.400683, 0, 0, 0)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -297,7 +299,7 @@ transform = Transform3D(9.00925, -4.47136, -4.72199, 0.119311, 8.18023, -7.51841
 transform = Transform3D(9.01099, 4.47081, 4.71918, -0.114211, 8.17378, -7.52549, -6.49968, 6.05459, 6.67481, 1.95145, 4.09994, 3.26156)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(1, 3.34427e-09, 1.16236e-09, 2.38548e-09, -0.879023, 0.47678, 2.61622e-09, -0.47678, -0.879023, 1.26241e-08, -5.17314, -5.37101)
+transform = Transform3D(1, 1.02323e-08, 4.10809e-09, 7.80689e-09, -0.920162, 0.391538, 7.78647e-09, -0.391538, -0.920162, 3.92516e-08, -5.41202, -5.11794)
 bone_name = "Bone.002"
 bone_idx = 2
 
