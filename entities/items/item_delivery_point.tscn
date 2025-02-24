@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1tcjtlgyxua3"]
+
+[ext_resource type="Script" path="res://entities/items/item_delivery_point.gd" id="1_tdwks"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r35sk"]
+
+[node name="Item Delivery Point" type="Area3D"]
+collision_layer = 32
+collision_mask = 8
+script = ExtResource("1_tdwks")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_r35sk")

@@ -28,7 +28,6 @@ func get_interaction_text() -> String:
 
 func interact() -> void:
 	if current_item and hovered_item:
-		print("a")
 		var tmp = hovered_item
 		drop_item(current_item)
 		pickup_item(tmp)
@@ -39,17 +38,14 @@ func interact() -> void:
 
 func _on_area_entered(area: Area3D) -> void:
 	Signals.add_interaction.emit(self)
-	print("enter")
 	hovered_item = area
 
 func _on_area_exited(area: Area3D) -> void:
 	Signals.remove_interaction.emit(self)
-	print("exit")
 	if hovered_item == area:
 		hovered_item = null
 
 func pickup_item(item: Area3D) -> void:
-	print("pickup")
 	item.collision_layer = 0
 	item.reparent(self)
 	item.top_level = true
@@ -57,7 +53,6 @@ func pickup_item(item: Area3D) -> void:
 	Signals.add_interaction.emit(self)
 
 func drop_item(item: Area3D) -> void:
-	print("drop")
 	item.collision_layer = 1 << 3
 	item.reparent(get_parent().get_parent())
 	item.top_level = false
