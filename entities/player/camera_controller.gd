@@ -78,9 +78,15 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		if Input.get_action_strength("camera_rotate") > 0.5:
+		#if Input.get_action_strength("camera_rotate") > 0.5:
+			#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			#twist_input = -event.get_screen_relative().x * mouse_sens
+			#pitch_input = -event.get_screen_relative().y * mouse_sens
+		#else:
+			#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED and Global.game_state == Util.GAME_STATE.UNPAUSED:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			twist_input = -event.get_screen_relative().x * mouse_sens
-			pitch_input = -event.get_screen_relative().y * mouse_sens
-		else:
+		elif Input.mouse_mode != Input.MOUSE_MODE_VISIBLE and Global.game_state != Util.GAME_STATE.UNPAUSED:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		twist_input = -event.get_screen_relative().x * mouse_sens
+		pitch_input = -event.get_screen_relative().y * mouse_sens

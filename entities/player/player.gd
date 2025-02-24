@@ -30,11 +30,19 @@ var _theta : float
 @onready var ink_waterfall_detection_raycast: RayCast3D = get_node("Ink Waterfall Detection")
 @onready var ink_burst_particles_scene: PackedScene = preload("res://entities/effects/ink_burst_particles.tscn")
 
+@onready var animation_tree: AnimationTree = $AnimationTree
+var swim_val := 0.0
+enum ModelStates { JUMP, SWIM }
+var currentAnim = ModelStates.JUMP
+var blend_speed = 15
+
 var jumping := false
 
 @onready var twist_pivot := $CamTwistPivot
 
 func _ready() -> void:
+	if Global.game_state == Util.GAME_STATE.MENU:
+		Global.game_state = Util.GAME_STATE.UNPAUSED
 	max_speed = Jump_Distance/(Jump_Peak_Time+Jump_Fall_Time)
 	jump_gravity = (2 * Jump_Height)/pow(Jump_Peak_Time,2)
 	fall_gravity = (2*Jump_Height)/pow(Jump_Fall_Time,2)
@@ -43,10 +51,10 @@ func _ready() -> void:
 	print("jump gravity: ", jump_gravity)
 	print("fall_gravity: ", fall_gravity)
 	print("jump_velocity: ", jump_velocity)
-	
+
 
 func _physics_process(delta: float) -> void:
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction: Vector3 = (twist_pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -77,6 +85,9 @@ func _physics_process(delta: float) -> void:
 
 	if climbing_waterfall:
 		velocity -= get_gravity() * delta
+		currentAnim = ModelStates.SWIM
+	else:
+		currentAnim = ModelStates.JUMP
 
 	var is_on_surface = is_on_floor() or climbing_waterfall
 
@@ -97,6 +108,8 @@ func _physics_process(delta: float) -> void:
 		#print("jumping")
 		jumping = true
 		#add_child(ink_burst_particles_scene.instantiate())
+		
+	handle_animations(delta)
 
 
 	# Setup handling of landing
@@ -111,3 +124,13 @@ func _physics_process(delta: float) -> void:
 	if jumping and (not was_on_surface) and is_on_floor():
 		#print("landing")
 		add_child(ink_burst_particles_scene.instantiate())
+
+func handle_animations(delta):
+	match currentAnim:
+		ModelStates.JUMP:
+			swim_val = lerpf(swim_val, 0, blend_speed * delta)
+		ModelStates.SWIM:
+			swim_val = lerpf(swim_val, 1, blend_speed * delta)
+
+func update_tree():
+	animation_tree["parameters/BlendTree/Swim/blend_amount"] = swim_val
