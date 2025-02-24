@@ -147,9 +147,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		skeleton.position.x = 0
 		skeleton.position.z = 0
-	
-	print(global_position)
-	print(velocity)
 
 	if is_on_floor():
 		skeleton.position.y = max(-17, skeleton.position.y + landing_velocity.y*delta)
