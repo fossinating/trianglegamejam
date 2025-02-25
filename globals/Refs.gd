@@ -11,8 +11,6 @@ extends Node
 @export_group("Packed Scenes")
 
 @export_group("Current Chances")
-@export var brother_rating_ratio := 0.5
-@export var crate_rating_ratio := 0.3
 
 func get_color_by_type(type: Util.MATERIAL_TYPE) -> Color:
 	match type:

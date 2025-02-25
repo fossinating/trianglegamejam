@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmpom5ijyoljx"]
+
+[ext_resource type="Shader" path="res://ui/oil.gdshader" id="1_mkq1q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcqch"]
+shader = ExtResource("1_mkq1q")
+shader_parameter/time_scale = 0.05
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/color_divisor_r = 49.065
+shader_parameter/color_divisor_g = 34.085
+shader_parameter/color_divisor_b = 2.375
+
+[node name="Oilshadertest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_lcqch")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -316.0
+offset_top = -178.0
+offset_right = 317.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2

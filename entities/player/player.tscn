@@ -245,6 +245,7 @@ script = ExtResource("1_boxuu")
 shape = SubResource("SphereShape3D_vstp2")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 root_node = NodePath("../blob")
 tree_root = SubResource("AnimationNodeStateMachine_s0b7s")
 anim_player = NodePath("../blob/AnimationPlayer")
@@ -294,7 +295,7 @@ skin = SubResource("Skin_n0vob")
 surface_material_override/0 = SubResource("StandardMaterial3D_fnsiu")
 
 [node name="EyesBoneAttachment3D" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(-1, 2.22424e-08, -3.86146e-07, -3.46917e-07, 0.38988, 0.920865, 1.71033e-07, 0.920866, -0.38988, 0, 0, 0)
+transform = Transform3D(-1, 2.22422e-08, -3.86145e-07, -3.46916e-07, 0.389881, 0.920864, 1.71033e-07, 0.920865, -0.389881, 0, 0, 0)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -305,7 +306,7 @@ transform = Transform3D(9.00925, -4.47136, -4.72199, 0.119311, 8.18023, -7.51841
 transform = Transform3D(9.01099, 4.47081, 4.71918, -0.114211, 8.17378, -7.52549, -6.49968, 6.05459, 6.67481, 1.95145, 4.09994, 3.26156)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(1, 1.27261e-08, 5.37048e-09, 9.95149e-09, -0.933401, 0.358834, 9.57937e-09, -0.358834, -0.933401, 4.91395e-08, -5.49756, -5.02058)
+transform = Transform3D(1, 1.27262e-08, 5.37048e-09, 9.95153e-09, -0.933401, 0.358835, 9.5794e-09, -0.358835, -0.933401, 4.91397e-08, -5.49756, -5.02058)
 bone_name = "Bone.002"
 bone_idx = 2
 
