@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://clgy5ehuf80vv"]
 
-[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/posterizeScript.gdshader" id="1_fiby3"]
+[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/posterizeScript(cellShading).gdshader" id="1_fiby3"]
 
 [sub_resource type="Gradient" id="Gradient_oli7n"]
 interpolation_mode = 1
@@ -15,8 +15,6 @@ gradient = SubResource("Gradient_oli7n")
 render_priority = 0
 shader = ExtResource("1_fiby3")
 shader_parameter/baseColor = Color(0.344076, 0.344076, 0.344076, 1)
-shader_parameter/colorCount = 4.0
-shader_parameter/postPosterizingTextureStrength = null
 shader_parameter/shadingTextureStrength = 0.0
 shader_parameter/UVOffsetX = null
 shader_parameter/UVOffsetY = null

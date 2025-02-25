@@ -1,20 +1,20 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://besnxj6eddgts"]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dl1n5cceunv7e"]
 
-[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/posterizeScript(cellShading).gdshader" id="1_uyk8x"]
+[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/posterizeScript(cellShading).gdshader" id="1_wlyfg"]
 
 [sub_resource type="Gradient" id="Gradient_oli7n"]
 interpolation_mode = 1
 interpolation_color_space = 2
-offsets = PackedFloat32Array(0, 0.174216, 0.368821, 0.975285)
-colors = PackedColorArray(0.00605369, 0.0099312, 0.0170605, 1, 0.195271, 0.250785, 0.326127, 1, 0.370746, 0.602667, 0.726204, 1, 0.805882, 0.994846, 0.929226, 1)
+offsets = PackedFloat32Array(0.00190114, 0.163498, 0.368821, 0.963878)
+colors = PackedColorArray(0.0248494, 0.0359991, 0.192223, 1, 0.135944, 0.137115, 0.291369, 1, 0.184455, 0.343801, 0.42698, 1, 0.911317, 0.954714, 0.943197, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_upmih"]
 gradient = SubResource("Gradient_oli7n")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_uyk8x")
-shader_parameter/baseColor = Color(0.230315, 0.230315, 0.230315, 1)
+shader = ExtResource("1_wlyfg")
+shader_parameter/baseColor = Color(0.548963, 0.548963, 0.548963, 1)
 shader_parameter/shadingTextureStrength = null
 shader_parameter/UVOffsetX = null
 shader_parameter/UVOffsetY = null

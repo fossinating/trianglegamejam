@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://blx87gtbl8apb"]
 
-[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/cellShader.gdshader" id="1_x6lmy"]
+[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/cellShader(outdated).gdshader" id="1_x6lmy"]
 
 [resource]
 render_priority = 0

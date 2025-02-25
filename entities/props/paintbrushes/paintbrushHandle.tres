@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://ctwrmpngsgmq6"]
 
-[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/posterizeScript.gdshader" id="1_wubh7"]
+[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/posterizeScript(cellShading).gdshader" id="1_wubh7"]
 
 [sub_resource type="Gradient" id="Gradient_oli7n"]
 interpolation_mode = 1
