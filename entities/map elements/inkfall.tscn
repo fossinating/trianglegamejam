@@ -38,3 +38,10 @@ radius = 0.75
 radial_segments = 48
 rings = 24
 material = ExtResource("1_t4dnk")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.15, 0, 0, 0, 1, 0, -0.5, 0)
+radius = 1.5
+radial_segments = 48
+rings = 24
+material = ExtResource("1_t4dnk")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://ugibgwjk8oos"]
+[gd_scene load_steps=20 format=4 uid="uid://wd41i5roc4np"]
 
 [ext_resource type="Material" uid="uid://tpx1lstry5ry" path="res://entities/props/InkBottle/glass.tres" id="1_fjavy"]
 [ext_resource type="Material" uid="uid://c1rmtf7tuuivn" path="res://entities/props/shaders/scriptsAndDebug/standardCellShader.tres" id="2_p5d0g"]
@@ -173,7 +173,7 @@ transform = Transform3D(-0.541958, 0.0256202, -0.840015, -0.0610699, 0.995692, 0
 fov = 53.4375
 
 [node name="filledInkBottleWithCorkV2" parent="." instance=ExtResource("4_qsmfa")]
-transform = Transform3D(-0.643516, -0.0223524, 0.765108, 0.00905775, 0.999281, 0.0368124, -0.765382, 0.0306194, -0.642852, -0.125243, 5.88301, 9.62588)
+transform = Transform3D(-0.643637, -0.0217739, 0.765023, 0.00907903, 0.999308, 0.0360809, -0.76528, 0.0301685, -0.642994, -0.125243, 5.88301, 9.62588)
 
 [node name="Circle_001" parent="filledInkBottleWithCorkV2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0458458, 4.35454, -0.113482)
