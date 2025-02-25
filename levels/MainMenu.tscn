@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://levels/main_menu.gd" id="1_uxlst"]
 [ext_resource type="Shader" path="res://ui/oil.gdshader" id="2_sbsmk"]
 [ext_resource type="Theme" uid="uid://dtwvgtmm6xpyf" path="res://ui/main_ui_theme.tres" id="3_wk6ba"]
-[ext_resource type="FontFile" uid="uid://t5rxut8ytsli" path="res://ui/fonts/Hey August.ttf" id="5_j2782"]
+[ext_resource type="FontFile" uid="uid://cobm4q32la1mu" path="res://ui/fonts/Artbrush.ttf" id="5_snobv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nft04"]
 shader = ExtResource("2_sbsmk")
@@ -33,7 +33,7 @@ HSlider/icons/grabber_highlight = null
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_sbgrc")
 
 [sub_resource type="LabelSettings" id="LabelSettings_2faex"]
-font = ExtResource("5_j2782")
+font = ExtResource("5_snobv")
 font_size = 32
 font_color = Color(0, 0, 0, 0.784314)
 outline_size = 10
@@ -66,7 +66,7 @@ CheckBox/colors/font_hover_pressed_color = Color(0.470588, 0.470588, 0.470588, 1
 CheckBox/colors/font_pressed_color = Color(1, 1, 1, 0.94902)
 CheckBox/constants/h_separation = 8
 CheckBox/font_sizes/font_size = 24
-CheckBox/fonts/font = ExtResource("5_j2782")
+CheckBox/fonts/font = ExtResource("5_snobv")
 CheckBox/styles/focus = SubResource("StyleBoxFlat_dj327")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78dvg"]
@@ -120,7 +120,7 @@ OptionButton/colors/font_hover_color = Color(0.321569, 0.321569, 0.321569, 1)
 OptionButton/colors/font_hover_pressed_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
 OptionButton/colors/font_pressed_color = Color(0, 0, 0, 0.94902)
 OptionButton/font_sizes/font_size = 24
-OptionButton/fonts/font = ExtResource("5_j2782")
+OptionButton/fonts/font = ExtResource("5_snobv")
 OptionButton/styles/disabled = SubResource("StyleBoxFlat_78dvg")
 OptionButton/styles/focus = SubResource("StyleBoxFlat_dj327")
 OptionButton/styles/hover = SubResource("StyleBoxFlat_6nvnj")
@@ -249,9 +249,9 @@ value = 0.8
 
 [node name="Label" type="Label" parent="OptionsMarginContainer/VBoxContainer/VolumeMaster"]
 layout_mode = 0
-offset_top = -25.0
+offset_top = -33.0
 offset_right = 190.0
-offset_bottom = 7.0
+offset_bottom = 4.0
 text = "Master Volume"
 label_settings = SubResource("LabelSettings_2faex")
 vertical_alignment = 1
@@ -265,9 +265,9 @@ value = 0.6
 
 [node name="Label" type="Label" parent="OptionsMarginContainer/VBoxContainer/VolumeMusic"]
 layout_mode = 0
-offset_top = -25.0
+offset_top = -33.0
 offset_right = 190.0
-offset_bottom = 7.0
+offset_bottom = 4.0
 text = "Music Volume"
 label_settings = SubResource("LabelSettings_2faex")
 vertical_alignment = 1
@@ -281,10 +281,27 @@ value = 0.6
 
 [node name="Label" type="Label" parent="OptionsMarginContainer/VBoxContainer/VolumeSFX"]
 layout_mode = 0
-offset_top = -25.0
+offset_top = -33.0
 offset_right = 190.0
-offset_bottom = 7.0
+offset_bottom = 4.0
 text = "SFX Volume"
+label_settings = SubResource("LabelSettings_2faex")
+vertical_alignment = 1
+
+[node name="MouseSensitivity" type="HSlider" parent="OptionsMarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_38tiu")
+min_value = 0.001
+max_value = 0.3
+step = 0.001
+value = 0.15
+
+[node name="Label" type="Label" parent="OptionsMarginContainer/VBoxContainer/MouseSensitivity"]
+layout_mode = 0
+offset_top = -33.0
+offset_right = 190.0
+offset_bottom = 4.0
+text = "Mouse Sensitivity"
 label_settings = SubResource("LabelSettings_2faex")
 vertical_alignment = 1
 
@@ -334,7 +351,6 @@ theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.973535, 0.973535, 0.973535, 1)
 theme_override_colors/font_focus_color = Color(0.176419, 0.176419, 0.176419, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_j2782")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/focus = SubResource("StyleBoxFlat_l1jrw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_oa7u8")
@@ -365,7 +381,6 @@ theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.973535, 0.973535, 0.973535, 1)
 theme_override_colors/font_focus_color = Color(0.176419, 0.176419, 0.176419, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_j2782")
 theme_override_styles/focus = SubResource("StyleBoxFlat_l1jrw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_oa7u8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_bvmqf")
@@ -380,7 +395,6 @@ theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.973535, 0.973535, 0.973535, 1)
 theme_override_colors/font_focus_color = Color(0.176419, 0.176419, 0.176419, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_j2782")
 theme_override_styles/focus = SubResource("StyleBoxFlat_l1jrw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_oa7u8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_bvmqf")
@@ -395,7 +409,6 @@ theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.973535, 0.973535, 0.973535, 1)
 theme_override_colors/font_focus_color = Color(0.176419, 0.176419, 0.176419, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_j2782")
 theme_override_styles/focus = SubResource("StyleBoxFlat_l1jrw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_oa7u8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_bvmqf")
@@ -410,6 +423,7 @@ attenuation = 0.203064
 [connection signal="value_changed" from="OptionsMarginContainer/VBoxContainer/VolumeMaster" to="." method="_on_volume_master_value_changed"]
 [connection signal="value_changed" from="OptionsMarginContainer/VBoxContainer/VolumeMusic" to="." method="_on_volume_music_value_changed"]
 [connection signal="value_changed" from="OptionsMarginContainer/VBoxContainer/VolumeSFX" to="." method="_on_volume_sfx_value_changed"]
+[connection signal="value_changed" from="OptionsMarginContainer/VBoxContainer/MouseSensitivity" to="." method="_on_mouse_sensitivity_value_changed"]
 [connection signal="toggled" from="OptionsMarginContainer/VBoxContainer/HBoxContainer/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
 [connection signal="toggled" from="OptionsMarginContainer/VBoxContainer/HBoxContainer/CheatsCheckBox" to="." method="_on_cheats_check_box_toggled"]
 [connection signal="pressed" from="OptionsMarginContainer/VBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]

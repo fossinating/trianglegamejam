@@ -5,6 +5,7 @@
 
 [resource]
 Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("2_f65c3")
 RichTextLabel/font_sizes/bold_font_size = 64
 RichTextLabel/fonts/bold_font = ExtResource("1_o23pw")
 RichTextLabel/fonts/normal_font = ExtResource("2_f65c3")

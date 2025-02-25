@@ -56,3 +56,7 @@ func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 		get_window().set_mode(Window.MODE_FULLSCREEN)
 	else:
 		get_window().set_mode(Window.MODE_WINDOWED)
+
+
+func _on_mouse_sensitivity_value_changed(value: float) -> void:
+	Global.mouse_sens = value
