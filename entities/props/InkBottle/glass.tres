@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://tpx1lstry5ry"]
+
+[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/glassScript.gdshader" id="1_fwuh0"]
+
+[sub_resource type="Gradient" id="Gradient_m6p73"]
+interpolation_mode = 1
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.0243902, 0.278746)
+colors = PackedColorArray(0, 0, 0, 1, 0.122253, 0.122252, 0.122252, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lyc2g"]
+gradient = SubResource("Gradient_m6p73")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fwuh0")
+shader_parameter/baseColor = Color(0, 0, 0, 1)
+shader_parameter/specular_power = 1.0
+shader_parameter/specular_strength = 0.1
+shader_parameter/specular_size = 3.0
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_lyc2g")

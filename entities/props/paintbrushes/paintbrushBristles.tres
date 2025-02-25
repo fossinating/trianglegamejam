@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://xfxam6u0otew"]
+
+[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/posterizeScript.gdshader" id="1_67w7q"]
+
+[sub_resource type="Gradient" id="Gradient_oli7n"]
+interpolation_mode = 1
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.0696864, 0.156794)
+colors = PackedColorArray(0.154586, 0.0183385, 0, 1, 0.467646, 0.357397, 0, 1, 0.838285, 0.693486, 0.513354, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_upmih"]
+gradient = SubResource("Gradient_oli7n")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_67w7q")
+shader_parameter/baseColor = Color(0.230315, 0.230315, 0.230315, 1)
+shader_parameter/colorCount = 4.0
+shader_parameter/colorGradient = SubResource("GradientTexture1D_upmih")
