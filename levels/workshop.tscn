@@ -159,26 +159,27 @@ shape = SubResource("BoxShape3D_5s17q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13627, 0.05, 0.0261607)
 mesh = SubResource("BoxMesh_et4ey")
 
-[node name="Grabbable Item" parent="StaticBody3D2" node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1692, 0.988317, -15.2394)
-delivery_point = NodePath("../Item Delivery Point")
-MAX_CARRY_DISTANCE = 4.0
-
-[node name="CollisionShape3D" parent="StaticBody3D2/Grabbable Item" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.128021, 0, 0.360726)
-shape = SubResource("SphereShape3D_ayfsu")
-
-[node name="Sprite3D" parent="StaticBody3D2/Grabbable Item" index="1"]
-transform = Transform3D(0.381112, -0.855992, -3.74166e-08, 0, -4.09576e-08, 0.937, -0.855992, -0.381112, -1.66589e-08, -4.62885, -2.84217e-14, -3.71155)
-shaded = true
-texture = ExtResource("7_fwsu3")
-
 [node name="Canvas" parent="StaticBody3D2" instance=ExtResource("4_jxxqq")]
 transform = Transform3D(7.44485e-07, -9.861, 0, 9.861, 7.44485e-07, 0, 0, 0, 9.861, 0.34, 0.47, 0)
 metadata/_edit_group_ = true
 
+[node name="Grabbable Item" parent="StaticBody3D2" node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9164, 1.00857, -16.1819)
+delivery_point = NodePath("../Item Delivery Point")
+item_image = ExtResource("7_fwsu3")
+MAX_CARRY_DISTANCE = 1.0
+shrink_factor = 0.25
+
+[node name="CollisionShape3D" parent="StaticBody3D2/Grabbable Item" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40899, 0, 2.12559)
+shape = SubResource("SphereShape3D_ayfsu")
+
+[node name="Sprite3D" parent="StaticBody3D2/Grabbable Item/Sprite Carrier" index="0"]
+transform = Transform3D(0.388498, -0.844967, -3.69347e-08, -2.8347e-15, -4.06516e-08, 0.93, -0.844967, -0.388498, -1.69818e-08, -3.39629, 0, -2.2566)
+texture = ExtResource("7_fwsu3")
+
 [node name="Item Delivery Point" parent="StaticBody3D2" instance=ExtResource("3_nogm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0784, 0.508571, 1.47368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.39694, 0.508572, 0.652788)
 
 [node name="table surface" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)

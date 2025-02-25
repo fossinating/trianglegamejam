@@ -1,21 +1,37 @@
+@tool
+
 extends Area3D
 class_name GrabbableItem
 
 
 @export var delivery_point: ItemDeliveryPoint
+@export var item_image: Texture2D
 
-
-@onready var delivery_direction_particles: GPUParticles3D = $"Delivery Direction Particles"
+@onready var delivery_direction_particles: GPUParticles3D = $"CollisionShape3D/Delivery Direction Particles"
 @onready var collision_shape: CollisionShape3D = $"CollisionShape3D"
 
-@export var MAX_CARRY_DISTANCE = .75
+@export var MAX_CARRY_DISTANCE := .75
+@export var shrink_factor := 1.0
 
 var carrier: ItemGrabber
+
+@onready var sprite_carrier: Node3D = $"Sprite Carrier"
+var scale_mult := 1.0
+
 
 func _ready():
 	if not delivery_point:
 		push_error("GrabbableItem was not assigned delivery point.")
-		get_tree().quit()
+
+		if not Engine.is_editor_hint():
+			get_tree().quit()
+
+	$"Sprite Carrier/Sprite3D".texture = item_image
+	
+
+func _process(delta: float) -> void:
+	scale_mult = clamp(scale_mult + delta * (1-shrink_factor) * (-1 if carrier else 1), shrink_factor, 1.0)
+	sprite_carrier.scale = scale_mult * Vector3.ONE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
