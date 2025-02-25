@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bu7xjkbde0woe"]
 
-[ext_resource type="Material" uid="uid://b7l3b6ud7tfxi" path="res://levels/mat_inkfall.tres" id="1_6yvsw"]
+[ext_resource type="Material" path="res://levels/mat_inkfall.tres" id="1_6yvsw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_402rc"]
 size = Vector3(0.25, 9.1, 1)
