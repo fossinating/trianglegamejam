@@ -10,7 +10,7 @@ var MENU_PATH := "res://levels/PLACEHOLDER!!!!!!!!!!!!!!"
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		pause()
 

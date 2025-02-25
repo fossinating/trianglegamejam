@@ -30,13 +30,13 @@ var _theta : float
 @onready var ink_waterfall_detection_raycast: RayCast3D = $"Ink Waterfall Detection"
 @onready var ink_burst_particles_scene: PackedScene = preload("res://entities/effects/ink_burst_particles.tscn")
 
-@onready var animation_tree: AnimationTree = $AnimationTree
+#@onready var animation_tree: AnimationTree = $AnimationTree
 
 @onready var skeleton: Skeleton3D = $"blob/Armature/Skeleton3D"
 
 var swim_val := 0.0
-enum ModelStates { JUMP, SWIM }
-var currentAnim = ModelStates.JUMP
+#enum ModelStates { JUMP, SWIM }
+#var currentAnim = ModelStates.JUMP
 var blend_speed = 15
 
 var landing_velocity: Vector3
@@ -98,9 +98,9 @@ func _physics_process(delta: float) -> void:
 
 	if climbing_waterfall:
 		velocity.y += jump_gravity * delta
-		currentAnim = ModelStates.SWIM
-	else:
-		currentAnim = ModelStates.JUMP
+		#currentAnim = ModelStates.SWIM
+	#else:
+		#currentAnim = ModelStates.JUMP
 
 	var is_on_surface = is_on_floor() or climbing_waterfall
 
@@ -116,7 +116,7 @@ func _physics_process(delta: float) -> void:
 		item_grabber.drop_current_item()
 		#add_child(ink_burst_particles_scene.instantiate())
 		
-	handle_animations(delta)
+	#	handle_animations(delta)
 
 	# Setup handling of landing
 
@@ -169,12 +169,12 @@ func _physics_process(delta: float) -> void:
 	airborne_eyes.visible = airborne_visuals.visible
 
 
-func handle_animations(delta):
-	match currentAnim:
-		ModelStates.JUMP:
-			swim_val = lerpf(swim_val, 0, blend_speed * delta)
-		ModelStates.SWIM:
-			swim_val = lerpf(swim_val, 1, blend_speed * delta)
+#func handle_animations(delta):
+	#match currentAnim:
+		#ModelStates.JUMP:
+			#swim_val = lerpf(swim_val, 0, blend_speed * delta)
+		#ModelStates.SWIM:
+			#swim_val = lerpf(swim_val, 1, blend_speed * delta)
 
-func update_tree():
-	animation_tree["parameters/BlendTree/Swim/blend_amount"] = swim_val
+#func update_tree():
+	#animation_tree["parameters/BlendTree/Swim/blend_amount"] = swim_val

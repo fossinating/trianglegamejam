@@ -57,6 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59108, 0.5, -0.132736)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_eapep")
@@ -69,6 +70,7 @@ size = Vector3(20, 1, 20)
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.993294, 0, -0.115613, 0, 1, 0, 0.115613, 0, -0.993294, 17.604, 0.499999, -3.54682)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.75, 0)
@@ -126,6 +128,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5497, 8.5, -4.01305)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(0.912206, 0, -0.409732, 0, 1, 0, 0.409732, 0, 0.912206, -13.4238, 0.5, -6.65619)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 shape = SubResource("BoxShape3D_eapep")
@@ -151,6 +154,7 @@ mesh = SubResource("BoxMesh_et4ey")
 
 [node name="table surface" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+layers = 3
 mesh = SubResource("BoxMesh_pglni")
 
 [node name="Item Delivery Point" parent="." instance=ExtResource("3_nogm7")]

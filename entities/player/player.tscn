@@ -1,16 +1,19 @@
-[gd_scene load_steps=35 format=4 uid="uid://bqvbt7ofxnn0b"]
+[gd_scene load_steps=36 format=4 uid="uid://bqvbt7ofxnn0b"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_boxuu"]
 [ext_resource type="Texture2D" uid="uid://dajp6o4brj5i1" path="res://entities/player/blob_PS New Group 1 Image 3 (MAT_ Mat_Blob).png" id="2_dvct0"]
 [ext_resource type="PackedScene" uid="uid://kesgwtbvfg1h" path="res://entities/player/googly_eye.tscn" id="2_kn8ih"]
 [ext_resource type="Script" path="res://libraries/better_animation_tree.gd" id="2_x8lhm"]
 [ext_resource type="Texture2D" uid="uid://cakdw32wvyfjc" path="res://entities/player/blob_layersmerged_New Group 1_bake.png" id="3_rbppb"]
-[ext_resource type="AnimationLibrary" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
+[ext_resource type="AnimationLibrary" uid="uid://clu7brywt384c" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
 [ext_resource type="Script" path="res://entities/player/camera_controller.gd" id="5_dosi8"]
 [ext_resource type="PackedScene" uid="uid://drkibph2ps23s" path="res://entities/player/components/interaction_manager/interaction_manager.tscn" id="6_35t6f"]
 [ext_resource type="PackedScene" uid="uid://clyi4pgeg23vg" path="res://entities/player/components/item_grabber/item_grabber.tscn" id="7_bc2mm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vstp2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dse82"]
+animation = &"Airborne"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1qkjb"]
 animation = &"Airborne"
@@ -31,14 +34,16 @@ nodes/Swim/position = Vector2(201.51, 167.082)
 nodes/output/position = Vector2(460, 160)
 node_connections = [&"Swim", 0, &"Airborne", &"Swim", 1, &"Idle", &"output", 0, &"Swim"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pgudv"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qqc38"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_s0b7s"]
+states/Airborne/node = SubResource("AnimationNodeAnimation_dse82")
+states/Airborne/position = Vector2(341.07, 71.06)
 states/BlendTree/node = SubResource("AnimationNodeBlendTree_sntd4")
 states/BlendTree/position = Vector2(438, 170)
-transitions = ["Start", "BlendTree", SubResource("AnimationNodeStateMachineTransition_pgudv")]
-graph_offset = Vector2(-42, 10)
+transitions = ["Start", "Airborne", SubResource("AnimationNodeStateMachineTransition_qqc38")]
+graph_offset = Vector2(-24.93, 34.06)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_twld5"]
 resource_name = "Mat_Blob"
@@ -240,7 +245,6 @@ script = ExtResource("1_boxuu")
 shape = SubResource("SphereShape3D_vstp2")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-active = false
 root_node = NodePath("../blob")
 tree_root = SubResource("AnimationNodeStateMachine_s0b7s")
 anim_player = NodePath("../blob/AnimationPlayer")
@@ -260,28 +264,28 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, -1.81971e-16, -5.60351e-17, -5.60351e-17, -0.562527, 0.826779, -1.81971e-16, -0.826779, -0.562527, 0, 0, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0.904852, -6.06846e-17, -6.87011e-17, -0.425727)
+bones/0/rotation = Quaternion(0.9167, -5.86372e-17, -7.05118e-17, -0.399576)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.001"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, -8.88178e-16, -2.38419e-07, -1.42303e-08, 0.998217, -0.0596863, 2.37994e-07, 0.0596863, 0.998217, 1.32349e-23, 3.89105, 1.19209e-07)
 bones/1/enabled = true
 bones/1/position = Vector3(1.32349e-23, 3.89105, 1.19209e-07)
-bones/1/rotation = Quaternion(-0.0564366, -1.19019e-07, 6.72777e-09, 0.998406)
+bones/1/rotation = Quaternion(-0.0854788, -1.18567e-07, 3.28647e-09, 0.99634)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Bone.002"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 3.18721e-08, 2.36279e-07, 0, 0.991024, -0.133681, -2.38419e-07, 0.133681, 0.991024, -2.62396e-14, 3.58134, 1.49012e-07)
 bones/2/enabled = true
 bones/2/position = Vector3(-2.62396e-14, 3.58134, 1.49012e-07)
-bones/2/rotation = Quaternion(-0.112605, 1.18451e-07, 1.34236e-08, 0.99364)
+bones/2/rotation = Quaternion(-0.141485, 1.1801e-07, 1.68663e-08, 0.98994)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Bone.003"
 bones/3/parent = -1
 bones/3/rest = Transform3D(-1, 4.26326e-14, -3.89414e-07, -2.99755e-07, 0.638336, 0.769758, 2.48577e-07, 0.769758, -0.638335, 0, 0, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 0, 0)
-bones/3/rotation = Quaternion(-1.0277e-07, 0.849357, 0.527819, -1.65376e-07)
+bones/3/rotation = Quaternion(-9.73675e-08, 0.833631, 0.552322, -1.67094e-07)
 bones/3/scale = Vector3(1, 1, 0.999999)
 
 [node name="mesh" type="MeshInstance3D" parent="blob/Armature/Skeleton3D"]
@@ -290,7 +294,7 @@ skin = SubResource("Skin_n0vob")
 surface_material_override/0 = SubResource("StandardMaterial3D_fnsiu")
 
 [node name="EyesBoneAttachment3D" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(-1, 3.2685e-13, -3.89414e-07, -3.49154e-07, 0.442814, 0.896612, 1.72439e-07, 0.896613, -0.442814, 0, 0, 0)
+transform = Transform3D(-1, 2.22424e-08, -3.86146e-07, -3.46917e-07, 0.38988, 0.920865, 1.71033e-07, 0.920866, -0.38988, 0, 0, 0)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -301,7 +305,7 @@ transform = Transform3D(9.00925, -4.47136, -4.72199, 0.119311, 8.18023, -7.51841
 transform = Transform3D(9.01099, 4.47081, 4.71918, -0.114211, 8.17378, -7.52549, -6.49968, 6.05459, 6.67481, 1.95145, 4.09994, 3.26156)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="blob/Armature/Skeleton3D"]
-transform = Transform3D(1, -2.02505e-13, 2.55795e-13, -3.12639e-13, -0.857241, 0.514915, 1.13687e-13, -0.514915, -0.857241, -1.90226e-13, -5.06015, -5.48215)
+transform = Transform3D(1, 1.27261e-08, 5.37048e-09, 9.95149e-09, -0.933401, 0.358834, 9.57937e-09, -0.358834, -0.933401, 4.91395e-08, -5.49756, -5.02058)
 bone_name = "Bone.002"
 bone_idx = 2
 
