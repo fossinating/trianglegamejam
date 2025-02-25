@@ -5,8 +5,8 @@
 [sub_resource type="Gradient" id="Gradient_oli7n"]
 interpolation_mode = 1
 interpolation_color_space = 2
-offsets = PackedFloat32Array(0, 0.174216, 0.449477)
-colors = PackedColorArray(0.00605369, 0.0099312, 0.0170605, 1, 0.195271, 0.250785, 0.326127, 1, 0.616265, 0.794295, 0.773388, 1)
+offsets = PackedFloat32Array(0, 0.174216, 0.368821, 0.975285)
+colors = PackedColorArray(0.00605369, 0.0099312, 0.0170605, 1, 0.195271, 0.250785, 0.326127, 1, 0.370746, 0.602667, 0.726204, 1, 0.805882, 0.994846, 0.929226, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_upmih"]
 gradient = SubResource("Gradient_oli7n")
@@ -15,5 +15,15 @@ gradient = SubResource("Gradient_oli7n")
 render_priority = 0
 shader = ExtResource("1_uyk8x")
 shader_parameter/baseColor = Color(0.230315, 0.230315, 0.230315, 1)
-shader_parameter/colorCount = 4.0
+shader_parameter/shadingTextureStrength = null
+shader_parameter/UVOffsetX = null
+shader_parameter/UVOffsetY = null
+shader_parameter/UVScaleX = null
+shader_parameter/UVScaleY = null
+shader_parameter/normalStrength = null
+shader_parameter/normalSize = null
+shader_parameter/roughnessStrength = 0.61
+shader_parameter/specularStrength = 10.79
+shader_parameter/specularColor = Color(1, 1, 1, 1)
+shader_parameter/diffuseLightingStrength = 1.0
 shader_parameter/colorGradient = SubResource("GradientTexture1D_upmih")

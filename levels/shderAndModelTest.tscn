@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://ugibgwjk8oos"]
+[gd_scene load_steps=23 format=4 uid="uid://ugibgwjk8oos"]
 
 [ext_resource type="Material" uid="uid://tpx1lstry5ry" path="res://entities/props/InkBottle/glass.tres" id="1_fjavy"]
 [ext_resource type="Material" uid="uid://c1rmtf7tuuivn" path="res://entities/props/shaders/scriptsAndDebug/standardCellShader.tres" id="2_p5d0g"]
@@ -10,6 +10,9 @@
 [ext_resource type="Material" uid="uid://xfxam6u0otew" path="res://entities/props/paintbrushes/paintbrushBristles.tres" id="7_o7w62"]
 [ext_resource type="Material" uid="uid://ctwrmpngsgmq6" path="res://entities/props/paintbrushes/paintbrushHandle.tres" id="8_na7ng"]
 [ext_resource type="Material" uid="uid://besnxj6eddgts" path="res://entities/props/paintbrushes/paintbrushMetal.tres" id="9_t7lhc"]
+[ext_resource type="PackedScene" uid="uid://cvkpdiibfgdpj" path="res://entities/props/canvas/canvasV1.gltf" id="11_hs5vr"]
+[ext_resource type="Material" uid="uid://bl4p1b4nc3jri" path="res://entities/props/canvas/canvasBacking.tres" id="12_t67rp"]
+[ext_resource type="Material" uid="uid://0mrwjrsev0kn" path="res://entities/props/canvas/canvas1.tres" id="12_yqepp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kc7r"]
 resource_name = "glass"
@@ -130,9 +133,9 @@ shadow_mesh = SubResource("ArrayMesh_1lgwa")
 [node name="Node3D" type="Node3D"]
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0834, 9.02762, 9.33734)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.219239, 10.3732, 8.14683)
 light_color = Color(0.864344, 0.85569, 0.83571, 1)
-light_energy = 16.0
+light_energy = 5.869
 shadow_enabled = true
 omni_range = 8.059
 omni_attenuation = 0.515
@@ -161,7 +164,7 @@ mesh = SubResource("ArrayMesh_i4ffm")
 skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.848133, 8.68865, 6.55568)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.63709, 12.2961, 6.80177)
 light_color = Color(0.864344, 0.85569, 0.83571, 1)
 light_energy = 16.0
 shadow_enabled = true
@@ -173,7 +176,7 @@ transform = Transform3D(-0.541958, 0.0256202, -0.840015, -0.0610699, 0.995692, 0
 fov = 53.4375
 
 [node name="filledInkBottleWithCorkV2" parent="." instance=ExtResource("4_qsmfa")]
-transform = Transform3D(-0.643516, -0.0223524, 0.765108, 0.00905775, 0.999281, 0.0368124, -0.765382, 0.0306194, -0.642852, -0.125243, 5.88301, 9.62588)
+transform = Transform3D(0.732786, -0.0269486, -0.679927, -0.0603249, 0.992709, -0.104361, 0.677783, 0.11749, 0.725819, -0.125243, 5.88301, 9.62588)
 
 [node name="Circle_001" parent="filledInkBottleWithCorkV2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0458458, 4.35454, -0.113482)
@@ -192,10 +195,19 @@ material_override = ExtResource("1_fjavy")
 transform = Transform3D(-0.479986, 0.12366, -0.0657369, -0.0205427, 0.169989, 0.469768, 0.138532, 0.453665, -0.158104, -4.86348, 2.32241, 2.26774)
 
 [node name="brush1" parent="paintBrushV1" index="0"]
-transform = Transform3D(0.869578, 0.462479, -0.173055, -0.466129, 0.884458, 0.0214264, 0.162969, 0.0620339, 0.984679, 1.39563, 5.37876, -0.984125)
+transform = Transform3D(0.762461, 0.605033, -0.229323, -0.611681, 0.789562, 0.0494005, 0.210954, 0.102607, 0.972096, -10.2628, 4.17824, 4.20853)
 surface_material_override/0 = ExtResource("8_na7ng")
 surface_material_override/1 = ExtResource("9_t7lhc")
 surface_material_override/2 = ExtResource("7_o7w62")
 
+[node name="canvasV1" parent="." instance=ExtResource("11_hs5vr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11885, 6.86705, 2.37032)
+
+[node name="16by9 template_001" parent="canvasV1" index="0"]
+transform = Transform3D(-1.24662, -0.0740908, 0.250686, -0.657038, 0.00442351, -0.927916, 1.08269, -0.0826246, -0.274471, 1.60472, 2.54394, -1.29862)
+surface_material_override/1 = ExtResource("12_t67rp")
+surface_material_override/2 = ExtResource("12_yqepp")
+
 [editable path="filledInkBottleWithCorkV2"]
 [editable path="paintBrushV1"]
+[editable path="canvasV1"]

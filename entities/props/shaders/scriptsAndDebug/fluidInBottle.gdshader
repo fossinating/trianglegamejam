@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, depth_draw_never, unshaded, cull_disabled;
+render_mode blend_mix, depth_draw_never, unshaded, cull_disabled, alpha_to_coverage;
 
 uniform vec3 baseColor : source_color;
 uniform float heightBias: hint_range(-3.0, 3.0, 0.01);
@@ -51,11 +51,14 @@ void fragment() {
 	if(topVertex.y > heightCutoff){
 		//ALBEDO = vec3(1.0,1.0,1.0);
 		ALPHA = 0.0;
+		//ALBEDO = vec3(0.0,0.0,0.0);
 	}
 	else{
 		//ALBEDO = vec3(0.0,0.0,0.0);
-		ALPHA = 1.0;
+		//ALPHA = 1.0;
+		//ALBEDO  = baseColor*100.0;
 	}
+
 
 
 	//ALPHA = 1.0;
@@ -73,7 +76,11 @@ void fragment() {
 	//ALPHA = 0.0;
 	// Called for every pixel the material is visible on.
 }
+
+/*
 void light(){
+
+
     // our stylized attenuation
 	float attenuation = smoothstep(0.2, 0.25, ATTENUATION);
 
@@ -91,3 +98,4 @@ void light(){
 		SPECULAR_LIGHT += specular_color.rgb;
 	}
 }
+*/
