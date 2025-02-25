@@ -18,3 +18,5 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("grab"):
 		if interactions.size() > 0:
 			interactions.back().interact()
+	if Input.is_action_just_pressed("drop"):
+		Global.player.get_node("Item Grabber").drop_current_item()

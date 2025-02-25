@@ -57,6 +57,8 @@ var cam_aligned_wish_dir := Vector3.ZERO
 func _ready() -> void:
 	if Global.game_state == Util.GAME_STATE.MENU:
 		Global.game_state = Util.GAME_STATE.UNPAUSED
+	if Global.player == null:
+		Global.player = self
 	max_speed = Jump_Distance/(Jump_Peak_Time+Jump_Fall_Time)
 	jump_gravity = (2 * Jump_Height)/pow(Jump_Peak_Time,2)
 	fall_gravity = (2*Jump_Height)/pow(Jump_Fall_Time,2)
@@ -123,6 +125,8 @@ func _physics_process(delta: float) -> void:
 			#add_child(ink_burst_particles_scene.instantiate())
 			
 		#	handle_animations(delta)
+		elif climbing_waterfall:
+			item_grabber.drop_current_item()
 
 	# Setup handling of landing
 
