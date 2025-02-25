@@ -1,7 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c1rmtf7tuuivn"]
-
-[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/cellShader.gdshader" id="1_7pmjr"]
-
-[resource]
-render_priority = 0
-shader = ExtResource("1_7pmjr")
