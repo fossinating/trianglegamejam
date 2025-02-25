@@ -8,7 +8,7 @@ class_name GrabbableItem
 @onready var delivery_direction_particles: GPUParticles3D = $"Delivery Direction Particles"
 @onready var collision_shape: CollisionShape3D = $"CollisionShape3D"
 
-const MAX_CARRY_DISTANCE = .75
+@export var MAX_CARRY_DISTANCE = .75
 
 var carrier: ItemGrabber
 

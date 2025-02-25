@@ -160,18 +160,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13627, 0.05, 0.0261607)
 mesh = SubResource("BoxMesh_et4ey")
 
 [node name="Grabbable Item" parent="StaticBody3D2" node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.262, 4.01071, -4.35686)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1692, 0.988317, -15.2394)
 delivery_point = NodePath("../Item Delivery Point")
+MAX_CARRY_DISTANCE = 4.0
 
 [node name="CollisionShape3D" parent="StaticBody3D2/Grabbable Item" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94652, 0, 0.643068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.128021, 0, 0.360726)
 shape = SubResource("SphereShape3D_ayfsu")
 
 [node name="Sprite3D" parent="StaticBody3D2/Grabbable Item" index="1"]
-transform = Transform3D(0.381112, -0.855992, -3.74166e-08, 0, -4.09576e-08, 0.937, -0.855992, -0.381112, -1.66589e-08, -6.5418, -0.45, -3.51326)
+transform = Transform3D(0.381112, -0.855992, -3.74166e-08, 0, -4.09576e-08, 0.937, -0.855992, -0.381112, -1.66589e-08, -4.62885, -2.84217e-14, -3.71155)
 shaded = true
-no_depth_test = true
-alpha_cut = 2
 texture = ExtResource("7_fwsu3")
 
 [node name="Canvas" parent="StaticBody3D2" instance=ExtResource("4_jxxqq")]
@@ -179,6 +178,7 @@ transform = Transform3D(7.44485e-07, -9.861, 0, 9.861, 7.44485e-07, 0, 0, 0, 9.8
 metadata/_edit_group_ = true
 
 [node name="Item Delivery Point" parent="StaticBody3D2" instance=ExtResource("3_nogm7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0784, 0.508571, 1.47368)
 
 [node name="table surface" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
