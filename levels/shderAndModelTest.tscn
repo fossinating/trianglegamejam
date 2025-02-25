@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=4 uid="uid://ugibgwjk8oos"]
 
 [ext_resource type="Material" uid="uid://tpx1lstry5ry" path="res://entities/props/InkBottle/glass.tres" id="1_fjavy"]
-[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/cellShader(outdated).gdshader" id="2_ixvc5"]
+[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/cellShaderScript(outdated).gdshader" id="2_ixvc5"]
 [ext_resource type="PackedScene" uid="uid://b2ft7icysrsa3" path="res://entities/props/InkBottle/filledInkBottleWithCorkV2.gltf" id="4_qsmfa"]
 [ext_resource type="Material" uid="uid://cucamqxbholpb" path="res://entities/props/InkBottle/inkInBottle.tres" id="4_w5p4b"]
 [ext_resource type="Material" uid="uid://blx87gtbl8apb" path="res://entities/props/InkBottle/corkMaterial.tres" id="5_0eiae"]

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=10 format=3 uid="uid://0mrwjrsev0kn"]
 
-[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/canvasImage.gdshader" id="1_0idjj"]
+[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/posterizeImageScript.gdshader" id="1_d2n3x"]
 [ext_resource type="Texture2D" uid="uid://cf5lii2al36qa" path="res://entities/props/canvas/IMG_1226.png" id="2_rggx0"]
 [ext_resource type="Texture2D" uid="uid://b2ijes2308nft" path="res://entities/props/canvas/Ua5Mn.jpg" id="2_tx4ub"]
 
@@ -29,7 +29,7 @@ gradient = SubResource("Gradient_uivth")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_0idjj")
+shader = ExtResource("1_d2n3x")
 shader_parameter/baseColor = Color(0.350581, 0.00182777, 0.111559, 1)
 shader_parameter/postPosterizingTextureStrength = 1.0
 shader_parameter/shadingTextureStrength = 0.0
