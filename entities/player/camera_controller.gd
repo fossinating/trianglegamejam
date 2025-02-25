@@ -1,7 +1,6 @@
 extends Node3D
 
-var mouse_sens := 0.12
-var cam_stick_speed_multiplier := 2
+var cam_stick_speed_multiplier := 16
 var twist_sens_multiplier := 1.778
 var twist_input := 0.0
 var pitch_input := 0.0
@@ -32,14 +31,14 @@ func _process(delta: float) -> void:
 		(-cam_input_permanent.x if cam_invert_x else cam_input_permanent.x), 
 		(-cam_input_permanent.y if cam_invert_y else cam_input_permanent.y))
 	if cam_input_permanent.length():
-		twist_pivot.rotate_y(cam_input_permanent.x * delta * cam_stick_speed_multiplier * twist_sens_multiplier)
-		pitch_pivot.rotate_x(cam_input_permanent.y * delta * cam_stick_speed_multiplier)
+		twist_pivot.rotate_y(cam_input_permanent.x * delta * cam_stick_speed_multiplier * twist_sens_multiplier * Global.mouse_sens)
+		pitch_pivot.rotate_x(cam_input_permanent.y * delta * cam_stick_speed_multiplier * Global.mouse_sens)
 		pitch_pivot.rotation.x = clamp(
 			pitch_pivot.rotation.x,
 			deg_to_rad(-max_pitch_angle),
 			deg_to_rad(-min_pitch_angle)
 		)
-	# move cam with mouse when button held
+	# move cam with mouse
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		twist_pivot.rotate_y(twist_input * delta * twist_sens_multiplier)
 		pitch_pivot.rotate_x(pitch_input * delta)
@@ -66,5 +65,5 @@ func _input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		elif Input.mouse_mode != Input.MOUSE_MODE_VISIBLE and Global.game_state != Util.GAME_STATE.UNPAUSED:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		twist_input = -event.get_screen_relative().x * mouse_sens
-		pitch_input = -event.get_screen_relative().y * mouse_sens
+		twist_input = -event.get_screen_relative().x * Global.mouse_sens
+		pitch_input = -event.get_screen_relative().y * Global.mouse_sens
