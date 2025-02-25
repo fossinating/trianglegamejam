@@ -1,20 +1,20 @@
 shader_type spatial;
 render_mode blend_mix, depth_draw_never, unshaded, cull_disabled, alpha_to_coverage;
 
-uniform vec3 baseColor : source_color;
-uniform float heightBias: hint_range(-3.0, 3.0, 0.01);
-uniform float heightCutoff: hint_range(-3.0, 3.0, 0.01);
+uniform vec3 baseColor : source_color = vec3(0.0, 0.0, 0.0);
+uniform float heightBias: hint_range(-3.0, 3.0, 0.01) = 1.0;
+uniform float heightCutoff: hint_range(-3.0, 3.0, 0.01) = 0.52;
 
 varying vec3 topVertex;
 varying vec3 world_position;
 
-uniform float speed;
-uniform float frequency;
-uniform float amplitude;
+uniform float speed = 3.0;
+uniform float frequency = 4.0;
+uniform float amplitude = 0.05;
 
-uniform float specular_power;
-uniform float specular_strength;
-uniform vec3 specular_color : source_color;
+uniform float specular_power = 1.0;
+uniform float specular_strength = 10000.0;
+uniform vec3 specular_color : source_color = vec3(0.0, 0.0, 0.0);
 
 void vertex() {
 	world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
