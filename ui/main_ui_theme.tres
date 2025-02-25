@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dtwvgtmm6xpyf"]
+
+[ext_resource type="FontFile" uid="uid://t5rxut8ytsli" path="res://ui/fonts/Hey August.ttf" id="1_o23pw"]
+[ext_resource type="FontFile" uid="uid://cobm4q32la1mu" path="res://ui/fonts/Artbrush.ttf" id="2_f65c3"]
+
+[resource]
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("2_f65c3")
+RichTextLabel/font_sizes/bold_font_size = 64
+RichTextLabel/fonts/bold_font = ExtResource("1_o23pw")
+RichTextLabel/fonts/normal_font = ExtResource("2_f65c3")

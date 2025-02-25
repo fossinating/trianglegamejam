@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://blx87gtbl8apb"]
+
+[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/cellShader.gdshader" id="1_x6lmy"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_x6lmy")
+shader_parameter/colorShadow = Color(0.180229, 0.00259885, 0.176037, 1)
+shader_parameter/colorBoundaryDark = 0.02
+shader_parameter/colorMidtone = Color(0.620289, 0, 0.136266, 1)
+shader_parameter/colorBoundaryBright = 0.45
+shader_parameter/colorBright = Color(0.948625, 0.687399, 0.305251, 1)
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/specular_power = null
+shader_parameter/specular_strength = null
+shader_parameter/specular_color = null
+shader_parameter/roughness = null
+shader_parameter/normalStrength = null

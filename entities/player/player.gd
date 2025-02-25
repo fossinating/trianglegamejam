@@ -48,10 +48,17 @@ var landing_velocity: Vector3
 var jumping := false
 
 @onready var twist_pivot := $CamTwistPivot
+@onready var cam := $CamTwistPivot/CamPitchPivot/SpringArm3D/Camera3D
+
+var noclip_speed_mult := 1.0
+var noclip := false
+var cam_aligned_wish_dir := Vector3.ZERO
 
 func _ready() -> void:
 	if Global.game_state == Util.GAME_STATE.MENU:
 		Global.game_state = Util.GAME_STATE.UNPAUSED
+	if Global.player == null:
+		Global.player = self
 	max_speed = Jump_Distance/(Jump_Peak_Time+Jump_Fall_Time)
 	jump_gravity = (2 * Jump_Height)/pow(Jump_Peak_Time,2)
 	fall_gravity = (2*Jump_Height)/pow(Jump_Fall_Time,2)
@@ -68,6 +75,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	cam_aligned_wish_dir = cam.global_transform.basis * Vector3(input_dir.x, 0., input_dir.y)
 	var direction: Vector3 = (twist_pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	var horiz_vel = velocity
@@ -84,15 +92,14 @@ func _physics_process(delta: float) -> void:
 	
 	horiz_vel -= min((MOVING_FRICTION if direction else FRICTION)*delta, horiz_vel.length()) * horiz_vel.normalized()
 
-	velocity.x = horiz_vel.x
-	velocity.z = horiz_vel.z
+	if !_handle_noclip(delta):
+		velocity.x = horiz_vel.x
+		velocity.z = horiz_vel.z
 
 	# Handle ink waterfall climbing
 	# Multiplying by 0.51 to set the length to slightly larger than the size of the character
 	ink_waterfall_detection_raycast.target_position = direction * 0.51
 	
-
-
 	# Technically this will be a single physics frame behind, but shouldn't be too much of a problem hopefully
 	var climbing_waterfall = ink_waterfall_detection_raycast.is_colliding() and direction.length_squared() > 0.1
 
@@ -108,15 +115,18 @@ func _physics_process(delta: float) -> void:
 	if not is_on_surface:
 		velocity += -Vector3(0, 1, 0) * (jump_gravity if (velocity.y > 0) else fall_gravity) * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor() and not climbing_waterfall:
-		velocity.y = jump_velocity
-		#print("jumping")
-		jumping = true
-		item_grabber.drop_current_item()
-		#add_child(ink_burst_particles_scene.instantiate())
-		
-	#	handle_animations(delta)
+	if !_handle_noclip(delta):
+		# Handle jump.
+		if Input.is_action_just_pressed("jump") and is_on_floor() and not climbing_waterfall:
+			velocity.y = jump_velocity
+			#print("jumping")
+			jumping = true
+			item_grabber.drop_current_item()
+			#add_child(ink_burst_particles_scene.instantiate())
+			
+		#	handle_animations(delta)
+		elif climbing_waterfall:
+			item_grabber.drop_current_item()
 
 	# Setup handling of landing
 
@@ -124,8 +134,8 @@ func _physics_process(delta: float) -> void:
 
 	if not was_on_surface:
 		landing_velocity = velocity
-
-	move_and_slide()
+	if !_handle_noclip(delta):
+		move_and_slide()
 
 	if not (is_on_floor() or climbing_waterfall):
 		if velocity.y > 0:
@@ -161,13 +171,53 @@ func _physics_process(delta: float) -> void:
 		skeleton.position.y = max(-17, skeleton.position.y + landing_velocity.y*delta)
 		landing_velocity.y -= landing_force*fall_gravity*delta
 
+	if noclip:
+		painting_visuals.visible = false
+		ink_trail_painting.emitting = false
+		airborne_visuals.visible = true
+		ink_trail_airborne.emitting = false
+		airborne_eyes.visible = airborne_visuals.visible
+	else:
+		painting_visuals.visible = is_on_floor() and skeleton.position.y <= -5
+		ink_trail_painting.emitting = painting_visuals.visible
+		airborne_visuals.visible = (not is_on_floor()) or skeleton.position.y > -17
+		ink_trail_airborne.emitting = not painting_visuals.visible
+		airborne_eyes.visible = airborne_visuals.visible
 
-	painting_visuals.visible = is_on_floor() and skeleton.position.y <= -5
-	ink_trail_painting.emitting = painting_visuals.visible
-	airborne_visuals.visible = (not is_on_floor()) or skeleton.position.y > -17
-	ink_trail_airborne.emitting = not painting_visuals.visible
-	airborne_eyes.visible = airborne_visuals.visible
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and noclip:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			noclip_speed_mult = min(100.0, noclip_speed_mult * 1.1)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			noclip_speed_mult = max(0.1, noclip_speed_mult * 0.9)
 
+func _handle_noclip(delta) -> bool:
+	print(Global.cheats_enabled)
+	if Input.is_action_just_pressed("no_clip") and (Global.cheats_enabled):
+		noclip = !noclip
+		noclip_speed_mult = 1.0
+	elif !Global.cheats_enabled:
+		noclip = false
+	
+	$CollisionShape3D.disabled = noclip
+	
+	if not noclip:
+		return false
+	
+	var speed = max_speed * noclip_speed_mult
+	if Input.is_action_pressed("sprint"):
+		speed *= 3.0
+	
+	velocity = cam_aligned_wish_dir * speed
+	
+	if Input.is_action_pressed("jump"):
+		velocity.y += speed
+	if Input.is_action_pressed("crouch"):
+		velocity.y -= speed
+	
+	global_position += self.velocity * delta
+	
+	return true
 
 #func handle_animations(delta):
 	#match currentAnim:

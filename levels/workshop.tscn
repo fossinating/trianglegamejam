@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="1_tquhn"]
 [ext_resource type="PackedScene" uid="uid://bu7xjkbde0woe" path="res://entities/map elements/inkfall.tscn" id="2_1i02o"]
+
 [ext_resource type="PackedScene" uid="uid://b6sgojl10sbf2" path="res://entities/items/grabbable_item.tscn" id="2_gteoe"]
-[ext_resource type="Material" path="res://levels/mat_inkfall.tres" id="3_1nljh"]
+[ext_resource type="Material" uid="uid://b7l3b6ud7tfxi" path="res://levels/mat_inkfall.tres" id="3_1nljh"]
 [ext_resource type="PackedScene" uid="uid://c1tcjtlgyxua3" path="res://entities/items/item_delivery_point.tscn" id="3_nogm7"]
 [ext_resource type="PackedScene" uid="uid://bgb3traixnsbr" path="res://entities/canvas/canvas.tscn" id="4_jxxqq"]
 [ext_resource type="Texture2D" uid="uid://coruxtyv64e23" path="res://entities/canvas/paintings/painting3/painting3_piece1.png" id="7_fwsu3"]
@@ -132,7 +133,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 3.75, 0)
 size = Vector3(20.05, 9.5, 20)
 
 [node name="Inkfall" parent="StaticBody3D3" instance=ExtResource("2_1i02o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5497, 8.5, -4.01305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.55, 8.5, -4.013)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(0.912206, 0, -0.409732, 0, 1, 0, 0.409732, 0, 0.912206, -13.4238, 0.5, -6.65619)
@@ -192,5 +193,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.751, 0.55, -4.305)
 [node name="Grabbable Item" parent="." node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 delivery_point = NodePath("../Item Delivery Point")
-
-[editable path="StaticBody3D2/Grabbable Item"]
