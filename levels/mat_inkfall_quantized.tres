@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b831uoslh0cxu"]
+
+[ext_resource type="Shader" path="res://levels/mat_inkfall_shader.gdshader" id="1_73fif"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_73fif")
