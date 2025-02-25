@@ -25,7 +25,6 @@ light_energy = 0.4
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.0522166, 0.438622, -0.897153, -0.0254858, 0.898672, 0.437881, 0.998311, 0, 0.0581042, -2.35171, 1.02992, -0.00754881)
-visible = false
 light_energy = 3.586
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]

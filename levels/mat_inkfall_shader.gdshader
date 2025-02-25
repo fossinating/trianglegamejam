@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, diffuse_toon, specular_schlick_ggx;
+render_mode blend_mix, diffuse_toon, specular_toon;
 
 void fragment() {
 	ALBEDO = vec3(0.0, 0.0, 0.0);
@@ -51,6 +51,20 @@ void light() {
 	
 	vec3 specular_brdf_NL = NdotL * D * F * G;
 	
-	float specular_blob_intensity = 1.0;
-	SPECULAR_LIGHT += step(0.02, specular_brdf_NL * LIGHT_COLOR * specular_blob_intensity * ATTENUATION);
+	float specular_blob_intensity = .25;
+	
+	if (length(specular_brdf_NL * LIGHT_COLOR * specular_blob_intensity * ATTENUATION) < 0.003)
+	{
+		SPECULAR_LIGHT += 0.0;
+	}
+	else if (length(specular_brdf_NL * LIGHT_COLOR * specular_blob_intensity * ATTENUATION) > 0.01)
+	{
+		SPECULAR_LIGHT += 1.0;
+	}
+	else
+	{
+		SPECULAR_LIGHT += specular_brdf_NL * LIGHT_COLOR * specular_blob_intensity * ATTENUATION * .5;
+	}
+	
+	//SPECULAR_LIGHT += step(0.005, specular_brdf_NL * LIGHT_COLOR * specular_blob_intensity * ATTENUATION);
 }
