@@ -8,12 +8,12 @@ var volBusSFX = AudioServer.get_bus_index("SFX")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	UpdateSliderVisuals()
-	$OptionsMarginContainer/VBoxContainer/SensitivitySlider.value = Signals.sens_multiplier
 
 func UpdateSliderVisuals():
 	$OptionsMarginContainer/VBoxContainer/VolumeMaster.value = db_to_linear(AudioServer.get_bus_volume_db(volBusMaster))
 	$OptionsMarginContainer/VBoxContainer/VolumeMusic.value = db_to_linear(AudioServer.get_bus_volume_db(volBusMUS))
 	$OptionsMarginContainer/VBoxContainer/VolumeSFX.value = db_to_linear(AudioServer.get_bus_volume_db(volBusSFX))
+	$OptionsMarginContainer/VBoxContainer/MouseSensitivity.value = Global.mouse_sens
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel"):
@@ -75,4 +75,4 @@ func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 
 
 func _on_mouse_sensitivity_value_changed(value: float) -> void:
-	Signals.sens_multiplier = value
+	Global.mouse_sens = value

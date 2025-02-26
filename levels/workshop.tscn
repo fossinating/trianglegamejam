@@ -160,15 +160,23 @@ mesh = SubResource("BoxMesh_et4ey")
 transform = Transform3D(7.44485e-07, -9.861, 0, 9.861, 7.44485e-07, 0, 0, 0, 9.861, 0.34, 0.47, 0)
 metadata/_edit_group_ = true
 
-[node name="Grabbable Item" parent="StaticBody3D2" node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9164, 1.00857, -16.1819)
-delivery_point = NodePath("../Item Delivery Point")
+[node name="Item Delivery Point" parent="StaticBody3D2" instance=ExtResource("3_nogm7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43273, 0.508572, 1.36815)
+
+[node name="Grabbable Item" parent="StaticBody3D2/Item Delivery Point" node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68639, -4.76837e-07, -7.77003)
+top_level = false
+delivery_point = NodePath("..")
 item_image = ExtResource("7_fwsu3")
 MAX_CARRY_DISTANCE = 1.0
 shrink_factor = 0.25
 
-[node name="Item Delivery Point" parent="StaticBody3D2" instance=ExtResource("3_nogm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.39694, 0.508572, 0.652788)
+[node name="Sprite Carrier" parent="StaticBody3D2/Item Delivery Point/Grabbable Item" index="1"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+
+[node name="Sprite3D" parent="StaticBody3D2/Item Delivery Point/Grabbable Item/Sprite Carrier" index="0"]
+transform = Transform3D(0.000616789, -0.93, -4.06516e-08, 5.16012e-17, -4.06516e-08, 0.93, -0.93, -0.000616789, -2.69527e-11, -6.39107, 0.00200069, -1.76996)
+texture = ExtResource("7_fwsu3")
 
 [node name="table surface" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
@@ -181,3 +189,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.751, 0.55, -4.305)
 [node name="Grabbable Item" parent="." node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 delivery_point = NodePath("../Item Delivery Point")
+
+[editable path="StaticBody3D2/Item Delivery Point/Grabbable Item"]

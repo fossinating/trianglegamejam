@@ -1,12 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://drk6a1k4jepri"]
+[gd_scene load_steps=24 format=3 uid="uid://drk6a1k4jepri"]
 
 [ext_resource type="Theme" uid="uid://dtwvgtmm6xpyf" path="res://ui/main_ui_theme.tres" id="1_g2tqv"]
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="1_m7d03"]
 [ext_resource type="FontFile" uid="uid://cobm4q32la1mu" path="res://ui/fonts/Artbrush.ttf" id="2_ou08k"]
 [ext_resource type="FontFile" uid="uid://t5rxut8ytsli" path="res://ui/fonts/Hey August.ttf" id="2_pxr8s"]
-[ext_resource type="Texture2D" path="res://textures/oid/slider_handle_neutral.png" id="3_f4l3a"]
-[ext_resource type="Texture2D" path="res://textures/oid/slider_handle_disabled.png" id="4_8iggc"]
-[ext_resource type="Texture2D" path="res://textures/oid/slider_handle_highlight.png" id="5_rbupw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fq06r"]
 font = ExtResource("2_pxr8s")
@@ -64,9 +61,9 @@ corner_radius_bottom_left = 15
 
 [sub_resource type="Theme" id="Theme_d20nr"]
 HSlider/constants/center_grabber = 1
-HSlider/icons/grabber = ExtResource("3_f4l3a")
-HSlider/icons/grabber_disabled = ExtResource("4_8iggc")
-HSlider/icons/grabber_highlight = ExtResource("5_rbupw")
+HSlider/icons/grabber = null
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = null
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_2t1g8")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ppccc"]
@@ -248,6 +245,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="MainVBox" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -308,7 +306,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lsqnt")
 text = "Quit"
 
 [node name="OptionsMarginContainer" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -400,8 +397,6 @@ alignment = 1
 layout_mode = 2
 theme = SubResource("Theme_c16da")
 theme_override_font_sizes/font_size = 32
-theme_override_icons/checked = ExtResource("5_rbupw")
-theme_override_icons/unchecked = ExtResource("4_8iggc")
 button_pressed = true
 text = "Viewbobbing"
 
@@ -409,8 +404,6 @@ text = "Viewbobbing"
 layout_mode = 2
 theme = SubResource("Theme_c16da")
 theme_override_font_sizes/font_size = 32
-theme_override_icons/checked = ExtResource("5_rbupw")
-theme_override_icons/unchecked = ExtResource("4_8iggc")
 text = "Fullscreen"
 
 [node name="OptionButton" type="OptionButton" parent="OptionsMarginContainer/VBoxContainer/HBoxContainer"]
@@ -433,8 +426,6 @@ theme_override_colors/font_pressed_color = Color(0.784314, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.470588, 0, 0, 1)
 theme_override_colors/font_color = Color(0.392157, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_icons/checked = ExtResource("5_rbupw")
-theme_override_icons/unchecked = ExtResource("4_8iggc")
 text = "Cheats"
 
 [node name="ButtonBack" type="Button" parent="OptionsMarginContainer/VBoxContainer"]

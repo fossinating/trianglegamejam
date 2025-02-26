@@ -49,6 +49,7 @@ func UpdateSliderVisuals():
 	$OptionsMarginContainer/VBoxContainer/VolumeMaster.value = db_to_linear(AudioServer.get_bus_volume_db(volBusMaster))
 	$OptionsMarginContainer/VBoxContainer/VolumeMusic.value = db_to_linear(AudioServer.get_bus_volume_db(volBusMUS))
 	$OptionsMarginContainer/VBoxContainer/VolumeSFX.value = db_to_linear(AudioServer.get_bus_volume_db(volBusSFX))
+	$OptionsMarginContainer/VBoxContainer/MouseSensitivity.value = Global.mouse_sens
 
 func _on_cheats_check_box_toggled(toggled_on: bool) -> void:
 	Global.cheats_enabled = toggled_on
