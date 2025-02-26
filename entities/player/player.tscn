@@ -107,11 +107,12 @@ curve = SubResource("Curve_bnd7m")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ow656"]
 emission_shape = 1
 emission_sphere_radius = 0.2
-angle_min = -45.0
-angle_max = 45.0
+angle_min = -15.0
+angle_max = 15.0
 direction = Vector3(0, -2.5, 1)
 spread = 5.0
 flatness = 0.9
+initial_velocity_min = 2.0
 initial_velocity_max = 5.0
 scale_curve = SubResource("CurveTexture_pe6qp")
 collision_mode = 1
@@ -313,7 +314,7 @@ bone_idx = 2
 
 [node name="Ink Airborne Trail Particles" type="GPUParticles3D" parent="blob/Armature/Skeleton3D/BoneAttachment3D2"]
 transform = Transform3D(-11.1111, 7.80699e-08, 8.92493e-07, 2.88775e-07, -10.166, 4.48438, 8.48084e-07, 4.48438, 10.166, 4.93798e-07, 1.92806, 0.0447056)
-amount = 150
+amount = 300
 lifetime = 1.5
 randomness = 1.0
 fixed_fps = 0
