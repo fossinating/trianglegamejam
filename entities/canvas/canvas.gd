@@ -1,0 +1,43 @@
+@tool
+extends Node3D
+class_name Canvas
+
+@export var incomplete_texture: Texture2D
+@export var complete_texture: Texture2D
+
+@export var size := 1.0
+
+@export var reload: bool:
+	set(value):
+		reload = false
+		setup()
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	setup()
+
+func get_bounding_box() -> Vector3:
+	return size * Vector3(0.15, 1.98 * (1 if is_square else 16.0/9), 1.98)
+
+func is_square() -> bool:
+	return incomplete_texture.get_width() == incomplete_texture.get_height()
+
+func setup() -> void:
+	$Pivot.scale = size * Vector3.ONE
+	
+	$Pivot/Sprite3D.texture = incomplete_texture
+	$Pivot/Sprite3D.pixel_size = 2.0 / incomplete_texture.get_width()
+	var collision_shape := $CollisionShape3D
+	
+	collision_shape.shape.size = get_bounding_box()
+	collision_shape.position.x = -0.075 * size
+	
+	var particle_collision_box: GPUParticlesCollisionBox3D = $GPUParticlesCollisionBox3D
+	
+	particle_collision_box.size = get_bounding_box()
+	particle_collision_box.position.x = -0.075 * size
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass

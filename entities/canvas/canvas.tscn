@@ -1,19 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgb3traixnsbr"]
+[gd_scene load_steps=5 format=3 uid="uid://bgb3traixnsbr"]
 
 [ext_resource type="PackedScene" uid="uid://b65my7g46jvbg" path="res://entities/canvas/canvasV1.gltf" id="1_0tyj2"]
+[ext_resource type="Script" path="res://entities/canvas/canvas.gd" id="1_wo2bv"]
 [ext_resource type="PackedScene" uid="uid://t66s2vkelau0" path="res://entities/canvas/squareCanvasV1.gltf" id="2_to2wb"]
-[ext_resource type="Texture2D" uid="uid://cfp0ws1h084cl" path="res://entities/canvas/paintings/painting3/painting3_unfinished.png" id="3_legff"]
 
-[node name="Canvas" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_yl7lj"]
+resource_local_to_scene = true
+size = Vector3(0.15, 1.98, 1.98)
 
-[node name="canvasV1" parent="." instance=ExtResource("1_0tyj2")]
+[node name="Canvas" type="StaticBody3D"]
+script = ExtResource("1_wo2bv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.075, 0, 0)
+shape = SubResource("BoxShape3D_yl7lj")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.075, 0, 0)
+size = Vector3(0.15, 1.98, 1.98)
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="canvasV1" parent="Pivot" instance=ExtResource("1_0tyj2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.75, -10.65)
 visible = false
 
-[node name="squareCanvasV1" parent="." instance=ExtResource("2_to2wb")]
+[node name="squareCanvasV1" parent="Pivot" instance=ExtResource("2_to2wb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.05, -10.645)
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-4.15258e-09, 0, 0.095, 0, 0.095, 0, -0.095, 0, -4.15258e-09, 0.002, 0, 0)
+[node name="Sprite3D" type="Sprite3D" parent="Pivot"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.002, 0, 0)
 shaded = true
-texture = ExtResource("3_legff")
