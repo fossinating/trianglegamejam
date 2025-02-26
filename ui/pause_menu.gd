@@ -1,5 +1,6 @@
 extends Control
 
+
 var volBusMaster = AudioServer.get_bus_index("Master")
 var volBusMUS = AudioServer.get_bus_index("MUS")
 var volBusSFX = AudioServer.get_bus_index("SFX")
@@ -7,13 +8,31 @@ var volBusSFX = AudioServer.get_bus_index("SFX")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	UpdateSliderVisuals()
+	$OptionsMarginContainer/VBoxContainer/SensitivitySlider.value = Signals.sens_multiplier
 
+func UpdateSliderVisuals():
+	$OptionsMarginContainer/VBoxContainer/VolumeMaster.value = db_to_linear(AudioServer.get_bus_volume_db(volBusMaster))
+	$OptionsMarginContainer/VBoxContainer/VolumeMusic.value = db_to_linear(AudioServer.get_bus_volume_db(volBusMUS))
+	$OptionsMarginContainer/VBoxContainer/VolumeSFX.value = db_to_linear(AudioServer.get_bus_volume_db(volBusSFX))
 
-func _on_button_play_pressed() -> void:
-	Util.change_scene_at_checkpoint(Util.GAME_PATH)
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel"):
+		if $OptionsMarginContainer.visible:
+			_on_button_back_pressed()
+		elif $MainVBox.visible:
+			_on_button_resume_pressed()
+
+func _on_button_resume_pressed() -> void:
+	Util.pause(true, false)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+func reset_pause_menu():
+	$OptionsMarginContainer.visible = false
+	$MainVBox.visible = true
+	$PausedLabel.visible = true
 
 func _on_button_options_pressed() -> void:
-	$TitleLabel.visible = false
+	$PausedLabel.visible = false
 	$MainVBox.visible = false
 	$OptionsMarginContainer.visible = true
 	UpdateSliderVisuals()
@@ -21,12 +40,10 @@ func _on_button_options_pressed() -> void:
 func _on_button_back_pressed() -> void:
 	$OptionsMarginContainer.visible = false
 	$MainVBox.visible = true
-	$TitleLabel.visible = true
+	$PausedLabel.visible = true
 
-func _on_button_exit_pressed() -> void:
-	#save?
-	get_tree().quit()
-
+func _on_button_quit_pressed() -> void:
+	Util.change_scene(Util.MENU_PATH)
 
 func _on_volume_master_value_changed(value: float) -> void:
 	ChangeBusVolume(volBusMaster, value)
@@ -45,13 +62,9 @@ func ChangeBusVolume(index: int, value: float) -> void:
 		AudioServer.set_bus_mute(index, false)
 	AudioServer.set_bus_volume_db(index, vol)
 
-func UpdateSliderVisuals():
-	$OptionsMarginContainer/VBoxContainer/VolumeMaster.value = db_to_linear(AudioServer.get_bus_volume_db(volBusMaster))
-	$OptionsMarginContainer/VBoxContainer/VolumeMusic.value = db_to_linear(AudioServer.get_bus_volume_db(volBusMUS))
-	$OptionsMarginContainer/VBoxContainer/VolumeSFX.value = db_to_linear(AudioServer.get_bus_volume_db(volBusSFX))
 
 func _on_cheats_check_box_toggled(toggled_on: bool) -> void:
-	Global.cheats_enabled = toggled_on
+	Signals.cheats_enabled = toggled_on
 
 
 func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
@@ -62,4 +75,4 @@ func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 
 
 func _on_mouse_sensitivity_value_changed(value: float) -> void:
-	Global.mouse_sens = value
+	Signals.sens_multiplier = value

@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix,cull_back,specular_toon, depth_draw_never;
+render_mode blend_add,cull_back,specular_toon, depth_draw_always;
 
 uniform vec3 baseColor : source_color;
 
@@ -35,20 +35,9 @@ void light() {
 
 	float specular = pow(vDotL, specular_power) * specular_strength;
 	if(specular>0.01){
-
 		SPECULAR_LIGHT += specular_color.rgb;
 	}
 
-
 	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
-	SPECULAR_LIGHT += (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
-	ALPHA = SPECULAR_LIGHT.r+basic_fresnel;
-
-	/*if(SPECULAR_LIGHT.r>0.001){
-		ALPHA = 1.0;
-	}
-	else{
-		ALPHA = 0.0;
-	}
-	*/
+	SPECULAR_LIGHT += (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);;
 }
