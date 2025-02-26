@@ -160,7 +160,11 @@ drop={
 [layer_names]
 
 3d_physics/layer_1="Environment"
+2d_physics/layer_2="Painting Walls"
 3d_physics/layer_2="Environment (Passthrough Enabled)"
+2d_physics/layer_3="Player"
 3d_physics/layer_3="Player"
+2d_physics/layer_4="Items"
 3d_physics/layer_4="Items"
+2d_physics/layer_5="Item Delivery Points"
 3d_physics/layer_5="Ink Waterfalls"

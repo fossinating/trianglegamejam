@@ -1,19 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgb3traixnsbr"]
+[gd_scene load_steps=9 format=3 uid="uid://bgb3traixnsbr"]
 
 [ext_resource type="PackedScene" uid="uid://b65my7g46jvbg" path="res://entities/canvas/canvasV1.gltf" id="1_0tyj2"]
+[ext_resource type="Script" path="res://entities/canvas/canvas.gd" id="1_u2px2"]
 [ext_resource type="PackedScene" uid="uid://t66s2vkelau0" path="res://entities/canvas/squareCanvasV1.gltf" id="2_to2wb"]
-[ext_resource type="Texture2D" uid="uid://cfp0ws1h084cl" path="res://entities/canvas/paintings/painting3/painting3_unfinished.png" id="3_legff"]
 
-[node name="Canvas" type="Node3D"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kqmdq"]
+viewport_path = NodePath("TextureSubViewport")
 
-[node name="canvasV1" parent="." instance=ExtResource("1_0tyj2")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlvdm"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_kqmdq")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p7lbj"]
+viewport_path = NodePath("TextureSubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8el76"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_p7lbj")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ciep"]
+resource_local_to_scene = true
+size = Vector3(0.15, 1.98, 1.98)
+
+[node name="Canvas" type="StaticBody3D"]
+script = ExtResource("1_u2px2")
+
+[node name="Canvas Model Pivot" type="Node3D" parent="."]
+
+[node name="Canvas" parent="Canvas Model Pivot" instance=ExtResource("1_0tyj2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.75, -10.65)
-visible = false
 
-[node name="squareCanvasV1" parent="." instance=ExtResource("2_to2wb")]
+[node name="16by9 template_001" parent="Canvas Model Pivot/Canvas" index="0"]
+surface_material_override/2 = SubResource("StandardMaterial3D_jlvdm")
+
+[node name="Canvas Square" parent="Canvas Model Pivot" instance=ExtResource("2_to2wb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.05, -10.645)
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-4.15258e-09, 0, 0.095, 0, 0.095, 0, -0.095, 0, -4.15258e-09, 0.002, 0, 0)
-shaded = true
-texture = ExtResource("3_legff")
+[node name="16by9canvas" parent="Canvas Model Pivot/Canvas Square" index="0"]
+surface_material_override/2 = SubResource("StandardMaterial3D_8el76")
+
+[node name="TextureSubViewport" type="SubViewport" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.075, 0, 0)
+shape = SubResource("BoxShape3D_7ciep")
+
+[editable path="Canvas Model Pivot/Canvas"]
+[editable path="Canvas Model Pivot/Canvas Square"]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://1yxdcmdm7ndq"]
+
+[ext_resource type="Script" path="res://entities/canvas/paintings/painting.gd" id="1_gh0lt"]
+[ext_resource type="Texture2D" uid="uid://cbad70d1us3fe" path="res://entities/canvas/paintings/painting1/painting1_finished.png" id="2_0t1oh"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kwjyq"]
+normal = Vector2(0, 1)
+distance = -88.8889
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kdcd1"]
+distance = -88.8889
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f1m2r"]
+normal = Vector2(-1, 0)
+distance = -50.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fvnug"]
+normal = Vector2(1, 0)
+distance = -50.0
+
+[node name="Painting" type="Node2D"]
+script = ExtResource("1_gh0lt")
+texture = ExtResource("2_0t1oh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Painting Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.111111, 0.111111)
+texture = ExtResource("2_0t1oh")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Upper Wall" type="StaticBody2D" parent="Walls"]
+collision_layer = 2
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Upper Wall"]
+shape = SubResource("WorldBoundaryShape2D_kwjyq")
+
+[node name="Lower Wall" type="StaticBody2D" parent="Walls"]
+collision_layer = 2
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Lower Wall"]
+shape = SubResource("WorldBoundaryShape2D_kdcd1")
+
+[node name="Right Wall" type="StaticBody2D" parent="Walls"]
+collision_layer = 2
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right Wall"]
+shape = SubResource("WorldBoundaryShape2D_f1m2r")
+
+[node name="Left Wall" type="StaticBody2D" parent="Walls"]
+collision_layer = 2
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall"]
+shape = SubResource("WorldBoundaryShape2D_fvnug")

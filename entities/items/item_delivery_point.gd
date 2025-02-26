@@ -1,4 +1,4 @@
-extends Area3D
+extends Area2D
 class_name ItemDeliveryPoint
 
 

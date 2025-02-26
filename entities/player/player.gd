@@ -30,6 +30,8 @@ var _theta : float
 @onready var ink_waterfall_detection_raycast: RayCast3D = $"Ink Waterfall Detection"
 @onready var ink_burst_particles_scene: PackedScene = preload("res://entities/effects/ink_burst_particles.tscn")
 
+@onready var player_2d: CharacterBody2D = $Player2D
+
 #@onready var animation_tree: AnimationTree = $AnimationTree
 
 @onready var skeleton: Skeleton3D = $"blob/Armature/Skeleton3D"
@@ -192,7 +194,6 @@ func _input(event: InputEvent) -> void:
 			noclip_speed_mult = max(0.1, noclip_speed_mult * 0.9)
 
 func _handle_noclip(delta) -> bool:
-	print(Global.cheats_enabled)
 	if Input.is_action_just_pressed("no_clip") and (Global.cheats_enabled):
 		noclip = !noclip
 		noclip_speed_mult = 1.0

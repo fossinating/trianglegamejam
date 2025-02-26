@@ -41,7 +41,7 @@ func _physics_process(_delta: float) -> void:
 			global_position = lerp(global_position, 
 			carrier.global_position + (global_position - carrier.global_position) / dist * MAX_CARRY_DISTANCE, 0.9)
 
-		delivery_direction_particles.look_at(Vector3(delivery_point.global_position.x, 0, delivery_point.global_position.z))
+		#delivery_direction_particles.look_at(Vector3(delivery_point.global_position.x, 0, delivery_point.global_position.z))
 
 
 func on_pickup(grabber: ItemGrabber) -> void:

@@ -1,0 +1,100 @@
+[gd_scene load_steps=15 format=3 uid="uid://c5s7f4b3d5ycy"]
+
+[ext_resource type="PackedScene" uid="uid://bgb3traixnsbr" path="res://entities/canvas/canvas.tscn" id="1_mfh8x"]
+[ext_resource type="PackedScene" uid="uid://1yxdcmdm7ndq" path="res://entities/canvas/paintings/painting.tscn" id="2_70bpf"]
+[ext_resource type="Texture2D" uid="uid://cd6kw0eof1eg8" path="res://entities/canvas/paintings/painting3/painting3_finished.png" id="3_1sss6"]
+[ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="3_cyh4j"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3d5cm"]
+viewport_path = NodePath("TextureSubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v20o1"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_3d5cm")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_347vb"]
+viewport_path = NodePath("TextureSubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02wkd"]
+albedo_texture = SubResource("ViewportTexture_347vb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yu8la"]
+size = Vector3(1.35, 17.82, 17.82)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cufgo"]
+viewport_path = NodePath("TextureSubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kifuo"]
+albedo_texture = SubResource("ViewportTexture_cufgo")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pj2oc"]
+viewport_path = NodePath("TextureSubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76vhv"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_pj2oc")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_si8ek"]
+size = Vector3(0.15, 3.52, 1.98)
+
+[node name="test chamber" type="Node3D"]
+
+[node name="Canvas" parent="." node_paths=PackedStringArray("painting") instance=ExtResource("1_mfh8x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 10.2075)
+size = 9.0
+painting = NodePath("TextureSubViewport/Painting")
+
+[node name="Canvas Model Pivot" parent="Canvas" index="0"]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0)
+
+[node name="Canvas" parent="Canvas/Canvas Model Pivot" index="0"]
+visible = false
+
+[node name="16by9 template_001" parent="Canvas/Canvas Model Pivot/Canvas" index="0"]
+surface_material_override/2 = SubResource("StandardMaterial3D_v20o1")
+
+[node name="16by9canvas" parent="Canvas/Canvas Model Pivot/Canvas Square" index="0"]
+surface_material_override/2 = SubResource("StandardMaterial3D_02wkd")
+
+[node name="TextureSubViewport" parent="Canvas" index="1"]
+size = Vector2i(900, 900)
+
+[node name="Painting" parent="Canvas/TextureSubViewport" index="0" node_paths=PackedStringArray("canvas") instance=ExtResource("2_70bpf")]
+texture = ExtResource("3_1sss6")
+canvas = NodePath("../..")
+
+[node name="CollisionShape3D" parent="Canvas" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.675, 0, 0)
+shape = SubResource("BoxShape3D_yu8la")
+
+[node name="Canvas2" parent="." node_paths=PackedStringArray("painting") instance=ExtResource("1_mfh8x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -1.85765)
+painting = NodePath("TextureSubViewport/Painting")
+
+[node name="16by9 template_001" parent="Canvas2/Canvas Model Pivot/Canvas" index="0"]
+surface_material_override/2 = SubResource("StandardMaterial3D_kifuo")
+
+[node name="Canvas Square" parent="Canvas2/Canvas Model Pivot" index="1"]
+visible = false
+
+[node name="16by9canvas" parent="Canvas2/Canvas Model Pivot/Canvas Square" index="0"]
+surface_material_override/2 = SubResource("StandardMaterial3D_76vhv")
+
+[node name="TextureSubViewport" parent="Canvas2" index="1"]
+size = Vector2i(100, 100)
+
+[node name="Painting" parent="Canvas2/TextureSubViewport" index="0" node_paths=PackedStringArray("canvas") instance=ExtResource("2_70bpf")]
+canvas = NodePath("../..")
+
+[node name="CollisionShape3D" parent="Canvas2" index="2"]
+shape = SubResource("BoxShape3D_si8ek")
+
+[node name="Player" parent="." instance=ExtResource("3_cyh4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8)
+
+[editable path="Canvas"]
+[editable path="Canvas/Canvas Model Pivot/Canvas"]
+[editable path="Canvas/Canvas Model Pivot/Canvas Square"]
+[editable path="Canvas2"]
+[editable path="Canvas2/Canvas Model Pivot/Canvas"]
+[editable path="Canvas2/Canvas Model Pivot/Canvas Square"]
