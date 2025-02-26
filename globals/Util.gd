@@ -19,7 +19,6 @@ func _input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func pause(useValue: bool = false, value: bool = true):
-	print("Pause called: ", useValue, ", ", value)
 	if not useValue:
 		value = true
 	if value and (Global.game_state == Util.GAME_STATE.UNPAUSED or Global.game_states == Util.GAME_STATE.PAUSED):

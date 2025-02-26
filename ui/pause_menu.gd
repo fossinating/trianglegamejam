@@ -20,7 +20,6 @@ func _input(event: InputEvent) -> void:
 		if $OptionsMarginContainer.visible:
 			_on_button_back_pressed()
 		elif $MainVBox.visible:
-			print("From Pause Menu:")
 			_on_button_resume_pressed()
 
 func _on_button_resume_pressed() -> void:

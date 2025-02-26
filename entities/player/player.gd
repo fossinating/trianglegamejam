@@ -72,10 +72,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and Global.game_state == Util.GAME_STATE.UNPAUSED and !Signals.just_exited_pause:
-		print("From Player:")
 		Signals.pause.emit(true, true)
 	if Input.is_action_just_pressed("pause") and Global.game_state == Util.GAME_STATE.PAUSED and !Signals.just_exited_pause:
-		print("From Player:")
 		Signals.pause.emit(true, false)
 
 func _physics_process(delta: float) -> void:
