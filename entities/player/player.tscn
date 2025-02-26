@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://kesgwtbvfg1h" path="res://entities/player/googly_eye.tscn" id="2_kn8ih"]
 [ext_resource type="Script" path="res://libraries/better_animation_tree.gd" id="2_x8lhm"]
 [ext_resource type="Texture2D" uid="uid://cakdw32wvyfjc" path="res://entities/player/blob_layersmerged_New Group 1_bake.png" id="3_rbppb"]
-[ext_resource type="AnimationLibrary" uid="uid://clu7brywt384c" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
+[ext_resource type="AnimationLibrary" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
 [ext_resource type="Script" path="res://entities/player/camera_controller.gd" id="5_dosi8"]
 [ext_resource type="PackedScene" uid="uid://drkibph2ps23s" path="res://entities/player/components/interaction_manager/interaction_manager.tscn" id="6_35t6f"]
 [ext_resource type="PackedScene" uid="uid://clyi4pgeg23vg" path="res://entities/player/components/item_grabber/item_grabber.tscn" id="7_bc2mm"]
