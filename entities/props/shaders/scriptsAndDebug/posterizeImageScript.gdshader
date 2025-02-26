@@ -7,6 +7,7 @@ uniform sampler2D colorGradient : source_color;
 
 uniform sampler2D postPosterizingTexture : source_color;
 uniform float postPosterizingTextureStrength: hint_range(0.0, 1.0, 0.01);
+uniform float imageShadowStrength: hint_range(0.0, 1.0, 0.01);
 uniform sampler2D shadingTexture : source_color;
 uniform float shadingTextureStrength: hint_range(0.0, 1.0, 0.01);
 
@@ -70,8 +71,8 @@ void fragment() {
 	float monochromeTexture = (texture(shadingTexture,new_uvs).r + texture(shadingTexture,new_uvs).g + texture(shadingTexture,new_uvs).b)/3.0;
 	ALBEDO = mix(baseColor, texture(shadingTexture,new_uvs).rgb, shadingTextureStrength);
 	//EMISSION = vec3(0.1, 0.1, 0.1);
-	ROUGHNESS = texture(roughnessGradient, vec2(monochromeTexture, 0.5)).r* roughnessStrength*(1.0-paintTextureStrength) + texture(roughnessGradient, vec2(monochromeTexture, 0.5)).r * roughnessStrength * (texture(paintTexture, new_uvs).r+(1.0-texture(shadingTexture,new_uvs).a)) * paintTextureStrength;
-	SPECULAR = texture(specularGradient, vec2(monochromeTexture, 0.5)).r * specularStrength*(1.0-paintTextureStrength) + texture(specularGradient, vec2(monochromeTexture, 0.5)).r * specularStrength * (texture(paintTexture, new_uvs).r+(1.0-texture(shadingTexture,new_uvs).a)) * paintTextureStrength;
+	ROUGHNESS = texture(roughnessGradient, vec2(monochromeTexture, 0.5)).r* roughnessStrength*(1.0-paintTextureStrength) + mix(texture(roughnessGradient, vec2(monochromeTexture, 0.5)).r,1.0,0.6) * roughnessStrength * (texture(paintTexture, new_uvs).r+(1.0-texture(shadingTexture,new_uvs).a)) * paintTextureStrength;
+	SPECULAR = texture(specularGradient, vec2(monochromeTexture, 0.5)).r * specularStrength*(1.0-paintTextureStrength) + mix(texture(specularGradient, vec2(monochromeTexture, 0.5)).r,1.0,0.6) * specularStrength * (texture(paintTexture, new_uvs).r+(1.0-texture(shadingTexture,new_uvs).a)) * paintTextureStrength;
 
 
 	NORMAL_MAP = heightToNormal(postPosterizingTexture).rgb;
@@ -104,9 +105,11 @@ void light() {
 	float position = clamp((SPECULAR_LIGHT.r+SPECULAR_LIGHT.g+SPECULAR_LIGHT.b)/3.0,0.01,0.99);
 	SPECULAR_LIGHT = texture(colorGradient, vec2(position, 0.5)).rgb;
 
+	SPECULAR_LIGHT = mix(SPECULAR_LIGHT, texture(postPosterizingTexture,new_uvs).rgb+(mix(vec3(0.0,0.0,0.0), DIFFUSE_LIGHT* texture(postPosterizingTexture,new_uvs).rgb,imageShadowStrength)), texture(postPosterizingTexture,new_uvs).a * postPosterizingTextureStrength);
+
 	// cancel all contribution of the diffuse_light variable
 	SPECULAR_LIGHT -= ALBEDO * DIFFUSE_LIGHT;
-	SPECULAR_LIGHT = mix(SPECULAR_LIGHT, texture(postPosterizingTexture,new_uvs).rgb, texture(postPosterizingTexture,new_uvs).a * postPosterizingTextureStrength);
+
 
 
 

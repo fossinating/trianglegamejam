@@ -5,8 +5,8 @@
 [sub_resource type="Gradient" id="Gradient_oli7n"]
 interpolation_mode = 1
 interpolation_color_space = 2
-offsets = PackedFloat32Array(0, 0.174216, 0.368821, 0.975285)
-colors = PackedColorArray(0.00605369, 0.0099312, 0.0170605, 1, 0.195271, 0.250785, 0.326127, 1, 0.370746, 0.602667, 0.726204, 1, 0.805882, 0.994846, 0.929226, 1)
+offsets = PackedFloat32Array(0, 0.369718, 0.644366, 0.975285)
+colors = PackedColorArray(0.00605369, 0.0099312, 0.0170605, 1, 0.158964, 0.206927, 0.272015, 1, 0.236909, 0.425061, 0.523615, 1, 0.805882, 0.994846, 0.929226, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_upmih"]
 gradient = SubResource("Gradient_oli7n")
@@ -14,7 +14,7 @@ gradient = SubResource("Gradient_oli7n")
 [resource]
 render_priority = 0
 shader = ExtResource("1_uyk8x")
-shader_parameter/baseColor = Color(0.230315, 0.230315, 0.230315, 1)
+shader_parameter/baseColor = Color(0.47788, 0.47788, 0.47788, 1)
 shader_parameter/shadingTextureStrength = null
 shader_parameter/UVOffsetX = null
 shader_parameter/UVOffsetY = null

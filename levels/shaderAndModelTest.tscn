@@ -1,0 +1,99 @@
+[gd_scene load_steps=18 format=3 uid="uid://ugibgwjk8oos"]
+
+[ext_resource type="Material" uid="uid://tpx1lstry5ry" path="res://entities/props/InkBottle/glass.tres" id="1_dqxlq"]
+[ext_resource type="Material" uid="uid://cucamqxbholpb" path="res://entities/props/InkBottle/inkInBottle.tres" id="3_utibx"]
+[ext_resource type="PackedScene" uid="uid://b2ft7icysrsa3" path="res://entities/props/InkBottle/filledInkBottleWithCorkV2.gltf" id="4_4b8oa"]
+[ext_resource type="Material" uid="uid://clgy5ehuf80vv" path="res://entities/props/InkBottle/cork.tres" id="5_tigma"]
+[ext_resource type="Material" uid="uid://blx87gtbl8apb" path="res://entities/props/InkBottle/corkMaterial.tres" id="6_lq2y3"]
+[ext_resource type="PackedScene" uid="uid://bgvuq5x3tky6o" path="res://entities/props/paintbrushes/paintBrushV1.gltf" id="7_rd8iu"]
+[ext_resource type="Material" uid="uid://ctwrmpngsgmq6" path="res://entities/props/paintbrushes/paintbrushHandle.tres" id="8_tk8qi"]
+[ext_resource type="Material" uid="uid://besnxj6eddgts" path="res://entities/props/paintbrushes/paintbrushMetal.tres" id="9_b8fom"]
+[ext_resource type="Material" uid="uid://xfxam6u0otew" path="res://entities/props/paintbrushes/paintbrushBristles.tres" id="10_8k4mp"]
+[ext_resource type="PackedScene" uid="uid://cvkpdiibfgdpj" path="res://entities/props/canvas/canvasV1.gltf" id="11_mnggl"]
+[ext_resource type="Material" uid="uid://cj71kxk8psmbl" path="res://entities/props/canvas/woodFrame.tres" id="12_nci2i"]
+[ext_resource type="Material" uid="uid://bl4p1b4nc3jri" path="res://entities/props/canvas/canvasBacking.tres" id="13_vv71y"]
+[ext_resource type="Material" uid="uid://0mrwjrsev0kn" path="res://entities/props/canvas/canvas1.tres" id="14_niniu"]
+[ext_resource type="Material" uid="uid://dl1n5cceunv7e" path="res://entities/props/canvas/staples.tres" id="15_x32b1"]
+[ext_resource type="PackedScene" uid="uid://by3i843xrfidq" path="res://entities/props/paintbrushes/paintBrushV2.gltf" id="16_se5fi"]
+[ext_resource type="PackedScene" uid="uid://b27bxhaj10xjw" path="res://entities/props/canvas/squareFrameV1.gltf" id="17_im13c"]
+[ext_resource type="Material" uid="uid://cvb8nx11igpl" path="res://entities/props/canvas/frame.tres" id="18_kk1k3"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.40175, 14.2114, 13.6665)
+light_color = Color(0.864344, 0.85569, 0.83571, 1)
+light_energy = 4.576
+shadow_enabled = true
+omni_range = 8.059
+omni_attenuation = 0.515
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2705, 33.0881, 8.75636)
+light_color = Color(0.966854, 0.964655, 0.959572, 1)
+light_energy = 16.0
+shadow_enabled = true
+omni_range = 49.9859
+omni_attenuation = 0.515
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.0201738, -0.240183, -0.970518, -0.0706144, 0.968634, -0.238249, 0.9973, 0.0637262, -0.0365015, -13.982, 13.2564, 14.055)
+fov = 107.4
+
+[node name="filledInkBottleWithCorkV2" parent="." instance=ExtResource("4_4b8oa")]
+transform = Transform3D(0.732786, -0.0269486, -0.679927, -0.0603249, 0.992709, -0.104361, 0.677783, 0.11749, 0.725819, -0.125243, 5.88301, 14.9237)
+
+[node name="Circle_001" parent="filledInkBottleWithCorkV2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0458458, 4.35454, -0.113482)
+material_override = ExtResource("5_tigma")
+surface_material_override/0 = ExtResource("6_lq2y3")
+
+[node name="Cube_002" parent="filledInkBottleWithCorkV2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0361233, 1.14939, -0.105109)
+material_override = ExtResource("3_utibx")
+
+[node name="Cube_004" parent="filledInkBottleWithCorkV2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0458458, 1.13739, -0.113482)
+material_override = ExtResource("1_dqxlq")
+
+[node name="paintBrushV1" parent="." instance=ExtResource("7_rd8iu")]
+transform = Transform3D(-0.479986, 0.12366, -0.0657369, -0.0205427, 0.169989, 0.469768, 0.138532, 0.453665, -0.158104, -4.86348, 2.32241, 2.26774)
+
+[node name="brush1" parent="paintBrushV1" index="0"]
+transform = Transform3D(-0.0547236, 0.231517, -0.971291, -0.909674, -0.412646, -0.0471065, -0.411705, 0.880979, 0.233186, 4.29, 13.547, 10.767)
+surface_material_override/0 = ExtResource("8_tk8qi")
+surface_material_override/1 = ExtResource("9_b8fom")
+surface_material_override/2 = ExtResource("10_8k4mp")
+
+[node name="canvasV1" parent="." instance=ExtResource("11_mnggl")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15.2304, 6.86705, -25.4793)
+
+[node name="16by9 template_001" parent="canvasV1" index="0"]
+transform = Transform3D(0.184894, -0.0953517, -0.501935, -1.68464, -0.0264681, 0.21093, -0.534576, 0.0504315, -0.838318, 1.97517, 2.92555, 5.27621)
+surface_material_override/0 = ExtResource("12_nci2i")
+surface_material_override/1 = ExtResource("13_vv71y")
+surface_material_override/2 = ExtResource("14_niniu")
+surface_material_override/3 = ExtResource("15_x32b1")
+
+[node name="paintBrushV2" parent="." instance=ExtResource("16_se5fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76708, 0, 17.1808)
+
+[node name="Cube_005" parent="paintBrushV2" index="0"]
+transform = Transform3D(0.137109, 0.605869, -0.78366, -0.873642, 0.446828, 0.192602, 0.466853, 0.658231, 0.590577, -5.35806, 8.67919, 1.0758)
+surface_material_override/0 = ExtResource("9_b8fom")
+surface_material_override/1 = ExtResource("8_tk8qi")
+surface_material_override/2 = ExtResource("10_8k4mp")
+
+[node name="squareFrameV1" parent="." instance=ExtResource("17_im13c")]
+transform = Transform3D(-0.11385, -4.50395, -2.16829, 4.9984, -0.126349, -7.03403e-09, -0.0547922, -2.1676, 4.50538, 3.81543, 12.0765, 21.7448)
+
+[node name="SquareFrame1" parent="squareFrameV1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("13_vv71y")
+surface_material_override/1 = ExtResource("18_kk1k3")
+
+[editable path="filledInkBottleWithCorkV2"]
+[editable path="paintBrushV1"]
+[editable path="canvasV1"]
+[editable path="paintBrushV2"]
+[editable path="squareFrameV1"]
