@@ -20,6 +20,7 @@ func _input(event: InputEvent) -> void:
 		if $OptionsMarginContainer.visible:
 			_on_button_back_pressed()
 		elif $MainVBox.visible:
+			print("From Pause Menu:")
 			_on_button_resume_pressed()
 
 func _on_button_resume_pressed() -> void:
@@ -44,6 +45,7 @@ func _on_button_back_pressed() -> void:
 
 func _on_button_quit_pressed() -> void:
 	Util.change_scene(Util.MENU_PATH)
+	Global.game_state = Util.GAME_STATE.MENU
 
 func _on_volume_master_value_changed(value: float) -> void:
 	ChangeBusVolume(volBusMaster, value)

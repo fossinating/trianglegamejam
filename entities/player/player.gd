@@ -69,26 +69,13 @@ func _ready() -> void:
 	print("jump gravity: ", jump_gravity)
 	print("fall_gravity: ", fall_gravity)
 	print("jump_velocity: ", jump_velocity)
-	Signals.pause.connect(pause)
-
-func pause(useValue: bool = false, value: bool = true):
-	if not useValue:
-		value = true
-	if value and (Global.game_state == Util.GAME_STATE.UNPAUSED or Global.game_states == Util.GAME_STATE.PAUSED):
-		pause_menu.show()
-		Signals.just_exited_pause = true
-		get_tree().paused = true
-		Global.game_state = Util.GAME_STATE.PAUSED
-	else:
-		pause_menu.hide()
-		get_tree().paused = false
-		pause_menu.reset_pause_menu()
-		Global.game_state = Util.GAME_STATE.UNPAUSED
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause") and Global.game_state == Util.GAME_STATE.UNPAUSED:
+	if Input.is_action_just_pressed("pause") and Global.game_state == Util.GAME_STATE.UNPAUSED and !Signals.just_exited_pause:
+		print("From Player:")
 		Signals.pause.emit(true, true)
-	if Input.is_action_just_pressed("pause") and Global.game_state == Util.GAME_STATE.PAUSED:
+	if Input.is_action_just_pressed("pause") and Global.game_state == Util.GAME_STATE.PAUSED and !Signals.just_exited_pause:
+		print("From Player:")
 		Signals.pause.emit(true, false)
 
 func _physics_process(delta: float) -> void:
@@ -212,7 +199,6 @@ func _input(event: InputEvent) -> void:
 			noclip_speed_mult = max(0.1, noclip_speed_mult * 0.9)
 
 func _handle_noclip(delta) -> bool:
-	print(Global.cheats_enabled)
 	if Input.is_action_just_pressed("no_clip") and (Global.cheats_enabled):
 		noclip = !noclip
 		noclip_speed_mult = 1.0

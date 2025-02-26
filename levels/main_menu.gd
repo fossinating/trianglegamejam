@@ -10,6 +10,7 @@ func _ready() -> void:
 
 
 func _on_button_play_pressed() -> void:
+	Global.game_state = Util.GAME_STATE.UNPAUSED
 	Util.change_scene_at_checkpoint(Util.GAME_PATH)
 
 func _on_button_options_pressed() -> void:
