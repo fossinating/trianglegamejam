@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgb3traixnsbr"]
+[gd_scene load_steps=10 format=3 uid="uid://bgb3traixnsbr"]
 
 [ext_resource type="PackedScene" uid="uid://b65my7g46jvbg" path="res://entities/canvas/canvasV1.gltf" id="1_0tyj2"]
 [ext_resource type="Script" path="res://entities/canvas/canvas.gd" id="1_wo2bv"]
@@ -7,6 +7,33 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_yl7lj"]
 resource_local_to_scene = true
 size = Vector3(0.15, 1.98, 1.98)
+
+[sub_resource type="Curve" id="Curve_mvqd1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.797101, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.36996, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_hcl6h"]
+curve = SubResource("Curve_mvqd1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2b5pm"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 4.0
+initial_velocity_max = 4.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_hcl6h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qen0n"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jby0h"]
+material = SubResource("StandardMaterial3D_qen0n")
+radius = 0.05
+height = 0.1
 
 [node name="Canvas" type="StaticBody3D"]
 script = ExtResource("1_wo2bv")
@@ -31,3 +58,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.05, -10.645)
 [node name="Sprite3D" type="Sprite3D" parent="Pivot"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.002, 0, 0)
 shaded = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 64
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_2b5pm")
+draw_pass_1 = SubResource("SphereMesh_jby0h")

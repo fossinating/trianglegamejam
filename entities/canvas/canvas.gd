@@ -49,5 +49,7 @@ func complete_delivery(delivery: ItemDeliveryPoint) -> void:
 	if deliveries_left.size() == 0:
 		Signals.canvas_completed.emit(self)
 		$Pivot/Sprite3D.texture = complete_texture
+		$GPUParticles3D.position = delivery.position
+		$GPUParticles3D.emitting = true
 	else:
 		Signals.delivery_completed.emit(delivery)
