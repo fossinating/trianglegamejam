@@ -184,4 +184,5 @@ material_override = ExtResource("1_dqxlq")
 [editable path="squareFrameV1"]
 [editable path="Node3D"]
 [editable path="Node3D/Player"]
+[editable path="Node3D/StaticBody3D2/Item Delivery Point/Grabbable Item"]
 [editable path="RigidBody3D/CollisionShape3D/filledInkBottleWithCorkV2"]
