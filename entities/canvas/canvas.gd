@@ -12,6 +12,8 @@ class_name Canvas
 		reload = false
 		setup()
 
+var deliveries_left: Array[ItemDeliveryPoint] = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	setup()
@@ -38,6 +40,14 @@ func setup() -> void:
 	particle_collision_box.position.x = -0.075 * size
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func register_delivery(delivery: ItemDeliveryPoint) -> void:
+	deliveries_left.append(delivery)
+
+func complete_delivery(delivery: ItemDeliveryPoint) -> void:
+	deliveries_left.erase(delivery)
+	
+	if deliveries_left.size() == 0:
+		Signals.canvas_completed.emit(self)
+		$Pivot/Sprite3D.texture = complete_texture
+	else:
+		Signals.delivery_completed.emit(delivery)

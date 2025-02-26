@@ -5,3 +5,6 @@ extends Node
 
 @warning_ignore("unused_signal") signal add_interaction(node: Node3D)
 @warning_ignore("unused_signal") signal remove_interaction(node: Node3D)
+
+@warning_ignore("unused_signal") signal delivery_completed(delivery: ItemDeliveryPoint)
+@warning_ignore("unused_signal") signal canvas_completed(canvas: Canvas)
