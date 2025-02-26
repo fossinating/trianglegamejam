@@ -192,7 +192,6 @@ func _input(event: InputEvent) -> void:
 			noclip_speed_mult = max(0.1, noclip_speed_mult * 0.9)
 
 func _handle_noclip(delta) -> bool:
-	print(Global.cheats_enabled)
 	if Input.is_action_just_pressed("no_clip") and (Global.cheats_enabled):
 		noclip = !noclip
 		noclip_speed_mult = 1.0
