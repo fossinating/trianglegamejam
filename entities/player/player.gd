@@ -54,6 +54,8 @@ var noclip_speed_mult := 1.0
 var noclip := false
 var cam_aligned_wish_dir := Vector3.ZERO
 
+@onready var pause_menu := $PauseMenu
+
 func _ready() -> void:
 	if Global.game_state == Util.GAME_STATE.MENU:
 		Global.game_state = Util.GAME_STATE.UNPAUSED
@@ -67,9 +69,27 @@ func _ready() -> void:
 	print("jump gravity: ", jump_gravity)
 	print("fall_gravity: ", fall_gravity)
 	print("jump_velocity: ", jump_velocity)
+	Signals.pause.connect(pause)
 
-	#Engine.time_scale = 0.3
+func pause(useValue: bool = false, value: bool = true):
+	if not useValue:
+		value = true
+	if value and (Global.game_state == Util.GAME_STATE.UNPAUSED or Global.game_states == Util.GAME_STATE.PAUSED):
+		pause_menu.show()
+		Signals.just_exited_pause = true
+		get_tree().paused = true
+		Global.game_state = Util.GAME_STATE.PAUSED
+	else:
+		pause_menu.hide()
+		get_tree().paused = false
+		pause_menu.reset_pause_menu()
+		Global.game_state = Util.GAME_STATE.UNPAUSED
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause") and Global.game_state == Util.GAME_STATE.UNPAUSED:
+		Signals.pause.emit(true, true)
+	if Input.is_action_just_pressed("pause") and Global.game_state == Util.GAME_STATE.PAUSED:
+		Signals.pause.emit(true, false)
 
 func _physics_process(delta: float) -> void:
 	

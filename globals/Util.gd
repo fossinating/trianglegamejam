@@ -10,26 +10,6 @@ var MENU_PATH := "MainMenu"
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause") and Global.game_state == Util.GAME_STATE.UNPAUSED:
-		pause(true, true)
-
-func pause(useValue: bool = false, value: bool = true):
-	if useValue:
-		if value and (Global.game_state == Util.GAME_STATE.UNPAUSED or Global.game_states == Util.GAME_STATE.PAUSED):
-			Global.game_state = Util.GAME_STATE.PAUSED
-			get_tree().paused = true
-		else:
-			Global.game_state = Util.GAME_STATE.UNPAUSED
-			get_tree().paused = false
-	else:
-		if Global.game_state == Util.GAME_STATE.UNPAUSED:
-			Global.game_state = Util.GAME_STATE.PAUSED
-			get_tree().paused = true
-		elif Global.game_state == Util.GAME_STATE.PAUSED:
-			Global.game_state = Util.GAME_STATE.UNPAUSED
-			get_tree().paused = false
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED and Global.game_state == GAME_STATE.UNPAUSED:

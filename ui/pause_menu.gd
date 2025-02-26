@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 			_on_button_resume_pressed()
 
 func _on_button_resume_pressed() -> void:
-	Util.pause(true, false)
+	Signals.pause.emit(true, false)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func reset_pause_menu():

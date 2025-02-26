@@ -317,7 +317,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_vwaau")
 theme_override_styles/hover = SubResource("StyleBoxFlat_frxni")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qmilo")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tnbkv")
-text = "Quit"
+text = "Main Menu"
 
 [node name="OptionsMarginContainer" type="MarginContainer" parent="."]
 visible = false
