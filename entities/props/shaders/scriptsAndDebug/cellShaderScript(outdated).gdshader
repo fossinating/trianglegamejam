@@ -74,7 +74,7 @@ void light(){
 
 
 
-	
+
 	float lightStrength = clamp(dot(NORMAL, LIGHT), 0.0, 1.0) * ATTENUATION;
 	//DIFFUSE_LIGHT += lightStrength * vec3(1.0,1.0,1.0);
 
@@ -108,8 +108,8 @@ void light(){
 		DIFFUSE_LIGHT = colorBright;
 	}
 	//DIFFUSE_LIGHT = clamp (DIFFUSE_LIGHT/baseColor, 0.0, 1.0);
-	
-	
+
+
 
 	float specular = pow(vDotL, specular_power) * specular_strength * ATTENUATION;
 	if(specular>0.1){
