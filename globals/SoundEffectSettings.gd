@@ -1,24 +1,31 @@
 extends Resource
 class_name SoundEffectSettings
 enum SOUND_EFFECT_TYPE {
+	UNASSIGNED,
+	MUSIC,
 	ON_JUMP,
 	ON_LAND,
-	BUBBLE_WOBBLE,
-	BUBBLE_POP,
-	BUBBLE_STREAM,
-	LAUNCHER_LAUNCH,
-	LAUNCHER_REGENERATE,
-	PISTON_EXTEND,
-	PISTON_RETRACT,
-	PRESSURE_PLATE_DOWN,
-	PRESSURE_PLATE_UP,
-	RATING_LIKE,
-	RATING_DISLIKE
+	SWIMMING,
+	GRAB,
+	DROP,
+	INK_SPILL,
+	BRUSH_STROKE,
+	UI_SELECT,
+	UI_BACK,
+	UI_PLAY,
+	AMBIENCE
+}
+enum AUDIO_BUS {
+	MASTER,
+	MUS,
+	SFX
 }
 
 @export_range(0, 10) var limit : int = 5
+@export var name: String
 @export var type: SOUND_EFFECT_TYPE
 @export var sound_effect: AudioStream
+@export var audio_bus: AUDIO_BUS
 @export_range(-40, 20) var volume_db = 0
 @export_range(0.0, 4.0, 0.01) var pitch_scale = 1.0
 @export_range(0.0, 1.0, 0.01) var pitch_randomness = 0.0

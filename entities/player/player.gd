@@ -34,6 +34,8 @@ var _theta : float
 
 @onready var skeleton: Skeleton3D = $"blob/Armature/Skeleton3D"
 
+@onready var music_player: AudioStreamPlayer3D = $MusicPlayer
+
 var swim_val := 0.0
 #enum ModelStates { JUMP, SWIM }
 #var currentAnim = ModelStates.JUMP
@@ -69,6 +71,7 @@ func _ready() -> void:
 	print("jump gravity: ", jump_gravity)
 	print("fall_gravity: ", fall_gravity)
 	print("jump_velocity: ", jump_velocity)
+	AudioManager.play_music("Flowing Ink")
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and Global.game_state == Util.GAME_STATE.UNPAUSED and !Signals.just_exited_pause:

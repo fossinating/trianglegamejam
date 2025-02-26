@@ -382,3 +382,8 @@ current = true
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_ovif8")]
 visible = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer3D" parent="."]
+autoplay = true
+panning_strength = 0.0
+bus = &"MUS"
