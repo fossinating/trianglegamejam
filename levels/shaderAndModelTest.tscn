@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ugibgwjk8oos"]
+[gd_scene load_steps=39 format=3 uid="uid://ugibgwjk8oos"]
 
 [ext_resource type="Material" uid="uid://tpx1lstry5ry" path="res://entities/props/inkBottle/glass.tres" id="1_dqxlq"]
 [ext_resource type="Material" uid="uid://cucamqxbholpb" path="res://entities/props/inkBottle/inkInBottle.tres" id="3_utibx"]
@@ -12,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://cvkpdiibfgdpj" path="res://entities/props/canvas/canvasV1.gltf" id="11_mnggl"]
 [ext_resource type="Material" uid="uid://cj71kxk8psmbl" path="res://entities/props/canvas/woodFrame.tres" id="12_nci2i"]
 [ext_resource type="Material" uid="uid://bl4p1b4nc3jri" path="res://entities/props/canvas/canvasBacking.tres" id="13_vv71y"]
+[ext_resource type="PackedScene" uid="uid://dl3u6e24ibcpa" path="res://entities/props/pencilAndEraser/pencil.gltf" id="14_dc2v4"]
 [ext_resource type="Material" uid="uid://0mrwjrsev0kn" path="res://entities/props/canvas/canvas1.tres" id="14_niniu"]
+[ext_resource type="PackedScene" uid="uid://c6medeskr8ad2" path="res://entities/props/pencilAndEraser/eraser.gltf" id="15_6nk4c"]
 [ext_resource type="Material" uid="uid://dl1n5cceunv7e" path="res://entities/props/canvas/staples.tres" id="15_x32b1"]
 [ext_resource type="PackedScene" uid="uid://by3i843xrfidq" path="res://entities/props/paintbrushes/paintBrushV2.gltf" id="16_se5fi"]
 [ext_resource type="PackedScene" uid="uid://b27bxhaj10xjw" path="res://entities/props/canvas/squareFrameV1.gltf" id="17_im13c"]
@@ -21,6 +23,11 @@
 [ext_resource type="PackedScene" uid="uid://wlx7gvcr385h" path="res://entities/props/furniture/stool.gltf" id="19_1d2ch"]
 [ext_resource type="Material" uid="uid://bd67rr1epjkr7" path="res://entities/props/furniture/stool.tres" id="20_rtsrm"]
 [ext_resource type="PackedScene" uid="uid://dpuu1wn8skqoi" path="res://entities/props/furniture/table.gltf" id="21_si77b"]
+[ext_resource type="Material" uid="uid://bsko5ch7shc48" path="res://entities/props/pencilAndEraser/pencilWood.tres" id="23_6ncsc"]
+[ext_resource type="Material" uid="uid://dnm0ayn2nnyky" path="res://entities/props/pencilAndEraser/led.tres" id="24_2c4ri"]
+[ext_resource type="Material" uid="uid://d0qy5dhxi4lbk" path="res://entities/props/pencilAndEraser/pencilBody.tres" id="25_6edlj"]
+[ext_resource type="Material" uid="uid://457qdva3dl1o" path="res://entities/props/pencilAndEraser/pencilMetal.tres" id="26_m7tmo"]
+[ext_resource type="Material" uid="uid://er70h8cpar4o" path="res://entities/props/pencilAndEraser/eraser.tres" id="27_yqdt5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6b3cy"]
 height = 14.725
@@ -46,6 +53,12 @@ radius = 22.494
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ooes2"]
 size = Vector3(11.91, 0.36, 5.08)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vyhsh"]
+height = 15.265
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q1dap"]
+size = Vector3(2.12, 1.26, 4.87)
 
 [node name="Node3D" type="Node3D"]
 
@@ -173,7 +186,7 @@ transform = Transform3D(7.65567, 0, 0, 0, 1, 0, 0, 0, 9.26679, 0.0811501, -0.129
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39.6366, 0)
 
 [node name="Sprite3D" parent="Node3D/Canvas/Grabbable Item/Sprite Carrier" index="0"]
-transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 0.012, 4.51396, -1.3947)
+material_overlay = null
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(0.615738, 0.337854, -0.711843, -0.296043, 0.936417, 0.188366, 0.730221, 0.0947523, 0.676608, 5.96644, 17.0583, 16.8624)
@@ -257,6 +270,35 @@ shape = SubResource("BoxShape3D_ooes2")
 [node name="Circle_009" parent="table" index="1"]
 material_override = ExtResource("20_rtsrm")
 
+[node name="pencil" parent="." instance=ExtResource("14_dc2v4")]
+transform = Transform3D(0.677043, 0, -0.735943, 0, 1, 0, 0.735943, 0, 0.677043, -0.791605, 31.2625, -55.0833)
+
+[node name="Circle_010" parent="pencil" index="0"]
+transform = Transform3D(-0.258098, -0.942871, -0.210664, -0.122234, 0.248168, -0.960974, 0.958355, -0.222275, -0.179303, -7.27144, -1.2733, 10.8581)
+surface_material_override/0 = ExtResource("23_6ncsc")
+surface_material_override/1 = ExtResource("24_2c4ri")
+surface_material_override/2 = ExtResource("25_6edlj")
+surface_material_override/3 = ExtResource("26_m7tmo")
+surface_material_override/4 = ExtResource("27_yqdt5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="pencil/Circle_010" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pencil/Circle_010/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.91, 0)
+shape = SubResource("CylinderShape3D_vyhsh")
+
+[node name="eraser" parent="." instance=ExtResource("15_6nk4c")]
+transform = Transform3D(0.677043, 0, -0.735943, 0, 1, 0, 0.735943, 0, 0.677043, -5.38113, 33.3649, -50.471)
+
+[node name="Cube_007" parent="eraser" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1813, -1.40622, -1.54644)
+material_override = ExtResource("27_yqdt5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="eraser/Cube_007" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="eraser/Cube_007/StaticBody3D"]
+shape = SubResource("BoxShape3D_q1dap")
+
 [editable path="paintBrushV1"]
 [editable path="canvasV1"]
 [editable path="paintBrushV2"]
@@ -264,6 +306,9 @@ material_override = ExtResource("20_rtsrm")
 [editable path="Node3D"]
 [editable path="Node3D/Player"]
 [editable path="Node3D/Canvas/Grabbable Item"]
+[editable path="Node3D/InkBottle"]
 [editable path="RigidBody3D/CollisionShape3D/filledInkBottleWithCorkV2"]
 [editable path="stool"]
 [editable path="table"]
+[editable path="pencil"]
+[editable path="eraser"]
