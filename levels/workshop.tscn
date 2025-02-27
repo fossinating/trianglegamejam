@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bw624l72ljxcx"]
+[gd_scene load_steps=19 format=3 uid="uid://bw624l72ljxcx"]
 
 [ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="1_tquhn"]
 [ext_resource type="PackedScene" uid="uid://bu7xjkbde0woe" path="res://entities/map elements/inkfall.tscn" id="2_1i02o"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cfp0ws1h084cl" path="res://entities/canvas/paintings/painting3/painting3_unfinished.png" id="6_6mjbw"]
 [ext_resource type="Texture2D" uid="uid://coruxtyv64e23" path="res://entities/canvas/paintings/painting3/painting3_piece1.png" id="7_fwsu3"]
 [ext_resource type="Texture2D" uid="uid://cd6kw0eof1eg8" path="res://entities/canvas/paintings/painting3/painting3_finished.png" id="7_utvel"]
-[ext_resource type="Shader" path="res://entities/props/shaders/perfect_outline_shader.gdshader" id="9_r50h6"]
 [ext_resource type="Shader" path="res://entities/props/shaders/glowing.gdshader" id="9_v5gbk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wg4r2"]
@@ -51,14 +50,6 @@ shader_parameter/glowAngle = 1.57
 shader_parameter/glowSharpness = 5.0
 shader_parameter/alphaThreshold = 0.2
 shader_parameter/sprite_texture = ExtResource("7_fwsu3")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nn5oa"]
-render_priority = 0
-shader = ExtResource("9_r50h6")
-shader_parameter/outline_color = Color(1, 1, 1, 1)
-shader_parameter/outline_width = 12.67
-
-[sub_resource type="BoxMesh" id="BoxMesh_0ub4p"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -169,10 +160,5 @@ transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 0.012, 4
 material_overlay = SubResource("ShaderMaterial_118v5")
 pixel_size = 0.000976563
 texture = ExtResource("7_fwsu3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-material_overlay = SubResource("ShaderMaterial_nn5oa")
-mesh = SubResource("BoxMesh_0ub4p")
 
 [editable path="Canvas/Grabbable Item"]

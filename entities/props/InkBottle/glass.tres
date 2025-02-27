@@ -12,7 +12,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.122253, 0.122252, 0.122252, 1)
 gradient = SubResource("Gradient_m6p73")
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_e56ly")
 shader_parameter/baseColor = Color(0, 0, 0, 1)
 shader_parameter/specular_power = 1.0
