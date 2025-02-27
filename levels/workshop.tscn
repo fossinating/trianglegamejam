@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="1_tquhn"]
 [ext_resource type="PackedScene" uid="uid://bu7xjkbde0woe" path="res://entities/map elements/inkfall.tscn" id="2_1i02o"]
 [ext_resource type="PackedScene" uid="uid://b6sgojl10sbf2" path="res://entities/items/grabbable_item.tscn" id="2_gteoe"]
-[ext_resource type="Material" uid="uid://b7l3b6ud7tfxi" path="res://levels/mat_inkfall.tres" id="3_1nljh"]
 [ext_resource type="PackedScene" uid="uid://c1tcjtlgyxua3" path="res://entities/items/item_delivery_point.tscn" id="3_nogm7"]
 [ext_resource type="PackedScene" uid="uid://bgb3traixnsbr" path="res://entities/canvas/canvas.tscn" id="4_jxxqq"]
 [ext_resource type="Texture2D" uid="uid://cfp0ws1h084cl" path="res://entities/canvas/paintings/painting3/painting3_unfinished.png" id="6_6mjbw"]
@@ -145,7 +144,7 @@ shrink_factor = 0.25
 
 [node name="Sprite3D" parent="Canvas/Grabbable Item/Sprite Carrier" index="0"]
 transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 0.012, 4.51396, -1.3947)
-pixel_size = 0.000976563
+pixel_size = 0.000976562
 texture = ExtResource("7_fwsu3")
 
 [editable path="Canvas/Grabbable Item"]

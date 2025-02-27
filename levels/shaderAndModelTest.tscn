@@ -156,10 +156,13 @@ transform = Transform3D(1, 1.27262e-08, 5.37048e-09, 9.95153e-09, -0.933401, 0.3
 transform = Transform3D(9.44979, 0, 0, 0, 1, 0, 0, 0, 9.45448, 0, 0, 0)
 
 [node name="MeshInstance3D" parent="Node3D/StaticBody3D" index="1"]
-transform = Transform3D(7.65567, 0, 0, 0, 1, 0, 0, 0, 9.26679, 0.0811501, -0.678986, -0.106388)
+transform = Transform3D(7.65567, 0, 0, 0, 1, 0, 0, 0, 9.26679, 0.0811501, -0.129422, -0.106388)
 
-[node name="table surface" parent="Node3D" index="6"]
+[node name="table surface" parent="Node3D" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39.6366, 0)
+
+[node name="Sprite3D" parent="Node3D/Canvas/Grabbable Item/Sprite Carrier" index="0"]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 0.012, 4.51396, -1.3947)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(0.615738, 0.337854, -0.711843, -0.296043, 0.936417, 0.188366, 0.730221, 0.0947523, 0.676608, 5.96644, 17.0583, 16.8624)
@@ -196,5 +199,5 @@ material_override = ExtResource("1_dqxlq")
 [editable path="squareFrameV1"]
 [editable path="Node3D"]
 [editable path="Node3D/Player"]
-[editable path="Node3D/StaticBody3D2/Item Delivery Point/Grabbable Item"]
+[editable path="Node3D/Canvas/Grabbable Item"]
 [editable path="RigidBody3D/CollisionShape3D/filledInkBottleWithCorkV2"]
