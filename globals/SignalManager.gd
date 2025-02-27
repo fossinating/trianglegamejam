@@ -8,3 +8,7 @@ extends Node
 
 @warning_ignore("unused_signal") signal delivery_completed(delivery: ItemDeliveryPoint)
 @warning_ignore("unused_signal") signal canvas_completed(canvas: Canvas)
+
+@warning_ignore("unused_signal") signal pause(useValue: bool, value: bool)
+var just_exited_pause: bool = false
+

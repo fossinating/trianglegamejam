@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctocafhpjxj1r"]
+[gd_scene load_steps=5 format=3 uid="uid://ctocafhpjxj1r"]
 
 [ext_resource type="Script" path="res://globals/AudioManager.gd" id="1_f2dtx"]
+[ext_resource type="Script" path="res://globals/SoundEffectSettings.gd" id="2_hy51s"]
+[ext_resource type="AudioStream" uid="uid://cqhsep0xllse7" path="res://audio/flowing_ink_wip.ogg" id="3_3et7a"]
+
+[sub_resource type="Resource" id="Resource_nipoj"]
+script = ExtResource("2_hy51s")
+limit = 5
+name = "Flowing Ink"
+type = 1
+sound_effect = ExtResource("3_3et7a")
+audio_bus = 1
+volume_db = -5
+pitch_scale = 1.0
+pitch_randomness = 0.0
 
 [node name="AudioManager" type="Node3D"]
 script = ExtResource("1_f2dtx")
+music_settings = Array[ExtResource("2_hy51s")]([SubResource("Resource_nipoj")])

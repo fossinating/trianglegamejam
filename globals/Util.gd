@@ -9,18 +9,7 @@ var MENU_PATH := "MainMenu"
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
-		pause()
-
-func pause():
-	if Global.game_state == Util.GAME_STATE.UNPAUSED:
-		Global.game_state = Util.GAME_STATE.PAUSED
-		get_tree().paused = true
-	elif Global.game_state == Util.GAME_STATE.PAUSED:
-		Global.game_state = Util.GAME_STATE.UNPAUSED
-		get_tree().paused = false
+	Signals.pause.connect(pause)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -28,6 +17,24 @@ func _input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		elif Input.mouse_mode != Input.MOUSE_MODE_VISIBLE and Global.game_state != GAME_STATE.UNPAUSED:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func pause(useValue: bool = false, value: bool = true):
+	if not useValue:
+		value = true
+	if value and (Global.game_state == Util.GAME_STATE.UNPAUSED or Global.game_states == Util.GAME_STATE.PAUSED):
+		Global.player.pause_menu.show()
+		Signals.just_exited_pause = true
+		get_tree().paused = true
+		Global.game_state = Util.GAME_STATE.PAUSED
+	elif not value:
+		Global.player.pause_menu.hide()
+		Signals.just_exited_pause = true
+		get_tree().paused = false
+		Global.player.pause_menu.reset_pause_menu()
+		Global.game_state = Util.GAME_STATE.UNPAUSED
+	if Signals.just_exited_pause:
+			await get_tree().create_timer(.01).timeout
+			Signals.just_exited_pause = false
 
 func change_scene_at_pos(scene_name : String, load_pos := Vector3(0.0, 0.5, 0.0)):
 	get_tree().change_scene_to_file(str("res://levels/", scene_name, ".tscn"))

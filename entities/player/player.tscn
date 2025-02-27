@@ -1,14 +1,15 @@
-[gd_scene load_steps=36 format=4 uid="uid://bqvbt7ofxnn0b"]
+[gd_scene load_steps=37 format=4 uid="uid://bqvbt7ofxnn0b"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_boxuu"]
 [ext_resource type="Texture2D" uid="uid://dajp6o4brj5i1" path="res://entities/player/blob_PS New Group 1 Image 3 (MAT_ Mat_Blob).png" id="2_dvct0"]
 [ext_resource type="PackedScene" uid="uid://kesgwtbvfg1h" path="res://entities/player/googly_eye.tscn" id="2_kn8ih"]
 [ext_resource type="Script" path="res://libraries/better_animation_tree.gd" id="2_x8lhm"]
 [ext_resource type="Texture2D" uid="uid://cakdw32wvyfjc" path="res://entities/player/blob_layersmerged_New Group 1_bake.png" id="3_rbppb"]
-[ext_resource type="AnimationLibrary" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
+[ext_resource type="AnimationLibrary" uid="uid://clu7brywt384c" path="res://entities/player/blob_anims.res" id="3_ygj2r"]
 [ext_resource type="Script" path="res://entities/player/camera_controller.gd" id="5_dosi8"]
 [ext_resource type="PackedScene" uid="uid://drkibph2ps23s" path="res://entities/player/components/interaction_manager/interaction_manager.tscn" id="6_35t6f"]
 [ext_resource type="PackedScene" uid="uid://clyi4pgeg23vg" path="res://entities/player/components/item_grabber/item_grabber.tscn" id="7_bc2mm"]
+[ext_resource type="PackedScene" uid="uid://cqx48qf51ryvc" path="res://ui/PauseMenu.tscn" id="10_ovif8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vstp2"]
 
@@ -106,11 +107,12 @@ curve = SubResource("Curve_bnd7m")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ow656"]
 emission_shape = 1
 emission_sphere_radius = 0.2
-angle_min = -45.0
-angle_max = 45.0
+angle_min = -15.0
+angle_max = 15.0
 direction = Vector3(0, -2.5, 1)
 spread = 5.0
 flatness = 0.9
+initial_velocity_min = 2.0
 initial_velocity_max = 5.0
 scale_curve = SubResource("CurveTexture_pe6qp")
 collision_mode = 1
@@ -312,7 +314,7 @@ bone_idx = 2
 
 [node name="Ink Airborne Trail Particles" type="GPUParticles3D" parent="blob/Armature/Skeleton3D/BoneAttachment3D2"]
 transform = Transform3D(-11.1111, 7.80699e-08, 8.92493e-07, 2.88775e-07, -10.166, 4.48438, 8.48084e-07, 4.48438, 10.166, 4.93798e-07, 1.92806, 0.0447056)
-amount = 150
+amount = 300
 lifetime = 1.5
 randomness = 1.0
 fixed_fps = 0
@@ -377,3 +379,11 @@ current = true
 [node name="Interaction Manager" parent="." instance=ExtResource("6_35t6f")]
 
 [node name="Item Grabber" parent="." instance=ExtResource("7_bc2mm")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("10_ovif8")]
+visible = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer3D" parent="."]
+autoplay = true
+panning_strength = 0.0
+bus = &"MUS"
