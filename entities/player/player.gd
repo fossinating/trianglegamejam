@@ -146,6 +146,12 @@ func _physics_process(delta: float) -> void:
 		landing_velocity = velocity
 	if !_handle_noclip(delta):
 		move_and_slide()
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if collision.get_collider().has_method("activate"):
+				var travel_speed = collision.get_travel()
+				var travel_speed_xz = Vector3(travel_speed.x, 0.0, travel_speed.z).length()
+				collision.get_collider().activate(travel_speed_xz)
 
 	if not (is_on_floor() or climbing_waterfall):
 		if velocity.y > 0:

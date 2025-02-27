@@ -139,12 +139,6 @@ process_mode = 3
 physics_interpolation_mode = 1
 auto_translate_mode = 1
 
-[node name="EyesBoneAttachment3D" parent="Node3D/Player/blob/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-1, 2.22422e-08, -3.86145e-07, -3.46916e-07, 0.389881, 0.920864, 1.71033e-07, 0.920865, -0.389881, 0, 0, 0)
-
-[node name="BoneAttachment3D2" parent="Node3D/Player/blob/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 1.27262e-08, 5.37048e-09, 9.95153e-09, -0.933401, 0.358835, 9.5794e-09, -0.358835, -0.933401, 4.91397e-08, -5.49756, -5.02058)
-
 [node name="CollisionShape3D" parent="Node3D/StaticBody3D" index="0"]
 transform = Transform3D(9.44979, 0, 0, 0, 1, 0, 0, 0, 9.45448, 0, 0, 0)
 
@@ -153,6 +147,12 @@ transform = Transform3D(7.65567, 0, 0, 0, 1, 0, 0, 0, 9.26679, 0.0811501, -0.129
 
 [node name="table surface" parent="Node3D" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39.6366, 0)
+
+[node name="Sprite3D" parent="Node3D/Canvas/Grabbable Item/Sprite Carrier" index="0"]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 0.012, 4.51396, -1.3947)
+
+[node name="Circle_001" parent="Node3D/InkBottle/PivotPoint/filledInkBottleWithCorkV2" index="0"]
+surface_material_override/0 = null
 
 [node name="InkBottle" parent="." instance=ExtResource("14_g07q3")]
 transform = Transform3D(0.621603, 0.338616, -0.706362, -0.29528, 0.936511, 0.189096, 0.725545, 0.0910325, 0.682126, 5.966, 17, 16.862)
@@ -164,3 +164,4 @@ transform = Transform3D(0.621603, 0.338616, -0.706362, -0.29528, 0.936511, 0.189
 [editable path="Node3D"]
 [editable path="Node3D/Player"]
 [editable path="Node3D/Canvas/Grabbable Item"]
+[editable path="Node3D/InkBottle"]

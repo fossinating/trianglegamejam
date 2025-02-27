@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://jl4r4yrdbtyr"]
 
-[ext_resource type="Script" path="res://entities/props/InkBottle/ink_bottle.gd" id="1_vrasx"]
+[ext_resource type="Script" path="res://entities/props/collision_activated_component.gd" id="1_gwhkx"]
 [ext_resource type="Material" uid="uid://clgy5ehuf80vv" path="res://entities/props/InkBottle/cork.tres" id="2_4gjyw"]
 [ext_resource type="Material" uid="uid://blx87gtbl8apb" path="res://entities/props/InkBottle/corkMaterial.tres" id="3_tuah0"]
 [ext_resource type="Material" uid="uid://cucamqxbholpb" path="res://entities/props/InkBottle/inkInBottle.tres" id="4_l7nnm"]
@@ -124,7 +124,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_umth8")
 
 [node name="InkBottle" type="Node3D"]
-script = ExtResource("1_vrasx")
 
 [node name="PivotPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.15)
@@ -144,6 +143,7 @@ continuous_cd = true
 contact_monitor = true
 max_contacts_reported = 3
 linear_velocity = Vector3(0.4, 1.39, 1.29)
+script = ExtResource("1_gwhkx")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="PivotPoint/Rigidbody"]
 auto_translate_mode = 1
