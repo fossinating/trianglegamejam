@@ -19,7 +19,7 @@ uniform float UVScaleY: hint_range(-20.0, 20.0, 0.01);
 
 varying vec2 new_uvs;
 
-uniform float normalStrength: hint_range(0.0, 10.0, 0.01);
+uniform float normalStrength: hint_range(-1.0, 1.0, 0.01);
 uniform float normalSize: hint_range(0.0, 10.0, 0.01);
 
 uniform sampler2D roughnessGradient : source_color;
@@ -82,6 +82,7 @@ void fragment() {
 
 
 void light() {
+
 	DIFFUSE_LIGHT += ALBEDO * ATTENUATION * LIGHT_COLOR * max(dot(LIGHT,NORMAL)+0.4, 0.0)*diffuseLightingStrength;
 
 
@@ -109,6 +110,9 @@ void light() {
 
 	// cancel all contribution of the diffuse_light variable
 	SPECULAR_LIGHT -= ALBEDO * DIFFUSE_LIGHT;
+
+	//SPECULAR_LIGHT= vec3(0.0,0.0,0.0);
+	//DIFFUSE_LIGHT = NORMAL;
 
 
 

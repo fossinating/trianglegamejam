@@ -34,21 +34,29 @@ size = Vector3(0.86, 7.21, 4.62)
 [sub_resource type="BoxShape3D" id="BoxShape3D_t7wd7"]
 size = Vector3(2.73718, 0.244446, 2.40369)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oxgjf"]
-size = Vector3(1, 9.39842, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m6uej"]
+height = 9.58165
 
 [node name="Node3D" type="Node3D"]
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.069, 18.3559, 50.6187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2352, 18.3559, 36.8602)
 light_color = Color(0.864344, 0.85569, 0.83571, 1)
 light_energy = 13.636
 shadow_enabled = true
-omni_range = 11.735
+omni_range = 23.265
 omni_attenuation = 0.515
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2705, 37.4148, 21.7796)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3477, 37.4148, 32.3021)
+light_color = Color(0.966854, 0.964655, 0.959572, 1)
+light_energy = 16.0
+shadow_enabled = true
+omni_range = 49.9859
+omni_attenuation = 0.515
+
+[node name="OmniLight3D" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.381, -7.3391, -71.3117)
 light_color = Color(0.966854, 0.964655, 0.959572, 1)
 light_energy = 16.0
 shadow_enabled = true
@@ -78,7 +86,7 @@ shape = SubResource("CapsuleShape3D_6b3cy")
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15.2304, 6.86705, -25.4793)
 
 [node name="16by9 template_001" parent="canvasV1" index="0"]
-transform = Transform3D(0.0921959, -0.00851556, -0.995311, -1.60804, 0.0464476, -0.0793189, 0.75078, 0.100528, -0.0476642, 3.92906, 2.92555, 2.24155)
+transform = Transform3D(-0.269355, -0.0192799, -0.972699, -0.582036, 0.104143, -0.116208, 1.6573, 0.0334408, -0.198901, 4.54227, 1.78733, 2.21422)
 surface_material_override/0 = ExtResource("12_nci2i")
 surface_material_override/1 = ExtResource("13_vv71y")
 surface_material_override/2 = ExtResource("14_niniu")
@@ -128,6 +136,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.54874, 3.64261, 10.0522)
 
 [node name="DirectionalLight3D" parent="Node3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.02256, 26.0691, 0)
+light_energy = 0.0
 
 [node name="Player" parent="Node3D" index="2"]
 disable_mode = 2
@@ -153,17 +162,20 @@ transform = Transform3D(7.65567, 0, 0, 0, 1, 0, 0, 0, 9.26679, 0.0811501, -0.678
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39.6366, 0)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(0.732784, -0.0269487, -0.679927, 0.344253, 0.876591, 0.336272, 0.586955, -0.480482, 0.651629, -0.0586112, 8.54646, 24.6414)
-mass = 0.01
-gravity_scale = 0.86
+transform = Transform3D(0.615738, 0.337854, -0.711843, -0.296043, 0.936417, 0.188366, 0.730221, 0.0947523, 0.676608, 5.96644, 17.0583, 16.8624)
+mass = 0.001
+gravity_scale = 0.573
+can_sleep = false
+continuous_cd = true
+linear_velocity = Vector3(0.4, 1.39, 1.29)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 auto_translate_mode = 1
-transform = Transform3D(1.89, 1.49012e-08, -5.96046e-08, 2.98023e-07, 0.45, 0, 2.38419e-07, 1.49012e-08, 2.08, -0.0348816, 4.10533, 0.0083847)
-shape = SubResource("BoxShape3D_oxgjf")
+transform = Transform3D(1.89, -7.09581e-08, -2.62386e-07, 2.98023e-07, 0.450001, -4.13258e-07, 2.38419e-07, 8.94069e-08, 2.08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_m6uej")
 
 [node name="filledInkBottleWithCorkV2" parent="RigidBody3D/CollisionShape3D" instance=ExtResource("4_4b8oa")]
-transform = Transform3D(0.529101, 1.49012e-08, 0, 0, 2.22222, 0, 0, 1.49012e-08, 0.480769, 0, -5.04444, 0)
+transform = Transform3D(0.529101, -8.39328e-16, -1.354e-08, 0, 2.22222, -6.44762e-09, 1.49012e-08, 2.98023e-08, 0.480769, 0.109, -2.214, 0)
 
 [node name="Circle_001" parent="RigidBody3D/CollisionShape3D/filledInkBottleWithCorkV2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0458458, 4.35454, -0.113482)
