@@ -65,7 +65,7 @@ func ChangeBusVolume(index: int, value: float) -> void:
 
 
 func _on_cheats_check_box_toggled(toggled_on: bool) -> void:
-	Signals.cheats_enabled = toggled_on
+	Global.cheats_enabled = toggled_on
 
 
 func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:

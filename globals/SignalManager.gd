@@ -11,4 +11,3 @@ extends Node
 
 @warning_ignore("unused_signal") signal pause(useValue: bool, value: bool)
 var just_exited_pause: bool = false
-
