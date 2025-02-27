@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bw624l72ljxcx"]
+[gd_scene load_steps=20 format=3 uid="uid://bw624l72ljxcx"]
 
 [ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="1_tquhn"]
 [ext_resource type="PackedScene" uid="uid://bu7xjkbde0woe" path="res://entities/map elements/inkfall.tscn" id="2_1i02o"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://coruxtyv64e23" path="res://entities/canvas/paintings/painting3/painting3_piece1.png" id="7_fwsu3"]
 [ext_resource type="Texture2D" uid="uid://cd6kw0eof1eg8" path="res://entities/canvas/paintings/painting3/painting3_finished.png" id="7_utvel"]
 [ext_resource type="Shader" path="res://entities/props/shaders/glowing.gdshader" id="9_v5gbk"]
+[ext_resource type="PackedScene" uid="uid://jl4r4yrdbtyr" path="res://entities/props/InkBottle/ink_bottle.tscn" id="10_ebf1n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wg4r2"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -161,4 +162,11 @@ material_overlay = SubResource("ShaderMaterial_118v5")
 pixel_size = 0.000976563
 texture = ExtResource("7_fwsu3")
 
+[node name="InkBottle" parent="." instance=ExtResource("10_ebf1n")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.7974, 9, -3.98608)
+
+[node name="PivotPoint" parent="InkBottle" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.15)
+
 [editable path="Canvas/Grabbable Item"]
+[editable path="InkBottle"]

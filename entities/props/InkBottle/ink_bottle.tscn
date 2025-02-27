@@ -6,9 +6,8 @@
 [ext_resource type="Material" uid="uid://cucamqxbholpb" path="res://entities/props/InkBottle/inkInBottle.tres" id="4_l7nnm"]
 [ext_resource type="Material" uid="uid://tpx1lstry5ry" path="res://entities/props/InkBottle/glass.tres" id="5_4suy2"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m6uej"]
-radius = 1.2
-height = 4.5
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f4vpq"]
+points = PackedVector3Array(0.75, 0, 0.75, 0.75, 0, -0.75, -0.75, 0, 0.75, -0.75, 0, -0.75, 1.1, -3, 1.1, 1.1, -3, -1.1, -1.1, -3, 1.1, -1.1, -3, -1.1, 0.4, 1.25, 0.4, 0.4, 1.25, -0.4, -0.4, 1.25, 0.4, -0.4, 1.25, -0.4, 0.55, 1.25, 0, -0.55, 1.25, 0, 0, 1.25, 0.55, 0, 1.25, -0.55, 0, 2, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqg0g"]
 resource_name = "cork"
@@ -132,16 +131,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.15)
 
 [node name="Rigidbody" type="RigidBody3D" parent="PivotPoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, -1.05)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 0.001
 gravity_scale = 0.573
 can_sleep = false
 continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 3
 linear_velocity = Vector3(0.4, 1.39, 1.29)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PivotPoint/Rigidbody"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="PivotPoint/Rigidbody"]
 auto_translate_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 2.1, -0.1)
-shape = SubResource("CapsuleShape3D_m6uej")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 3, -0.1)
+shape = SubResource("ConvexPolygonShape3D_f4vpq")
 
 [node name="filledInkBottleWithCorkV2" type="Node3D" parent="PivotPoint"]
 transform = Transform3D(1, -1.58633e-15, -2.55906e-08, 0, 1, -2.90144e-09, 3.09945e-08, 6.19888e-08, 1, -0.035, -0.15, -1.04)
