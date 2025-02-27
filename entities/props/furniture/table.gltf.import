@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b2ft7icysrsa3"
-path="res://.godot/imported/filledInkBottleWithCorkV2.gltf-78c3ad556c43768a26901964b55ff8a6.scn"
+uid="uid://dpuu1wn8skqoi"
+path="res://.godot/imported/table.gltf-a99a8c5446d8a7187358e3e466525779.scn"
 
 [deps]
 
-source_file="res://entities/props/inkBottle/filledInkBottleWithCorkV2.gltf"
-dest_files=["res://.godot/imported/filledInkBottleWithCorkV2.gltf-78c3ad556c43768a26901964b55ff8a6.scn"]
+source_file="res://entities/props/furniture/table.gltf"
+dest_files=["res://.godot/imported/table.gltf-a99a8c5446d8a7187358e3e466525779.scn"]
 
 [params]
 
