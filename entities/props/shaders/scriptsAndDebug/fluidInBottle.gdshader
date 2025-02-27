@@ -2,8 +2,8 @@ shader_type spatial;
 render_mode blend_mix, depth_draw_never, unshaded, cull_disabled;
 
 uniform vec3 baseColor : source_color = vec3(0.0, 0.0, 0.0);
-uniform float heightBias: hint_range(-3.0, 3.0, 0.01) = 1.0;
-uniform float heightCutoff: hint_range(-3.0, 3.0, 0.01) = 0.52;
+instance uniform float heightBias: hint_range(-3.0, 3.0, 0.01) = 3.0;
+instance uniform float heightCutoff: hint_range(-3.0, 3.0, 0.01) = 0.34;
 
 varying vec3 topVertex;
 varying vec3 world_position;
