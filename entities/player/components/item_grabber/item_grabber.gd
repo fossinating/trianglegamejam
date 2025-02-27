@@ -42,14 +42,12 @@ func _on_area_exited(area: Area3D) -> void:
 func pickup_item(item: GrabbableItem) -> void:
 	item.reparent(self)
 	item.on_pickup(self)
-	item.top_level = true
 	current_item = item
 	Signals.add_interaction.emit(self)
 
 func drop_item(item: GrabbableItem) -> void:
 	item.reparent(get_parent().get_parent())
 	current_item.on_drop(self)
-	item.top_level = false
 	current_item = null
 	Signals.remove_interaction.emit(self)
 	

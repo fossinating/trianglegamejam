@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="1_tquhn"]
 [ext_resource type="PackedScene" uid="uid://bu7xjkbde0woe" path="res://entities/map elements/inkfall.tscn" id="2_1i02o"]
 [ext_resource type="PackedScene" uid="uid://b6sgojl10sbf2" path="res://entities/items/grabbable_item.tscn" id="2_gteoe"]
-[ext_resource type="Material" uid="uid://b7l3b6ud7tfxi" path="res://levels/mat_inkfall.tres" id="3_1nljh"]
-[ext_resource type="PackedScene" path="res://entities/items/item_delivery_point.tscn" id="3_nogm7"]
+[ext_resource type="PackedScene" uid="uid://c1tcjtlgyxua3" path="res://entities/items/item_delivery_point.tscn" id="3_nogm7"]
 [ext_resource type="PackedScene" uid="uid://bgb3traixnsbr" path="res://entities/canvas/canvas.tscn" id="4_jxxqq"]
 [ext_resource type="Texture2D" uid="uid://cfp0ws1h084cl" path="res://entities/canvas/paintings/painting3/painting3_unfinished.png" id="6_6mjbw"]
 [ext_resource type="Texture2D" uid="uid://coruxtyv64e23" path="res://entities/canvas/paintings/painting3/painting3_piece1.png" id="7_fwsu3"]
@@ -138,7 +137,7 @@ size = 7.0
 transform = Transform3D(1, 9.99201e-16, 0, -2.66454e-15, 1, -1.49012e-08, 0, 1.49012e-08, 1, -6.55651e-07, -4.51396, 1.3947)
 
 [node name="Grabbable Item" parent="Canvas" node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
-transform = Transform3D(1, 1.14353e-14, -7.10543e-15, -1.15463e-14, 1, -4.47035e-08, 8.88178e-15, 4.47035e-08, 1, 0.002, 3.50195, -4.723)
+transform = Transform3D(1, 1.14353e-14, -7.10543e-15, -1.15463e-14, 1, -4.47035e-08, 8.88178e-15, 4.47035e-08, 1, 0.005, 3.16, -4.723)
 delivery_point = NodePath("../Item Delivery Point")
 item_image = ExtResource("7_fwsu3")
 shrink_factor = 0.25

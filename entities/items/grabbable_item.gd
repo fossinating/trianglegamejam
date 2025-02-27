@@ -50,7 +50,7 @@ func setup() -> void:
 	
 	sprite.scale = canvas.size * Vector3.ONE
 	
-	position.x = 0.002
+	position.x = 0.005
 	
 
 func _ready():
@@ -65,11 +65,17 @@ func _process(delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if carrier:
 		var dist = global_position.distance_to(carrier.global_position)
+		var horiz_position = Vector3(global_position.x, carrier.global_position.y, global_position.z)
 		if dist > MAX_CARRY_DISTANCE:
-			global_position = lerp(global_position, 
-			carrier.global_position + (global_position - carrier.global_position) / dist * MAX_CARRY_DISTANCE, 0.9)
+			horiz_position = lerp(horiz_position, 
+			carrier.global_position + (horiz_position - carrier.global_position) / dist * MAX_CARRY_DISTANCE, 0.9)
 
+		global_position.x = horiz_position.x
+		global_position.z = horiz_position.z
 		delivery_direction_particles.look_at(Vector3(delivery_point.global_position.x, 0, delivery_point.global_position.z))
+		position.y = -.44
+	else:
+		position.x = 0.005
 
 
 func on_pickup(grabber: ItemGrabber) -> void:
