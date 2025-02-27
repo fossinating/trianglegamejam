@@ -58,7 +58,7 @@ func _ready():
 	
 
 func _process(delta: float) -> void:
-	scale_mult = clamp(scale_mult + delta * (1-shrink_factor) * (-1 if carrier else 1), shrink_factor, 1.0)
+	scale_mult = clamp(scale_mult + delta * 3*(1-shrink_factor) * (-1 if carrier else 1), shrink_factor, 1.0)
 	sprite_carrier.scale = scale_mult * Vector3.ONE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

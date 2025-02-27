@@ -127,6 +127,8 @@ func _physics_process(delta: float) -> void:
 		#	handle_animations(delta)
 		elif climbing_waterfall:
 			item_grabber.drop_current_item()
+		elif not is_on_floor():
+			item_grabber.drop_current_item()
 
 	# Setup handling of landing
 
