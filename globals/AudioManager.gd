@@ -24,6 +24,7 @@ func play_music(name: String):
 		Global.player.music_player.stream = music_setting.sound_effect
 		Global.player.music_player.volume_db = music_setting.volume_db
 		Global.player.music_player.pitch_scale = music_setting.pitch_scale
+		Global.player.music_player.bus = "MUS"
 		Global.player.music_player.play()
 	else :
 		push_error("Audio Manager failed to find music of the name ", name)
@@ -44,6 +45,7 @@ func create_3d_audio_at_location(location, type: SoundEffectSettings.SOUND_EFFEC
 			new_3D_audio.pitch_scale = sound_effect_setting.pitch_scale + Global.rng.randf_range(-sound_effect_setting.pitch_randomness, sound_effect_setting.pitch_randomness)
 			new_3D_audio.finished.connect(sound_effect_setting.on_audio_finished)
 			new_3D_audio.finished.connect(new_3D_audio.queue_free)
+			new_3D_audio.bus = "SFX"
 			
 			new_3D_audio.play()
 	else :
