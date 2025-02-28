@@ -114,6 +114,7 @@ pitch_scale = 1.0
 pitch_randomness = 0.0
 
 [node name="AudioManager" type="Node3D"]
+process_mode = 3
 script = ExtResource("1_f2dtx")
 sound_effect_settings = Array[ExtResource("2_hy51s")]([SubResource("Resource_wkgmx"), SubResource("Resource_sfl0n"), SubResource("Resource_ydf8x"), SubResource("Resource_x8riq"), SubResource("Resource_nx73s"), SubResource("Resource_cykvd"), SubResource("Resource_5xbyj"), SubResource("Resource_ja6nr"), SubResource("Resource_0ybd6")])
 music_settings = Array[ExtResource("2_hy51s")]([SubResource("Resource_nipoj")])

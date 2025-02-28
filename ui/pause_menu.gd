@@ -25,6 +25,7 @@ func _input(event: InputEvent) -> void:
 func _on_button_resume_pressed() -> void:
 	Signals.pause.emit(true, false)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	AudioManager.play(SoundEffectSettings.SOUND_EFFECT_TYPE.UI_PLAY)
 	
 func reset_pause_menu():
 	$OptionsMarginContainer.visible = false
@@ -35,16 +36,19 @@ func _on_button_options_pressed() -> void:
 	$PausedLabel.visible = false
 	$MainVBox.visible = false
 	$OptionsMarginContainer.visible = true
+	AudioManager.play(SoundEffectSettings.SOUND_EFFECT_TYPE.UI_SELECT)
 	UpdateSliderVisuals()
 
 func _on_button_back_pressed() -> void:
 	$OptionsMarginContainer.visible = false
 	$MainVBox.visible = true
 	$PausedLabel.visible = true
+	AudioManager.play(SoundEffectSettings.SOUND_EFFECT_TYPE.UI_BACK)
 
 func _on_button_quit_pressed() -> void:
 	Util.change_scene(Util.MENU_PATH)
 	Global.game_state = Util.GAME_STATE.MENU
+	AudioManager.play(SoundEffectSettings.SOUND_EFFECT_TYPE.UI_BACK)
 
 func _on_volume_master_value_changed(value: float) -> void:
 	ChangeBusVolume(volBusMaster, value)
@@ -66,13 +70,19 @@ func ChangeBusVolume(index: int, value: float) -> void:
 
 func _on_cheats_check_box_toggled(toggled_on: bool) -> void:
 	Global.cheats_enabled = toggled_on
+	if toggled_on:
+		AudioManager.play(SoundEffectSettings.SOUND_EFFECT_TYPE.UI_SELECT)
+	else:
+		AudioManager.play(SoundEffectSettings.SOUND_EFFECT_TYPE.UI_BACK)
 
 
 func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		get_window().set_mode(Window.MODE_FULLSCREEN)
+		AudioManager.play(SoundEffectSettings.SOUND_EFFECT_TYPE.UI_SELECT)
 	else:
 		get_window().set_mode(Window.MODE_WINDOWED)
+		AudioManager.play(SoundEffectSettings.SOUND_EFFECT_TYPE.UI_BACK)
 
 
 func _on_mouse_sensitivity_value_changed(value: float) -> void:

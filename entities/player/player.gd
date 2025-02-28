@@ -132,6 +132,7 @@ func _physics_process(delta: float) -> void:
 			item_grabber.drop_current_item()
 			#add_child(ink_burst_particles_scene.instantiate())
 			
+			AudioManager.create_3d_audio_at_location(SoundEffectSettings.SOUND_EFFECT_TYPE.ON_JUMP, position)
 		#	handle_animations(delta)
 		elif climbing_waterfall:
 			item_grabber.drop_current_item()
@@ -165,6 +166,7 @@ func _physics_process(delta: float) -> void:
 	if jumping and (not was_on_surface) and is_on_floor():
 		#print("landing")
 		add_child(ink_burst_particles_scene.instantiate())
+		AudioManager.create_3d_audio_at_location(SoundEffectSettings.SOUND_EFFECT_TYPE.ON_LAND, position)
 
 
 	# Push skeleton into the wall if swimming up a waterfall
