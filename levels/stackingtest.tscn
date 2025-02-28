@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b43ijc3ofk1ky"]
+
+[ext_resource type="PackedScene" uid="uid://bhvg5j5c0322x" path="res://entities/canvas/canvasV1_recentered.tscn" id="1_7sg37"]
+
+[node name="Stackingtest" type="Node3D"]
+
+[node name="canvasV1" parent="." instance=ExtResource("1_7sg37")]
+transform = Transform3D(-4.36748e-08, -0.999163, -0.0409086, 1, -4.37114e-08, 0, -1.78817e-09, -0.0409086, 0.999163, 0, 0, 0)
+
+[node name="canvasV2" parent="." instance=ExtResource("1_7sg37")]
+transform = Transform3D(-4.37102e-08, -0.999973, -0.00731718, 1, -4.37114e-08, 0, -3.19844e-10, -0.00731718, 0.999973, 0, 0.15, 0)
+
+[node name="canvasV3" parent="." instance=ExtResource("1_7sg37")]
+transform = Transform3D(-4.37105e-08, -0.999979, 0.00640525, 1, -4.37114e-08, 0, 2.79983e-10, 0.00640525, 0.999979, 0, 0.3, 0)
+
+[node name="canvasV4" parent="." instance=ExtResource("1_7sg37")]
+transform = Transform3D(-4.36788e-08, -0.999255, -0.0385975, 1, -4.37114e-08, 0, -1.68715e-09, -0.0385975, 0.999255, 0, 0.45, 0)
+
+[node name="canvasV5" parent="." instance=ExtResource("1_7sg37")]
+transform = Transform3D(-4.36799e-08, -0.99928, -0.0379488, 1, -4.37114e-08, 0, -1.6588e-09, -0.0379488, 0.99928, 0, 0.6, 0)
+
+[node name="canvasV6" parent="." instance=ExtResource("1_7sg37")]
+transform = Transform3D(-4.37037e-08, -0.999824, -0.0187353, 1, -4.37114e-08, 0, -8.18946e-10, -0.0187353, 0.999824, 0, 0.75, 0)

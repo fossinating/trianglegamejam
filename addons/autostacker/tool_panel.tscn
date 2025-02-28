@@ -1,0 +1,118 @@
+[gd_scene load_steps=2 format=3 uid="uid://balxte5uq47ca"]
+
+[ext_resource type="Script" path="res://addons/autostacker/tool_panel.gd" id="1_0v2hv"]
+
+[node name="ToolPanel" type="VBoxContainer"]
+script = ExtResource("1_0v2hv")
+
+[node name="LabelTitle" type="Label" parent="."]
+layout_mode = 2
+text = "Autostacker"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxStacking" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="HBoxStacking"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stack"
+
+[node name="Label" type="Label" parent="HBoxStacking"]
+layout_mode = 2
+text = "Stack Interval "
+
+[node name="LineEditStackInterval" type="LineEdit" parent="HBoxStacking"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainerAxes" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelAxis" type="Label" parent="HBoxContainerAxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Axis"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelX" type="Label" parent="HBoxContainerAxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelY" type="Label" parent="HBoxContainerAxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelZ" type="Label" parent="HBoxContainerAxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Z"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainerRotationMin" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelMin" type="Label" parent="HBoxContainerRotationMin"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Min"
+
+[node name="LineEditMinX" type="LineEdit" parent="HBoxContainerRotationMin"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="LineEditMinY" type="LineEdit" parent="HBoxContainerRotationMin"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="LineEditMinZ" type="LineEdit" parent="HBoxContainerRotationMin"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="HBoxContainerRotationMax" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelMax" type="Label" parent="HBoxContainerRotationMax"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max"
+
+[node name="LineEditMaxX" type="LineEdit" parent="HBoxContainerRotationMax"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="LineEditMaxY" type="LineEdit" parent="HBoxContainerRotationMax"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="LineEditMaxZ" type="LineEdit" parent="HBoxContainerRotationMax"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="RotateButton" type="Button" parent="."]
+layout_mode = 2
+text = "Rotate Nodes"
+
+[connection signal="text_changed" from="HBoxStacking/LineEditStackInterval" to="." method="_on_line_edit_stack_interval_text_changed"]
+[connection signal="text_changed" from="HBoxContainerRotationMin/LineEditMinX" to="." method="_on_line_edit_min_x_text_changed"]
+[connection signal="text_changed" from="HBoxContainerRotationMin/LineEditMinY" to="." method="_on_line_edit_min_y_text_changed"]
+[connection signal="text_changed" from="HBoxContainerRotationMin/LineEditMinZ" to="." method="_on_line_edit_min_z_text_changed"]
+[connection signal="text_changed" from="HBoxContainerRotationMax/LineEditMaxX" to="." method="_on_line_edit_max_x_text_changed"]
+[connection signal="text_changed" from="HBoxContainerRotationMax/LineEditMaxY" to="." method="_on_line_edit_max_y_text_changed"]
+[connection signal="text_changed" from="HBoxContainerRotationMax/LineEditMaxZ" to="." method="_on_line_edit_max_z_text_changed"]
+[connection signal="pressed" from="RotateButton" to="." method="_on_rotate_button_pressed"]

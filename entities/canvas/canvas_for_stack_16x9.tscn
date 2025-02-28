@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://judbuqe7ad80"]
+
+[ext_resource type="PackedScene" uid="uid://bhvg5j5c0322x" path="res://entities/canvas/canvasV1_recentered.tscn" id="1_ud36p"]
+
+[node name="CanvasForStack16x9" type="Node3D"]
+
+[node name="canvasV1" parent="." instance=ExtResource("1_ud36p")]
