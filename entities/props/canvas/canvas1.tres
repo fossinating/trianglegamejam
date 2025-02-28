@@ -1,7 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=12 format=3 uid="uid://0mrwjrsev0kn"]
+[gd_resource type="ShaderMaterial" load_steps=13 format=3 uid="uid://0mrwjrsev0kn"]
 
 [ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/posterizeImageScript.gdshader" id="1_d2n3x"]
 [ext_resource type="Texture2D" uid="uid://cf5lii2al36qa" path="res://entities/props/canvas/IMG_1226.png" id="2_rggx0"]
+[ext_resource type="Texture2D" uid="uid://bevggcgquhmw5" path="res://entities/props/canvas/NormalMap.png" id="2_s305a"]
 [ext_resource type="Texture2D" uid="uid://b2ijes2308nft" path="res://entities/props/canvas/Ua5Mn.jpg" id="2_tx4ub"]
 
 [sub_resource type="Gradient" id="Gradient_oli7n"]
@@ -45,10 +46,10 @@ shader_parameter/UVOffsetX = 0.47
 shader_parameter/UVOffsetY = 0.5
 shader_parameter/UVScaleX = 1.8
 shader_parameter/UVScaleY = 1.0
-shader_parameter/normalStrength = 0.56
-shader_parameter/normalSize = 3.37
-shader_parameter/roughnessStrength = 0.6
-shader_parameter/specularStrength = 20.0
+shader_parameter/normalStrength = 1.0
+shader_parameter/normalSize = 0.0
+shader_parameter/roughnessStrength = 0.67
+shader_parameter/specularStrength = 0.24
 shader_parameter/specularColor = Color(1, 1, 1, 1)
 shader_parameter/diffuseLightingStrength = 1.0
 shader_parameter/paintTextureStrength = 0.91
@@ -57,5 +58,5 @@ shader_parameter/postPosterizingTexture = ExtResource("2_rggx0")
 shader_parameter/shadingTexture = ExtResource("2_tx4ub")
 shader_parameter/roughnessGradient = SubResource("GradientTexture1D_d1ccu")
 shader_parameter/specularGradient = SubResource("GradientTexture1D_3k54u")
-shader_parameter/paintTexture = ExtResource("2_tx4ub")
+shader_parameter/paintTexture = ExtResource("2_s305a")
 shader_parameter/paintTextureGradient = SubResource("GradientTexture1D_fffyf")

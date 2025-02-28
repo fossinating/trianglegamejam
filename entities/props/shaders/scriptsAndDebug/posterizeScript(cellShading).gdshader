@@ -17,6 +17,7 @@ uniform float UVScaleY: hint_range(-20.0, 20.0, 0.01);
 
 varying vec2 new_uvs;
 
+uniform sampler2D normalTexture : source_color;
 uniform float normalStrength: hint_range(0.0, 20.0, 0.01);
 uniform float normalSize: hint_range(0.0, 20.0, 0.01);
 
@@ -66,8 +67,10 @@ void fragment() {
 	ROUGHNESS = texture(roughnessGradient, vec2(monochromeTexture, 0.5)).r* roughnessStrength;
 	SPECULAR = texture(specularGradient, vec2(monochromeTexture, 0.5)).r + specularStrength;
 
+	//NORMAL_MAP = heightToNormal(shadingTexture).rgb;
 
-	NORMAL_MAP = heightToNormal(shadingTexture).rgb;
+	NORMAL_MAP = texture(normalTexture, new_uvs).rgb;
+
 	NORMAL_MAP_DEPTH = normalStrength;
 }
 

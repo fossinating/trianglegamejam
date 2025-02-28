@@ -76,7 +76,8 @@ void fragment() {
 	SPECULAR = texture(specularGradient, vec2(monochromeTexture, 0.5)).r * specularStrength*(1.0-paintTextureStrength) + mix(texture(specularGradient, vec2(monochromeTexture, 0.5)).r,1.0,0.6) * specularStrength * (texture(paintTexture, new_uvs).r+(1.0-texture(shadingTexture,new_uvs).a)) * paintTextureStrength;
 
 
-	NORMAL_MAP = heightToNormal(postPosterizingTexture).rgb;
+	//NORMAL_MAP = heightToNormal(postPosterizingTexture).rgb;
+	NORMAL_MAP = texture(paintTexture, new_uvs).rgb;
 	NORMAL_MAP_DEPTH = normalStrength;
 }
 
