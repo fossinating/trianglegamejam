@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://ugibgwjk8oos"]
+[gd_scene load_steps=62 format=4 uid="uid://ugibgwjk8oos"]
 
 [ext_resource type="Material" uid="uid://tpx1lstry5ry" path="res://entities/props/inkBottle/glass.tres" id="1_dqxlq"]
 [ext_resource type="PackedScene" uid="uid://w17cjgpxaave" path="res://entities/props/easel/easel.gltf" id="2_44hob"]
@@ -40,6 +40,8 @@
 [ext_resource type="Material" uid="uid://n31605pr3iup" path="res://entities/props/roomEnvironment/floorWoodPlane.tres" id="32_wgbne"]
 [ext_resource type="Material" uid="uid://bg6786nax8gwt" path="res://entities/props/roomEnvironment/floorWoodCrease.tres" id="33_2yytc"]
 [ext_resource type="Material" uid="uid://npc102apj4iv" path="res://entities/props/easel/easel.tres" id="35_gf7uf"]
+[ext_resource type="PackedScene" uid="uid://c7j3dvdcty6yr" path="res://entities/props/paint/turpentine.gltf" id="41_q3ene"]
+[ext_resource type="Material" uid="uid://bhu430yvh0ad6" path="res://entities/props/paint/turpentine.tres" id="42_jhlu8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m6uej"]
 height = 9.58165
@@ -610,6 +612,13 @@ transform = Transform3D(42.35, 0, 0, 0, 42.35, 0, 0, 0, 42.35, -49.816, 3.61768,
 material_override = ExtResource("33_2yytc")
 mesh = SubResource("PlaneMesh_tluvh")
 
+[node name="turpentine" parent="." instance=ExtResource("41_q3ene")]
+transform = Transform3D(0.750116, 0, -0.355283, 0, 0.83, 0, 0.355283, 0, 0.750116, 19.2846, 33.5082, -52.0042)
+
+[node name="Cube_015" parent="turpentine" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("42_jhlu8")
+
 [editable path="workshopScene"]
 [editable path="workshopScene/Player"]
 [editable path="workshopScene/Canvas/Grabbable Item"]
@@ -627,3 +636,4 @@ mesh = SubResource("PlaneMesh_tluvh")
 [editable path="props/paintTubeUsed"]
 [editable path="props/easel"]
 [editable path="floorWoodboardsRough"]
+[editable path="turpentine"]
