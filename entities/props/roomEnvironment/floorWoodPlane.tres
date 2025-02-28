@@ -8,7 +8,7 @@
 [sub_resource type="Gradient" id="Gradient_oli7n"]
 interpolation_mode = 1
 interpolation_color_space = 2
-offsets = PackedFloat32Array(0.00711744, 0.0302491, 0.0355872, 0.126335, 0.987544)
+offsets = PackedFloat32Array(0.00711744, 0.0640569, 0.0836299, 0.113879, 0.987544)
 colors = PackedColorArray(0.222094, 0.0252604, 0.0647691, 1, 0.445062, 0.205191, 0.16852, 1, 0.688658, 0.402462, 0.281252, 1, 0.852288, 0.640326, 0.418661, 1, 0.892938, 0.810157, 0.587682, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_upmih"]
