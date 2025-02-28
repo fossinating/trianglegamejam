@@ -32,6 +32,7 @@ uniform float diffuseLightingStrength: hint_range(0.0, 1.0, 0.01);
 
 uniform sampler2D paintTexture : source_color;
 uniform float paintTextureStrength: hint_range(0.0, 1.0, 0.01);
+uniform sampler2D paintTextureGradient : source_color;
 
 
 
@@ -47,23 +48,23 @@ float random(vec2 co){
 void vertex() {
 
 }
-
+//texture(paintTextureGradient, vec2(paintTexture, 0.5)).x
 vec4 heightToNormal(sampler2D heightTexture){
 	vec2 size = vec2(2.0,0.0);
 	vec3 off = vec3(-1,0,1);
 	float x = (texture(heightTexture, new_uvs).x + texture(heightTexture, new_uvs).y + texture(heightTexture, new_uvs).z)/3.0;
-    x = x * (1.0-paintTextureStrength) + x*texture(paintTexture, new_uvs).x*paintTextureStrength;
+    x = x * (1.0-paintTextureStrength) + texture(paintTextureGradient, vec2(texture(paintTexture, new_uvs).x, 0.5)).x*paintTextureStrength;
 	float xy = (texture(heightTexture, new_uvs+off.xy).x+texture(heightTexture, new_uvs+off.xy).y+texture(heightTexture, new_uvs+off.xy).z)/3.0;
-    xy = xy * (1.0-paintTextureStrength) + xy*texture(paintTexture, new_uvs+off.xy).x*paintTextureStrength;
+    xy = xy * (1.0-paintTextureStrength) + texture(paintTextureGradient, vec2(texture(paintTexture, new_uvs+off.xy).x, 0.5)).x*paintTextureStrength;
 	float zy = (texture(heightTexture, new_uvs+off.zy).x+texture(heightTexture, new_uvs+off.zy).y+texture(heightTexture, new_uvs+off.zy).z)/3.0;
-    zy = zy * (1.0-paintTextureStrength) + zy*texture(paintTexture, new_uvs+off.zy).x*paintTextureStrength;
+    zy = zy * (1.0-paintTextureStrength) + texture(paintTextureGradient, vec2(texture(paintTexture, new_uvs+off.zy).x, 0.5)).x*paintTextureStrength;
 	float yx = (texture(heightTexture, new_uvs+off.yx).x+texture(heightTexture, new_uvs+off.yx).y+texture(heightTexture, new_uvs+off.yx).z)/3.0;
-	yx = yx * (1.0-paintTextureStrength) + yx*texture(paintTexture, new_uvs+off.yx).x*paintTextureStrength;
+	yx = yx * (1.0-paintTextureStrength) + texture(paintTextureGradient, vec2(texture(paintTexture, new_uvs+off.yx).x, 0.5)).x*paintTextureStrength;
 	float yz = (texture(heightTexture, new_uvs+off.yz).x+texture(heightTexture, new_uvs+off.yz).y+texture(heightTexture, new_uvs+off.yz).z)/3.0;
-	yz = yz * (1.0-paintTextureStrength) + yz*texture(paintTexture, new_uvs+off.yz).x*paintTextureStrength;
+	yz = yz * (1.0-paintTextureStrength) + texture(paintTextureGradient, vec2(texture(paintTexture, new_uvs+off.yz).x, 0.5)).x*paintTextureStrength;
 	vec3 va = normalize(vec3(size.xy,xy-zy*normalSize));
     vec3 vb = normalize(vec3(size.yx,yz-yx*normalSize));
-    return vec4( cross(va,vb),x);
+    return vec4( cross(va,vb),x)*(1.0-texture(heightTexture, new_uvs).a);
 }
 
 void fragment() {
@@ -75,7 +76,8 @@ void fragment() {
 	SPECULAR = texture(specularGradient, vec2(monochromeTexture, 0.5)).r * specularStrength*(1.0-paintTextureStrength) + mix(texture(specularGradient, vec2(monochromeTexture, 0.5)).r,1.0,0.6) * specularStrength * (texture(paintTexture, new_uvs).r+(1.0-texture(shadingTexture,new_uvs).a)) * paintTextureStrength;
 
 
-	NORMAL_MAP = heightToNormal(postPosterizingTexture).rgb;
+	//NORMAL_MAP = heightToNormal(postPosterizingTexture).rgb;
+	NORMAL_MAP = texture(paintTexture, new_uvs).rgb;
 	NORMAL_MAP_DEPTH = normalStrength;
 }
 

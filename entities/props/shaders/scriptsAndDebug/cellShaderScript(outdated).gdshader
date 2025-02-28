@@ -174,4 +174,3 @@ vec3 posterizeLight(vec3 light){
 	float specular = pow(NdotH, specular_power) * specular_strength * ATTENUATION;
 	//SPECULAR_LIGHT += specular * specular_color.rgb * LIGHT_COLOR;
 }*/
-
