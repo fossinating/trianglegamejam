@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://ugibgwjk8oos"]
+[gd_scene load_steps=69 format=4 uid="uid://ugibgwjk8oos"]
 
 [ext_resource type="Material" uid="uid://tpx1lstry5ry" path="res://entities/props/inkBottle/glass.tres" id="1_dqxlq"]
 [ext_resource type="PackedScene" uid="uid://w17cjgpxaave" path="res://entities/props/easel/easel.gltf" id="2_44hob"]
@@ -42,6 +42,10 @@
 [ext_resource type="Material" uid="uid://npc102apj4iv" path="res://entities/props/easel/easel.tres" id="35_gf7uf"]
 [ext_resource type="PackedScene" uid="uid://c7j3dvdcty6yr" path="res://entities/props/paint/turpentine.gltf" id="41_q3ene"]
 [ext_resource type="Material" uid="uid://bhu430yvh0ad6" path="res://entities/props/paint/turpentine.tres" id="42_jhlu8"]
+[ext_resource type="PackedScene" uid="uid://co143vaguh0de" path="res://entities/props/sketchBook/sketchbook.gltf" id="43_bfksy"]
+[ext_resource type="Material" uid="uid://ckjowpr78e765" path="res://entities/props/sketchBook/sketchbookCover.tres" id="44_0vbn3"]
+[ext_resource type="Material" uid="uid://u8q1qwm32hhp" path="res://entities/props/sketchBook/sketchbookRings.tres" id="45_oaiy5"]
+[ext_resource type="Material" uid="uid://bkgonbiduy8km" path="res://entities/props/sketchBook/paper.tres" id="45_vx8xi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m6uej"]
 height = 9.58165
@@ -161,6 +165,12 @@ size = Vector3(78.37, 0.55, 40.44)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_72n27"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_t8ila"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jhjxc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s7w6e"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -246,6 +256,14 @@ shadow_enabled = true
 omni_range = 49.9859
 omni_attenuation = 0.515
 
+[node name="OmniLight3D4" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0372, 43.741, -98.0432)
+light_color = Color(0.966854, 0.964655, 0.959572, 1)
+light_energy = 7.549
+shadow_enabled = true
+omni_range = 33.678
+omni_attenuation = 0.515
+
 [node name="OmniLight3D2" type="OmniLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.0048, 57.8023, -9.32704)
 light_color = Color(0.864344, 0.85569, 0.83571, 1)
@@ -265,7 +283,7 @@ omni_attenuation = 0.456
 [node name="props" type="Node" parent="."]
 
 [node name="paintBrushV1" parent="props" instance=ExtResource("7_rd8iu")]
-transform = Transform3D(-0.479986, 0.12366, -0.0657369, -0.0145558, 0.189375, 0.462521, 0.139288, 0.445921, -0.178194, 38.3839, 23.0599, -86.2423)
+transform = Transform3D(-0.479986, 0.12366, -0.0657369, -0.0145558, 0.189375, 0.462521, 0.139288, 0.445921, -0.178194, 16.964, 23.0599, -70.4654)
 
 [node name="brush1" parent="props/paintBrushV1" index="0"]
 transform = Transform3D(1.39244, 0.0442206, 0.138338, -0.0899388, 1.30961, 0.48666, -0.114034, -0.492921, 1.30538, 66.2101, 35.6052, -0.713272)
@@ -613,11 +631,69 @@ material_override = ExtResource("33_2yytc")
 mesh = SubResource("PlaneMesh_tluvh")
 
 [node name="turpentine" parent="." instance=ExtResource("41_q3ene")]
-transform = Transform3D(0.750116, 0, -0.355283, 0, 0.83, 0, 0.355283, 0, 0.750116, 19.2846, 33.5082, -52.0042)
+transform = Transform3D(0.662518, -0.316675, 0.386894, -0.224072, 0.386101, 0.699727, -0.446948, -0.66298, 0.2227, -3.81944, 33.5082, -94.7387)
 
 [node name="Cube_015" parent="turpentine" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("42_jhlu8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="turpentine"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="turpentine/StaticBody3D"]
+transform = Transform3D(9.16, 0, 0, 0, 14.03, 0, 0, 0, 5.48, 0, 0, 0)
+shape = SubResource("BoxShape3D_t8ila")
+
+[node name="sketchbook" parent="." instance=ExtResource("43_bfksy")]
+transform = Transform3D(0.590055, 0, -0.272644, 0, 0.65, 0, 0.272644, 0, 0.590055, 7.52971, 28.6549, -56.0597)
+
+[node name="Cube_016" parent="sketchbook" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("44_0vbn3")
+surface_material_override/1 = ExtResource("45_vx8xi")
+surface_material_override/2 = ExtResource("45_vx8xi")
+
+[node name="Circle_015" parent="sketchbook" index="1"]
+transform = Transform3D(1.18859, 0, 0, 0, 0.930875, 0, 0, 0, 0.930875, -5.75896, 0, -8.99368)
+material_override = ExtResource("45_oaiy5")
+
+[node name="Cube_017" parent="sketchbook" index="2"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -0.0185852, -0.0766678, -8.74235)
+material_override = ExtResource("44_0vbn3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sketchbook"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sketchbook/StaticBody3D"]
+transform = Transform3D(12.05, 0, 0, 0, 1, 0, 0, 0, 17.26, 0, 0, 0)
+shape = SubResource("BoxShape3D_jhjxc")
+
+[node name="sketchbook2" parent="." instance=ExtResource("43_bfksy")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 11.9232, 31.3617, -75.8008)
+
+[node name="Cube_016" parent="sketchbook2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("44_0vbn3")
+surface_material_override/1 = ExtResource("45_vx8xi")
+surface_material_override/2 = ExtResource("45_vx8xi")
+
+[node name="Circle_015" parent="sketchbook2" index="1"]
+transform = Transform3D(1.18859, 0, 0, 0, 0.930875, 0, 0, 0, 0.930875, -5.75896, 0, -8.99368)
+material_override = ExtResource("45_oaiy5")
+
+[node name="Cube_017" parent="sketchbook2" index="2"]
+transform = Transform3D(1, 0, -5.96046e-08, 2.62542e-08, -0.897766, 0.440472, -5.35111e-08, -0.440472, -0.897767, -0.0185852, 0.684696, -9.03967)
+material_override = ExtResource("44_0vbn3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sketchbook2/Cube_017" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sketchbook2/Cube_017/StaticBody3D"]
+transform = Transform3D(12.06, 0, 0, 0, 0.66, 0, 0, 0, 17.85, 0, 0.84, 8.59)
+shape = SubResource("BoxShape3D_s7w6e")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sketchbook2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sketchbook2/StaticBody3D"]
+transform = Transform3D(12.05, 0, 0, 0, 1, 0, 0, 0, 17.26, 0, 0, 0)
+shape = SubResource("BoxShape3D_jhjxc")
 
 [editable path="workshopScene"]
 [editable path="workshopScene/Player"]
@@ -637,3 +713,5 @@ material_override = ExtResource("42_jhlu8")
 [editable path="props/easel"]
 [editable path="floorWoodboardsRough"]
 [editable path="turpentine"]
+[editable path="sketchbook"]
+[editable path="sketchbook2"]
