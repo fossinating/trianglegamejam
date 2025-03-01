@@ -6,6 +6,7 @@ const TOOL_PANEL := preload("res://addons/autostacker/tool_panel.tscn")
 
 func _enter_tree() -> void:
 	panel = TOOL_PANEL.instantiate()
+	panel.undo_redo = get_undo_redo()
 	
 	add_control_to_dock(EditorPlugin.DOCK_SLOT_LEFT_BL, panel)
 
