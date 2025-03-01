@@ -41,70 +41,140 @@ func only_float(current_value: float, new_text: String):
 
 var stack_interval := 0.0
 func _on_line_edit_stack_interval_text_changed(new_text: String) -> void:
+	var box := $HBoxStacking/LineEditStackInterval
 	if new_text == "":
 		stack_interval = 0.0
-		$HBoxStacking/LineEditStackInterval.text = "0"
-	if only_float(float($HBoxStacking/LineEditStackInterval.text), new_text)[1]:
-		stack_interval = float($HBoxStacking/LineEditStackInterval.text)
+	elif new_text == "-":
+		stack_interval = 0.0
+	elif new_text.length() >= 2 and new_text.substr(0, new_text.length() - 1).is_valid_float() and new_text[new_text.length() - 1] == "-":
+		stack_interval = float(new_text.substr(0, new_text.length() - 1)) * -1.0
+		if float(new_text.substr(0, new_text.length() - 1)) == 0:
+			stack_interval = 0
+			box.text = str("-", new_text.substr(0, new_text.length() - 1))
+		else:
+			box.text = str(stack_interval)
+	elif only_float(float(box.text), new_text)[1]:
+		stack_interval = float(box.text)
 	else:
-		$HBoxStacking/LineEditStackInterval.text = str(stack_interval)
+		box.text = str(stack_interval)
+	box.caret_column = new_text.length()
 
 
 func _on_line_edit_min_x_text_changed(new_text: String) -> void:
+	var box := $HBoxContainerRotationMin/LineEditMinX
 	if new_text == "":
 		rangeX.x = 0.0
-		$HBoxContainerRotationMin/LineEditMinX.text = "0"
-	if only_float(float($HBoxContainerRotationMin/LineEditMinX.text), new_text)[1]:
-		rangeX.x = float($HBoxContainerRotationMin/LineEditMinX.text)
+	elif new_text == "-":
+		rangeX.x = 0.0
+	elif new_text.length() >= 2 and new_text.substr(0, new_text.length() - 1).is_valid_float() and new_text[new_text.length() - 1] == "-":
+		rangeX.x = float(new_text.substr(0, new_text.length() - 1)) * -1.0
+		if float(new_text.substr(0, new_text.length() - 1)) == 0:
+			rangeX.x = 0
+			box.text = str("-", new_text.substr(0, new_text.length() - 1))
+		else:
+			box.text = str(rangeX.x)
+	elif only_float(float(box.text), new_text)[1]:
+		rangeX.x = float(box.text)
 	else:
-		$HBoxContainerRotationMin/LineEditMinX.text = str(rangeX.x)
+		box.text = str(rangeX.x)
+	box.caret_column = new_text.length()
 
 
 func _on_line_edit_min_y_text_changed(new_text: String) -> void:
+	var box := $HBoxContainerRotationMin/LineEditMinY
 	if new_text == "":
 		rangeY.x = 0.0
-		$HBoxContainerRotationMin/LineEditMinY.text = "0"
-	if only_float(float($HBoxContainerRotationMin/LineEditMinY.text), new_text)[1]:
-		rangeY.x = float($HBoxContainerRotationMin/LineEditMinY.text)
+	elif new_text == "-":
+		rangeY.x = 0.0
+	elif new_text.length() >= 2 and new_text.substr(0, new_text.length() - 1).is_valid_float() and new_text[new_text.length() - 1] == "-":
+		rangeY.x = float(new_text.substr(0, new_text.length() - 1)) * -1.0
+		if float(new_text.substr(0, new_text.length() - 1)) == 0:
+			rangeY.x = 0
+			box.text = str("-", new_text.substr(0, new_text.length() - 1))
+		else:
+			box.text = str(rangeY.x)
+	elif only_float(float(box.text), new_text)[1]:
+		rangeY.x = float(box.text)
 	else:
-		$HBoxContainerRotationMin/LineEditMinY.text = str(rangeY.x)
+		box.text = str(rangeY.x)
+	box.caret_column = new_text.length()
 
 
 func _on_line_edit_min_z_text_changed(new_text: String) -> void:
+	var box := $HBoxContainerRotationMin/LineEditMinZ
 	if new_text == "":
 		rangeZ.x = 0.0
-		$HBoxContainerRotationMin/LineEditMinZ.text = "0"
-	if only_float(float($HBoxContainerRotationMin/LineEditMinZ.text), new_text)[1]:
-		rangeZ.x = float($HBoxContainerRotationMin/LineEditMinZ.text)
+	elif new_text == "-":
+		rangeZ.x = 0.0
+	elif new_text.length() >= 2 and new_text.substr(0, new_text.length() - 1).is_valid_float() and new_text[new_text.length() - 1] == "-":
+		rangeZ.x = float(new_text.substr(0, new_text.length() - 1)) * -1.0
+		if float(new_text.substr(0, new_text.length() - 1)) == 0:
+			rangeZ.x = 0
+			box.text = str("-", new_text.substr(0, new_text.length() - 1))
+		else:
+			box.text = str(rangeZ.x)
+	elif only_float(float(box.text), new_text)[1]:
+		rangeZ.x = float(box.text)
 	else:
-		$HBoxContainerRotationMin/LineEditMinZ.text = str(rangeZ.x)
+		box.text = str(rangeZ.x)
+	box.caret_column = new_text.length()
 
 
 func _on_line_edit_max_x_text_changed(new_text: String) -> void:
+	var box := $HBoxContainerRotationMax/LineEditMaxX
 	if new_text == "":
 		rangeX.y = 0.0
-		$HBoxContainerRotationMax/LineEditMaxX.text = "0"
-	if only_float(float($HBoxContainerRotationMax/LineEditMaxX.text), new_text)[1]:
-		rangeX.y = float($HBoxContainerRotationMax/LineEditMaxX.text)
+	elif new_text == "-":
+		rangeX.y = 0.0
+	elif new_text.length() >= 2 and new_text.substr(0, new_text.length() - 1).is_valid_float() and new_text[new_text.length() - 1] == "-":
+		rangeX.y = float(new_text.substr(0, new_text.length() - 1)) * -1.0
+		if float(new_text.substr(0, new_text.length() - 1)) == 0:
+			rangeX.y = 0
+			box.text = str("-", new_text.substr(0, new_text.length() - 1))
+		else:
+			box.text = str(rangeX.y)
+	elif only_float(float(box.text), new_text)[1]:
+		rangeX.y = float(box.text)
 	else:
-		$HBoxContainerRotationMax/LineEditMaxX.text = str(rangeX.y)
+		box.text = str(rangeX.y)
+	box.caret_column = new_text.length()
 
 
 func _on_line_edit_max_y_text_changed(new_text: String) -> void:
+	var box := $HBoxContainerRotationMax/LineEditMaxY
 	if new_text == "":
 		rangeY.y = 0.0
-		$HBoxContainerRotationMax/LineEditMaxY.text = "0"
-	if only_float(float($HBoxContainerRotationMax/LineEditMaxY.text), new_text)[1]:
-		rangeY.y = float($HBoxContainerRotationMax/LineEditMaxY.text)
+	elif new_text == "-":
+		rangeY.y = 0.0
+	elif new_text.length() >= 2 and new_text.substr(0, new_text.length() - 1).is_valid_float() and new_text[new_text.length() - 1] == "-":
+		rangeY.y = float(new_text.substr(0, new_text.length() - 1)) * -1.0
+		if float(new_text.substr(0, new_text.length() - 1)) == 0:
+			rangeY.y = 0
+			box.text = str("-", new_text.substr(0, new_text.length() - 1))
+		else:
+			box.text = str(rangeY.y)
+	elif only_float(float(box.text), new_text)[1]:
+		rangeY.y = float(box.text)
 	else:
-		$HBoxContainerRotationMax/LineEditMaxY.text = str(rangeY.y)
+		box.text = str(rangeY.y)
+	box.caret_column = new_text.length()
 
 
 func _on_line_edit_max_z_text_changed(new_text: String) -> void:
+	var box := $HBoxContainerRotationMax/LineEditMaxZ
 	if new_text == "":
 		rangeZ.y = 0.0
-		$HBoxContainerRotationMax/LineEditMaxZ.text = "0"
-	if only_float(float($HBoxContainerRotationMax/LineEditMaxZ.text), new_text)[1]:
-		rangeZ.y = float($HBoxContainerRotationMax/LineEditMaxZ.text)
+	elif new_text == "-":
+		rangeZ.y = 0.0
+	elif new_text.length() >= 2 and new_text.substr(0, new_text.length() - 1).is_valid_float() and new_text[new_text.length() - 1] == "-":
+		rangeZ.y = float(new_text.substr(0, new_text.length() - 1)) * -1.0
+		if float(new_text.substr(0, new_text.length() - 1)) == 0:
+			rangeZ.y = 0
+			box.text = str("-", new_text.substr(0, new_text.length() - 1))
+		else:
+			box.text = str(rangeZ.y)
+	elif only_float(float(box.text), new_text)[1]:
+		rangeZ.y = float(box.text)
 	else:
-		$HBoxContainerRotationMax/LineEditMaxZ.text = str(rangeZ.y)
+		box.text = str(rangeZ.y)
+	box.caret_column = new_text.length()
