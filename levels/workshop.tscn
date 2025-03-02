@@ -1,15 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://bw624l72ljxcx"]
+[gd_scene load_steps=21 format=3 uid="uid://bw624l72ljxcx"]
 
 [ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="1_tquhn"]
 [ext_resource type="PackedScene" uid="uid://bu7xjkbde0woe" path="res://entities/map elements/inkfall.tscn" id="2_1i02o"]
 [ext_resource type="PackedScene" uid="uid://b6sgojl10sbf2" path="res://entities/items/grabbable_item.tscn" id="2_gteoe"]
 [ext_resource type="PackedScene" uid="uid://c1tcjtlgyxua3" path="res://entities/items/item_delivery_point.tscn" id="3_nogm7"]
+[ext_resource type="Texture2D" uid="uid://cbmh37afgcanw" path="res://entities/canvas/paintings/painting2/painting2_unfinished.png" id="4_7vpbe"]
 [ext_resource type="PackedScene" uid="uid://bgb3traixnsbr" path="res://entities/canvas/canvas.tscn" id="4_jxxqq"]
-[ext_resource type="Texture2D" uid="uid://cfp0ws1h084cl" path="res://entities/canvas/paintings/painting3/painting3_unfinished.png" id="6_6mjbw"]
-[ext_resource type="Texture2D" uid="uid://coruxtyv64e23" path="res://entities/canvas/paintings/painting3/painting3_piece1.png" id="7_fwsu3"]
-[ext_resource type="Texture2D" uid="uid://cd6kw0eof1eg8" path="res://entities/canvas/paintings/painting3/painting3_finished.png" id="7_utvel"]
+[ext_resource type="Texture2D" uid="uid://c44f2bnj8u4qo" path="res://entities/canvas/paintings/painting2/painting2_finished.png" id="5_gtv30"]
+[ext_resource type="Texture2D" uid="uid://budpbfbry13j2" path="res://entities/canvas/paintings/painting2/painting2_piece1.png" id="8_ndjf7"]
 [ext_resource type="Shader" path="res://entities/props/shaders/glowing.gdshader" id="9_v5gbk"]
-[ext_resource type="PackedScene" path="res://entities/props/InkBottle/ink_bottle.tscn" id="10_ebf1n"]
+[ext_resource type="PackedScene" uid="uid://jl4r4yrdbtyr" path="res://entities/props/InkBottle/ink_bottle.tscn" id="10_ebf1n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wg4r2"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -50,7 +50,9 @@ shader_parameter/glowRadialCoverage = 4
 shader_parameter/glowAngle = 1.57
 shader_parameter/glowSharpness = 5.0
 shader_parameter/alphaThreshold = 0.2
-shader_parameter/sprite_texture = ExtResource("7_fwsu3")
+shader_parameter/sprite_texture = ExtResource("8_ndjf7")
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ffplo"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -63,7 +65,7 @@ light_energy = 0.4
 light_indirect_energy = 0.5
 
 [node name="Player" parent="." instance=ExtResource("1_tquhn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9649, 1.65721, -8.29047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442294, 1.65721, -1.12623)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -142,31 +144,36 @@ layers = 3
 mesh = SubResource("BoxMesh_pglni")
 
 [node name="Canvas" parent="." instance=ExtResource("4_jxxqq")]
-transform = Transform3D(-4.30474e-08, -0.984811, -0.173631, 1, -4.37114e-08, -1.01506e-15, -7.58965e-09, -0.173631, 0.984811, -15.6054, 0.644235, -7.11348)
-incomplete_texture = ExtResource("6_6mjbw")
-complete_texture = ExtResource("7_utvel")
+transform = Transform3D(-1.07486e-08, -0.2459, -0.969296, 1, -4.37114e-08, -2.03012e-15, -4.23692e-08, -0.969296, 0.2459, -3.37478, 0.644236, -22.3929)
+incomplete_texture = ExtResource("4_7vpbe")
+complete_texture = ExtResource("5_gtv30")
 size = 7.0
 
 [node name="Item Delivery Point" parent="Canvas" instance=ExtResource("3_nogm7")]
-transform = Transform3D(1, 9.99201e-16, 0, -2.66454e-15, 1, -1.49012e-08, 0, 1.49012e-08, 1, -6.55651e-07, -4.51396, 1.3947)
+transform = Transform3D(1, 1.06581e-14, 0, -1.42109e-14, 1, -1.49012e-08, 0, 1.49012e-08, 1, 6.55651e-07, 5.42431, -0.0745165)
 
 [node name="Grabbable Item" parent="Canvas" node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
-transform = Transform3D(1, 1.14353e-14, -7.10543e-15, -1.15463e-14, 1, -4.47035e-08, 8.88178e-15, 4.47035e-08, 1, 0.002, 3.50195, -4.723)
+transform = Transform3D(1, 1.42109e-14, -7.10543e-15, -1.42109e-14, 1, -4.47035e-08, 8.88178e-15, 4.47035e-08, 1, 0.0019995, -6.29629, 0.660474)
 delivery_point = NodePath("../Item Delivery Point")
-item_image = ExtResource("7_fwsu3")
+item_image = ExtResource("8_ndjf7")
 shrink_factor = 0.25
 
 [node name="Sprite3D" parent="Canvas/Grabbable Item/Sprite Carrier" index="0"]
-transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 0.012, 4.51396, -1.3947)
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 0.012, -5.42431, 0.0745165)
 material_overlay = SubResource("ShaderMaterial_118v5")
-pixel_size = 0.000976562
-texture = ExtResource("7_fwsu3")
+pixel_size = 0.00111111
+texture = ExtResource("8_ndjf7")
 
 [node name="InkBottle" parent="." instance=ExtResource("10_ebf1n")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.7974, 9, -3.98608)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.91127, 9, -10.9466)
 
 [node name="Circle_001" parent="InkBottle/PivotPoint/filledInkBottleWithCorkV2" index="0"]
 surface_material_override/0 = null
+
+[node name="floor collision" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor collision"]
+shape = SubResource("WorldBoundaryShape3D_ffplo")
 
 [editable path="Canvas/Grabbable Item"]
 [editable path="InkBottle"]
