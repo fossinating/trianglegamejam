@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bw624l72ljxcx"]
+[gd_scene load_steps=23 format=3 uid="uid://bw624l72ljxcx"]
 
 [ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="1_tquhn"]
 [ext_resource type="PackedScene" uid="uid://bu7xjkbde0woe" path="res://entities/map elements/inkfall.tscn" id="2_1i02o"]
@@ -9,7 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://c44f2bnj8u4qo" path="res://entities/canvas/paintings/painting2/painting2_finished.png" id="5_gtv30"]
 [ext_resource type="Texture2D" uid="uid://budpbfbry13j2" path="res://entities/canvas/paintings/painting2/painting2_piece1.png" id="8_ndjf7"]
 [ext_resource type="Shader" path="res://entities/props/shaders/glowing.gdshader" id="9_v5gbk"]
-[ext_resource type="PackedScene" uid="uid://jl4r4yrdbtyr" path="res://entities/props/InkBottle/ink_bottle.tscn" id="10_ebf1n"]
+[ext_resource type="Script" path="res://levels/paint_scratch_collision_shape.gd" id="10_00dho"]
+[ext_resource type="PackedScene" uid="uid://jl4r4yrdbtyr" path="res://entities/props/inkbottle/ink_bottle.tscn" id="10_ebf1n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wg4r2"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -24,14 +25,11 @@ sky = SubResource("Sky_ggh0i")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eapep"]
-size = Vector3(19.7266, 1, 20)
+[sub_resource type="BoxShape3D" id="BoxShape3D_6gsb4"]
+size = Vector3(20, 9.5, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_t8iob"]
 size = Vector3(20.1, 1, 20.1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6gsb4"]
-size = Vector3(20, 9.5, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkeri"]
 albedo_color = Color(0.969764, 0.66111, 0.351704, 1)
@@ -52,6 +50,12 @@ shader_parameter/glowSharpness = 5.0
 shader_parameter/alphaThreshold = 0.2
 shader_parameter/sprite_texture = ExtResource("8_ndjf7")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_anpg0"]
+size = Vector3(1, 1, 18.052)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lpbkx"]
+size = Vector3(0.08, 1, 18)
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ffplo"]
 
 [node name="Node3D" type="Node3D"]
@@ -66,19 +70,6 @@ light_indirect_energy = 0.5
 
 [node name="Player" parent="." instance=ExtResource("1_tquhn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442294, 1.65721, -1.12623)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-collision_layer = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_eapep")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_t8iob")
-
-[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="StaticBody3D"]
-size = Vector3(20, 1, 20)
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.993294, 0, -0.115613, 0, 1, 0, 0.115613, 0, -0.993294, 17.604, 0.499999, -3.54682)
@@ -144,28 +135,43 @@ layers = 3
 mesh = SubResource("BoxMesh_pglni")
 
 [node name="Canvas" parent="." instance=ExtResource("4_jxxqq")]
-transform = Transform3D(-1.07486e-08, -0.2459, -0.969296, 1, -4.37114e-08, -2.03012e-15, -4.23692e-08, -0.969296, 0.2459, -3.37478, 0.644236, -22.3929)
+transform = Transform3D(-5.14605e-09, -0.117728, -0.993047, 1, -4.37114e-08, -2.70962e-15, -4.34074e-08, -0.993047, 0.117728, -0.8273, 0.0596346, -5.49196)
 incomplete_texture = ExtResource("4_7vpbe")
 complete_texture = ExtResource("5_gtv30")
-size = 7.0
+size = 9.0
 
 [node name="Item Delivery Point" parent="Canvas" instance=ExtResource("3_nogm7")]
-transform = Transform3D(1, 1.06581e-14, 0, -1.42109e-14, 1, -1.49012e-08, 0, 1.49012e-08, 1, 6.55651e-07, 5.42431, -0.0745165)
+transform = Transform3D(1, 2.13163e-14, -6.66134e-16, -1.42109e-14, 1, -1.49012e-08, 0, 1.49012e-08, 1, 9.53674e-07, 6.95287, -0.264391)
 
 [node name="Grabbable Item" parent="Canvas" node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
-transform = Transform3D(1, 1.42109e-14, -7.10543e-15, -1.42109e-14, 1, -4.47035e-08, 8.88178e-15, 4.47035e-08, 1, 0.002, -6.29629, 0.660474)
+transform = Transform3D(1, 3.19744e-14, -7.10543e-15, -1.06581e-14, 1, -4.47035e-08, 8.43769e-15, 4.47035e-08, 1, 0.0242085, -6.29629, 0.660474)
 delivery_point = NodePath("../Item Delivery Point")
 item_image = ExtResource("8_ndjf7")
 shrink_factor = 0.25
 
 [node name="Sprite3D" parent="Canvas/Grabbable Item/Sprite Carrier" index="0"]
-transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 0.012, -5.42431, 0.0745165)
+transform = Transform3D(-3.93403e-07, 0, 9, 0, 9, 0, -9, 0, -3.93403e-07, 0.012, -6.95287, 0.264391)
 material_overlay = SubResource("ShaderMaterial_118v5")
 pixel_size = 0.00111111
 texture = ExtResource("8_ndjf7")
 
+[node name="Paint scratch" type="StaticBody3D" parent="Canvas"]
+transform = Transform3D(1, 3.55271e-15, -2.22045e-16, 0, 1, 0, -2.22045e-16, 0, 1, 0.0167823, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Canvas/Paint scratch"]
+transform = Transform3D(1, 0, -1.73195e-13, 0, 1, 0, 0, 0, 1, -2.38419e-07, 1.90735e-06, -0.00872707)
+shape = SubResource("BoxShape3D_anpg0")
+script = ExtResource("10_00dho")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Canvas/Paint scratch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025, 0, 0)
+mesh = SubResource("BoxMesh_lpbkx")
+
 [node name="InkBottle" parent="." instance=ExtResource("10_ebf1n")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.91127, 9, -10.9466)
+
+[node name="Rigidbody" parent="InkBottle/PivotPoint" index="0" node_paths=PackedStringArray("script_to_activate")]
+script_to_activate = NodePath("../../../Canvas/Paint scratch/CollisionShape3D")
 
 [node name="Circle_001" parent="InkBottle/PivotPoint/filledInkBottleWithCorkV2" index="0"]
 surface_material_override/0 = null

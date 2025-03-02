@@ -50,10 +50,10 @@ size = Vector3(0.15, 1.98, 1.98)
 
 [node name="canvasV1" parent="Pivot" instance=ExtResource("1_0tyj2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.75, -10.65)
-visible = false
 
 [node name="squareCanvasV1" parent="Pivot" instance=ExtResource("2_to2wb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.05, -10.645)
+visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="Pivot"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.002, 0, 0)

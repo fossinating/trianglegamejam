@@ -50,7 +50,7 @@ func setup() -> void:
 	
 	sprite.scale = canvas.size * Vector3.ONE
 	
-	position.x = 0.002
+	position.x = 0.024
 	
 
 func _ready():
@@ -64,10 +64,13 @@ func _process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
 	if carrier:
+		var old_y = global_position.y
+		global_position.y = carrier.global_position.y
 		var dist = global_position.distance_to(carrier.global_position)
 		if dist > MAX_CARRY_DISTANCE:
 			global_position = lerp(global_position, 
 			carrier.global_position + (global_position - carrier.global_position) / dist * MAX_CARRY_DISTANCE, 0.9)
+		global_position.y = old_y
 
 		delivery_direction_particles.look_at(Vector3(delivery_point.global_position.x, 0, delivery_point.global_position.z))
 

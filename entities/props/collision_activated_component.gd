@@ -9,6 +9,7 @@ func activate(speed: float):
 		return
 	elif speed >= min_collision_activation_velocity:
 		activated = true
+		get_parent().get_parent().queue_free()
 		if script_to_activate and script_to_activate.has_method("activate"):
 			script_to_activate.activate()
 		else:
