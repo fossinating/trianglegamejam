@@ -106,16 +106,31 @@ layout_mode = 2
 text = "Rotate Node(s)"
 
 [node name="HSeparator" type="HSeparator" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="LabelTitle2" type="Label" parent="."]
+visible = false
 layout_mode = 2
 text = "Autotiler"
 label_settings = SubResource("LabelSettings_6ccg2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Tile Path "
+
+[node name="LineEditTilePath" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="HBoxTilingAxes" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxTilingAxes"]
@@ -137,6 +152,7 @@ text = "Z"
 horizontal_alignment = 1
 
 [node name="HBoxTilingSize" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxTilingSize"]
@@ -154,6 +170,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HBoxTilingNegative" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxTilingNegative"]
@@ -171,6 +188,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HBoxTilingPositive" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxTilingPositive"]
@@ -188,6 +206,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TileButton" type="Button" parent="."]
+visible = false
 layout_mode = 2
 text = "Tile Node(s)"
 
@@ -199,6 +218,7 @@ text = "Tile Node(s)"
 [connection signal="text_changed" from="HBoxContainerRotationMax/LineEditMaxY" to="." method="_on_line_edit_max_y_text_changed"]
 [connection signal="text_changed" from="HBoxContainerRotationMax/LineEditMaxZ" to="." method="_on_line_edit_max_z_text_changed"]
 [connection signal="pressed" from="RotateButton" to="." method="_on_rotate_button_pressed"]
+[connection signal="text_changed" from="HBoxContainer/LineEditTilePath" to="." method="_on_line_edit_tile_path_text_changed"]
 [connection signal="text_changed" from="HBoxTilingSize/LineEditSizeX" to="." method="_on_line_edit_size_x_text_changed"]
 [connection signal="text_changed" from="HBoxTilingSize/LineEditSizeY" to="." method="_on_line_edit_size_y_text_changed"]
 [connection signal="text_changed" from="HBoxTilingNegative/LineEditNegativeX" to="." method="_on_line_edit_negative_x_text_changed"]
