@@ -2,7 +2,7 @@ extends RigidBody3D
 
 @export var script_to_activate: Node3D
 var activated := false
-@export var min_collision_activation_velocity := 0.04
+@export var min_collision_activation_velocity := 0.02
 
 func activate(speed: float):
 	if activated or speed < min_collision_activation_velocity:
