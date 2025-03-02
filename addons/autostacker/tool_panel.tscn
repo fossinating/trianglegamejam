@@ -1,0 +1,228 @@
+[gd_scene load_steps=3 format=3 uid="uid://balxte5uq47ca"]
+
+[ext_resource type="Script" path="res://addons/autostacker/tool_panel.gd" id="1_0v2hv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ccg2"]
+font_size = 24
+
+[node name="ToolPanel" type="VBoxContainer"]
+script = ExtResource("1_0v2hv")
+
+[node name="LabelTitle" type="Label" parent="."]
+layout_mode = 2
+text = "Autostacker"
+label_settings = SubResource("LabelSettings_6ccg2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxStacking" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="HBoxStacking"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stack"
+
+[node name="Label" type="Label" parent="HBoxStacking"]
+layout_mode = 2
+text = "Stack Interval "
+
+[node name="LineEditStackInterval" type="LineEdit" parent="HBoxStacking"]
+layout_mode = 2
+
+[node name="HBoxContainerAxes" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelAxis" type="Label" parent="HBoxContainerAxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Axis"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelX" type="Label" parent="HBoxContainerAxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelY" type="Label" parent="HBoxContainerAxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelZ" type="Label" parent="HBoxContainerAxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Z"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainerRotationMin" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelMin" type="Label" parent="HBoxContainerRotationMin"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Min"
+
+[node name="LineEditMinX" type="LineEdit" parent="HBoxContainerRotationMin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEditMinY" type="LineEdit" parent="HBoxContainerRotationMin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEditMinZ" type="LineEdit" parent="HBoxContainerRotationMin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainerRotationMax" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelMax" type="Label" parent="HBoxContainerRotationMax"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max"
+
+[node name="LineEditMaxX" type="LineEdit" parent="HBoxContainerRotationMax"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEditMaxY" type="LineEdit" parent="HBoxContainerRotationMax"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEditMaxZ" type="LineEdit" parent="HBoxContainerRotationMax"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RotateButton" type="Button" parent="."]
+layout_mode = 2
+text = "Rotate Node(s)"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="LabelTitle2" type="Label" parent="."]
+visible = false
+layout_mode = 2
+text = "Autotiler"
+label_settings = SubResource("LabelSettings_6ccg2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Tile Path "
+
+[node name="LineEditTilePath" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxTilingAxes" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxTilingAxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Axis"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxTilingAxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxTilingAxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Z"
+horizontal_alignment = 1
+
+[node name="HBoxTilingSize" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxTilingSize"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Size"
+horizontal_alignment = 1
+
+[node name="LineEditSizeX" type="LineEdit" parent="HBoxTilingSize"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEditSizeY" type="LineEdit" parent="HBoxTilingSize"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxTilingNegative" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxTilingNegative"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Negative"
+horizontal_alignment = 1
+
+[node name="LineEditNegativeX" type="LineEdit" parent="HBoxTilingNegative"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEditNegativeY" type="LineEdit" parent="HBoxTilingNegative"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxTilingPositive" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxTilingPositive"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Positive"
+horizontal_alignment = 1
+
+[node name="LineEditPositiveX" type="LineEdit" parent="HBoxTilingPositive"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEditPositiveY" type="LineEdit" parent="HBoxTilingPositive"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TileButton" type="Button" parent="."]
+visible = false
+layout_mode = 2
+text = "Tile Node(s)"
+
+[connection signal="text_changed" from="HBoxStacking/LineEditStackInterval" to="." method="_on_line_edit_stack_interval_text_changed"]
+[connection signal="text_changed" from="HBoxContainerRotationMin/LineEditMinX" to="." method="_on_line_edit_min_x_text_changed"]
+[connection signal="text_changed" from="HBoxContainerRotationMin/LineEditMinY" to="." method="_on_line_edit_min_y_text_changed"]
+[connection signal="text_changed" from="HBoxContainerRotationMin/LineEditMinZ" to="." method="_on_line_edit_min_z_text_changed"]
+[connection signal="text_changed" from="HBoxContainerRotationMax/LineEditMaxX" to="." method="_on_line_edit_max_x_text_changed"]
+[connection signal="text_changed" from="HBoxContainerRotationMax/LineEditMaxY" to="." method="_on_line_edit_max_y_text_changed"]
+[connection signal="text_changed" from="HBoxContainerRotationMax/LineEditMaxZ" to="." method="_on_line_edit_max_z_text_changed"]
+[connection signal="pressed" from="RotateButton" to="." method="_on_rotate_button_pressed"]
+[connection signal="text_changed" from="HBoxContainer/LineEditTilePath" to="." method="_on_line_edit_tile_path_text_changed"]
+[connection signal="text_changed" from="HBoxTilingSize/LineEditSizeX" to="." method="_on_line_edit_size_x_text_changed"]
+[connection signal="text_changed" from="HBoxTilingSize/LineEditSizeY" to="." method="_on_line_edit_size_y_text_changed"]
+[connection signal="text_changed" from="HBoxTilingNegative/LineEditNegativeX" to="." method="_on_line_edit_negative_x_text_changed"]
+[connection signal="text_changed" from="HBoxTilingNegative/LineEditNegativeY" to="." method="_on_line_edit_negative_y_text_changed"]
+[connection signal="text_changed" from="HBoxTilingPositive/LineEditPositiveX" to="." method="_on_line_edit_positive_x_text_changed"]
+[connection signal="text_changed" from="HBoxTilingPositive/LineEditPositiveY" to="." method="_on_line_edit_positive_y_text_changed"]
+[connection signal="pressed" from="TileButton" to="." method="_on_tile_button_pressed"]
