@@ -1,0 +1,41 @@
+[gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://dhcpyd8l03c2w"]
+
+[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/posterizeScript(cellShading).gdshader" id="1_rs4jc"]
+[ext_resource type="Texture2D" uid="uid://b5gsea48i7n6w" path="res://entities/props/roomEnvironment/wood_0009_normal_opengl_1k.png" id="2_vdfeq"]
+[ext_resource type="Texture2D" uid="uid://bng0lcytagpm5" path="res://entities/props/roomEnvironment/wood_0009_roughness_1k.jpg" id="3_3huff"]
+[ext_resource type="Texture2D" uid="uid://dbdrkqfhjhinq" path="res://entities/props/roomEnvironment/wood_0009_ao_1k.jpg" id="4_2xvwq"]
+
+[sub_resource type="Gradient" id="Gradient_oli7n"]
+interpolation_mode = 1
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.00711744, 0.0782918, 0.126335, 0.176157, 0.987544)
+colors = PackedColorArray(0.222094, 0.0252604, 0.0647691, 1, 0.445062, 0.205191, 0.16852, 1, 0.688658, 0.402462, 0.281252, 1, 0.852288, 0.640326, 0.418661, 1, 0.892938, 0.810157, 0.587682, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_upmih"]
+gradient = SubResource("Gradient_oli7n")
+
+[sub_resource type="Gradient" id="Gradient_sol2l"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pseyu"]
+gradient = SubResource("Gradient_sol2l")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rs4jc")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/shadingTextureStrength = 1.0
+shader_parameter/UVOffsetX = null
+shader_parameter/UVOffsetY = null
+shader_parameter/UVScaleX = 7.27
+shader_parameter/UVScaleY = 0.39
+shader_parameter/normalStrength = 1.02
+shader_parameter/normalSize = 0.0
+shader_parameter/roughnessStrength = 1.0
+shader_parameter/specularStrength = 1.31
+shader_parameter/specularColor = Color(0.832474, 0.832474, 0.832474, 1)
+shader_parameter/diffuseLightingStrength = 1.0
+shader_parameter/colorGradient = SubResource("GradientTexture1D_upmih")
+shader_parameter/shadingTexture = ExtResource("4_2xvwq")
+shader_parameter/normalTexture = ExtResource("2_vdfeq")
+shader_parameter/roughnessGradient = ExtResource("3_3huff")
+shader_parameter/specularGradient = SubResource("GradientTexture1D_pseyu")

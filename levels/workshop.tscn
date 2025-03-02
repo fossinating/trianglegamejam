@@ -1,12 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://bw624l72ljxcx"]
+[gd_scene load_steps=20 format=3 uid="uid://bw624l72ljxcx"]
 
 [ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="1_tquhn"]
 [ext_resource type="PackedScene" uid="uid://bu7xjkbde0woe" path="res://entities/map elements/inkfall.tscn" id="2_1i02o"]
 [ext_resource type="PackedScene" uid="uid://b6sgojl10sbf2" path="res://entities/items/grabbable_item.tscn" id="2_gteoe"]
-[ext_resource type="Material" uid="uid://b7l3b6ud7tfxi" path="res://levels/mat_inkfall.tres" id="3_1nljh"]
-[ext_resource type="PackedScene" path="res://entities/items/item_delivery_point.tscn" id="3_nogm7"]
+[ext_resource type="PackedScene" uid="uid://c1tcjtlgyxua3" path="res://entities/items/item_delivery_point.tscn" id="3_nogm7"]
 [ext_resource type="PackedScene" uid="uid://bgb3traixnsbr" path="res://entities/canvas/canvas.tscn" id="4_jxxqq"]
+[ext_resource type="Texture2D" uid="uid://cfp0ws1h084cl" path="res://entities/canvas/paintings/painting3/painting3_unfinished.png" id="6_6mjbw"]
 [ext_resource type="Texture2D" uid="uid://coruxtyv64e23" path="res://entities/canvas/paintings/painting3/painting3_piece1.png" id="7_fwsu3"]
+[ext_resource type="Texture2D" uid="uid://cd6kw0eof1eg8" path="res://entities/canvas/paintings/painting3/painting3_finished.png" id="7_utvel"]
+[ext_resource type="Shader" path="res://entities/props/shaders/glowing.gdshader" id="9_v5gbk"]
+[ext_resource type="PackedScene" path="res://entities/props/InkBottle/ink_bottle.tscn" id="10_ebf1n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wg4r2"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,22 +33,24 @@ size = Vector3(20.1, 1, 20.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6gsb4"]
 size = Vector3(20, 9.5, 20)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hpra8"]
-size = Vector3(19.7266, 1, 19.6869)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5s17q"]
-size = Vector3(0.6, 1.1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_et4ey"]
-material = ExtResource("3_1nljh")
-size = Vector3(0.6, 1.1, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkeri"]
 albedo_color = Color(0.969764, 0.66111, 0.351704, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pglni"]
 material = SubResource("StandardMaterial3D_gkeri")
 size = Vector3(100, 1, 100)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_118v5"]
+render_priority = 0
+shader = ExtResource("9_v5gbk")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/glowSize = 30.0
+shader_parameter/glowDensity = 3
+shader_parameter/glowRadialCoverage = 4
+shader_parameter/glowAngle = 1.57
+shader_parameter/glowSharpness = 5.0
+shader_parameter/alphaThreshold = 0.2
+shader_parameter/sprite_texture = ExtResource("7_fwsu3")
 
 [node name="Node3D" type="Node3D"]
 
@@ -58,7 +63,7 @@ light_energy = 0.4
 light_indirect_energy = 0.5
 
 [node name="Player" parent="." instance=ExtResource("1_tquhn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59108, 0.5, -0.132736)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9649, 1.65721, -8.29047)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -131,63 +136,37 @@ size = Vector3(20.05, 9.5, 20)
 [node name="Inkfall" parent="StaticBody3D3" instance=ExtResource("2_1i02o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.55, 8.5, -4.013)
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(0.912206, 0, -0.409732, 0, 1, 0, 0.409732, 0, 0.912206, -13.4238, 0.5, -6.65619)
-collision_layer = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13672, 0, 0.133971)
-shape = SubResource("BoxShape3D_hpra8")
-
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="StaticBody3D2"]
-size = Vector3(20, 1, 20)
-
-[node name="Area3D" type="Area3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
-visible = false
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.05, 0)
-shape = SubResource("BoxShape3D_5s17q")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13627, 0.05, 0.0261607)
-mesh = SubResource("BoxMesh_et4ey")
-
-[node name="Canvas" parent="StaticBody3D2" instance=ExtResource("4_jxxqq")]
-transform = Transform3D(7.44485e-07, -9.861, 0, 9.861, 7.44485e-07, 0, 0, 0, 9.861, 0.34, 0.47, 0)
-metadata/_edit_group_ = true
-
-[node name="Item Delivery Point" parent="StaticBody3D2" instance=ExtResource("3_nogm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43273, 0.508572, 1.36815)
-
-[node name="Grabbable Item" parent="StaticBody3D2/Item Delivery Point" node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68639, -4.76837e-07, -7.77003)
-top_level = false
-delivery_point = NodePath("..")
-item_image = ExtResource("7_fwsu3")
-MAX_CARRY_DISTANCE = 1.0
-shrink_factor = 0.25
-
-[node name="Sprite Carrier" parent="StaticBody3D2/Item Delivery Point/Grabbable Item" index="1"]
-transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
-
-[node name="Sprite3D" parent="StaticBody3D2/Item Delivery Point/Grabbable Item/Sprite Carrier" index="0"]
-transform = Transform3D(0.000616789, -0.93, -4.06516e-08, 5.16012e-17, -4.06516e-08, 0.93, -0.93, -0.000616789, -2.69527e-11, -6.39107, 0.00200069, -1.76996)
-texture = ExtResource("7_fwsu3")
-
 [node name="table surface" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
 layers = 3
 mesh = SubResource("BoxMesh_pglni")
 
-[node name="Item Delivery Point" parent="." instance=ExtResource("3_nogm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.751, 0.55, -4.305)
+[node name="Canvas" parent="." instance=ExtResource("4_jxxqq")]
+transform = Transform3D(-4.30474e-08, -0.984811, -0.173631, 1, -4.37114e-08, -1.01506e-15, -7.58965e-09, -0.173631, 0.984811, -15.6054, 0.644235, -7.11348)
+incomplete_texture = ExtResource("6_6mjbw")
+complete_texture = ExtResource("7_utvel")
+size = 7.0
 
-[node name="Grabbable Item" parent="." node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+[node name="Item Delivery Point" parent="Canvas" instance=ExtResource("3_nogm7")]
+transform = Transform3D(1, 9.99201e-16, 0, -2.66454e-15, 1, -1.49012e-08, 0, 1.49012e-08, 1, -6.55651e-07, -4.51396, 1.3947)
+
+[node name="Grabbable Item" parent="Canvas" node_paths=PackedStringArray("delivery_point") instance=ExtResource("2_gteoe")]
+transform = Transform3D(1, 1.14353e-14, -7.10543e-15, -1.15463e-14, 1, -4.47035e-08, 8.88178e-15, 4.47035e-08, 1, 0.002, 3.50195, -4.723)
 delivery_point = NodePath("../Item Delivery Point")
+item_image = ExtResource("7_fwsu3")
+shrink_factor = 0.25
 
-[editable path="StaticBody3D2/Item Delivery Point/Grabbable Item"]
+[node name="Sprite3D" parent="Canvas/Grabbable Item/Sprite Carrier" index="0"]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 0.012, 4.51396, -1.3947)
+material_overlay = SubResource("ShaderMaterial_118v5")
+pixel_size = 0.000976562
+texture = ExtResource("7_fwsu3")
+
+[node name="InkBottle" parent="." instance=ExtResource("10_ebf1n")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.7974, 9, -3.98608)
+
+[node name="Circle_001" parent="InkBottle/PivotPoint/filledInkBottleWithCorkV2" index="0"]
+surface_material_override/0 = null
+
+[editable path="Canvas/Grabbable Item"]
+[editable path="InkBottle"]

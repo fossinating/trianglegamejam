@@ -1,8 +1,107 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctocafhpjxj1r"]
+[gd_scene load_steps=23 format=3 uid="uid://ctocafhpjxj1r"]
 
 [ext_resource type="Script" path="res://globals/AudioManager.gd" id="1_f2dtx"]
 [ext_resource type="Script" path="res://globals/SoundEffectSettings.gd" id="2_hy51s"]
-[ext_resource type="AudioStream" uid="uid://cqhsep0xllse7" path="res://audio/flowing_ink_wip.ogg" id="3_3et7a"]
+[ext_resource type="AudioStream" uid="uid://cqhsep0xllse7" path="res://audio/music/flowing_ink_wip.ogg" id="3_3et7a"]
+[ext_resource type="AudioStream" uid="uid://d2x8i6m37ii65" path="res://audio/sfx/orblobo_jump.ogg" id="3_o2phb"]
+[ext_resource type="AudioStream" uid="uid://c7175fql1tcap" path="res://audio/sfx/orblobo_land.ogg" id="4_3uwdc"]
+[ext_resource type="AudioStream" uid="uid://cs7m7my6cwapy" path="res://audio/sfx/orblobo_grab.ogg" id="5_3h2qq"]
+[ext_resource type="AudioStream" uid="uid://v13arwngmpi3" path="res://audio/sfx/orblobo_drop.ogg" id="6_r0ivd"]
+[ext_resource type="AudioStream" uid="uid://bgs0lxiw3jj4t" path="res://audio/sfx/orblobo_spill.ogg" id="7_q1147"]
+[ext_resource type="AudioStream" uid="uid://ffv213bqxe27" path="res://audio/sfx/orblobo_ui_select.ogg" id="8_6mx1c"]
+[ext_resource type="AudioStream" uid="uid://qlb20mfojke6" path="res://audio/sfx/orblobo_ui_back.ogg" id="9_cii7n"]
+[ext_resource type="AudioStream" uid="uid://da56pfug8eh8d" path="res://audio/sfx/orblobo_ui_play.ogg" id="10_yfb83"]
+[ext_resource type="AudioStream" uid="uid://lrdo4n510rn6" path="res://audio/sfx/orblobo_splashbigger.ogg" id="11_mer5y"]
+
+[sub_resource type="Resource" id="Resource_wkgmx"]
+script = ExtResource("2_hy51s")
+limit = 3
+name = ""
+type = 2
+sound_effect = ExtResource("3_o2phb")
+volume_db = 0
+pitch_scale = 1.0
+pitch_randomness = 0.1
+
+[sub_resource type="Resource" id="Resource_sfl0n"]
+script = ExtResource("2_hy51s")
+limit = 3
+name = ""
+type = 3
+sound_effect = ExtResource("4_3uwdc")
+volume_db = 0
+pitch_scale = 1.0
+pitch_randomness = 0.1
+
+[sub_resource type="Resource" id="Resource_ydf8x"]
+script = ExtResource("2_hy51s")
+limit = 5
+name = ""
+type = 5
+sound_effect = ExtResource("5_3h2qq")
+volume_db = 0
+pitch_scale = 1.0
+pitch_randomness = 0.1
+
+[sub_resource type="Resource" id="Resource_x8riq"]
+script = ExtResource("2_hy51s")
+limit = 5
+name = ""
+type = 6
+sound_effect = ExtResource("6_r0ivd")
+volume_db = 0
+pitch_scale = 1.0
+pitch_randomness = 0.1
+
+[sub_resource type="Resource" id="Resource_nx73s"]
+script = ExtResource("2_hy51s")
+limit = 3
+name = ""
+type = 7
+sound_effect = ExtResource("7_q1147")
+volume_db = 0
+pitch_scale = 1.0
+pitch_randomness = 0.1
+
+[sub_resource type="Resource" id="Resource_cykvd"]
+script = ExtResource("2_hy51s")
+limit = 8
+name = ""
+type = 9
+sound_effect = ExtResource("8_6mx1c")
+volume_db = 0
+pitch_scale = 1.0
+pitch_randomness = 0.1
+
+[sub_resource type="Resource" id="Resource_5xbyj"]
+script = ExtResource("2_hy51s")
+limit = 5
+name = ""
+type = 10
+sound_effect = ExtResource("9_cii7n")
+volume_db = 0
+pitch_scale = 1.0
+pitch_randomness = 0.1
+
+[sub_resource type="Resource" id="Resource_ja6nr"]
+script = ExtResource("2_hy51s")
+limit = 5
+name = ""
+type = 11
+sound_effect = ExtResource("10_yfb83")
+volume_db = 0
+pitch_scale = 1.0
+pitch_randomness = 0.1
+
+[sub_resource type="Resource" id="Resource_0ybd6"]
+script = ExtResource("2_hy51s")
+limit = 5
+name = ""
+type = 8
+sound_effect = ExtResource("11_mer5y")
+volume_db = 0
+pitch_scale = 1.0
+pitch_randomness = 0.1
 
 [sub_resource type="Resource" id="Resource_nipoj"]
 script = ExtResource("2_hy51s")
@@ -10,11 +109,12 @@ limit = 5
 name = "Flowing Ink"
 type = 1
 sound_effect = ExtResource("3_3et7a")
-audio_bus = 1
 volume_db = -5
 pitch_scale = 1.0
 pitch_randomness = 0.0
 
 [node name="AudioManager" type="Node3D"]
+process_mode = 3
 script = ExtResource("1_f2dtx")
+sound_effect_settings = Array[ExtResource("2_hy51s")]([SubResource("Resource_wkgmx"), SubResource("Resource_sfl0n"), SubResource("Resource_ydf8x"), SubResource("Resource_x8riq"), SubResource("Resource_nx73s"), SubResource("Resource_cykvd"), SubResource("Resource_5xbyj"), SubResource("Resource_ja6nr"), SubResource("Resource_0ybd6")])
 music_settings = Array[ExtResource("2_hy51s")]([SubResource("Resource_nipoj")])

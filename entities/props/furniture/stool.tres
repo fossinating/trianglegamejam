@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bd67rr1epjkr7"]
+
+[ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/posterizeScript(cellShading).gdshader" id="1_j4hwm"]
+
+[sub_resource type="Gradient" id="Gradient_oli7n"]
+interpolation_mode = 1
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.00711744, 0.0124555, 0.131673, 0.987544)
+colors = PackedColorArray(0.222094, 0.0252604, 0.0647691, 1, 0.445062, 0.205191, 0.16852, 1, 0.852288, 0.640326, 0.418661, 1, 0.892938, 0.810157, 0.587682, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_upmih"]
+gradient = SubResource("Gradient_oli7n")
+
+[sub_resource type="Gradient" id="Gradient_sol2l"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pseyu"]
+gradient = SubResource("Gradient_sol2l")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_j4hwm")
+shader_parameter/baseColor = Color(0.383597, 0.383597, 0.383597, 1)
+shader_parameter/shadingTextureStrength = 0.0
+shader_parameter/UVOffsetX = null
+shader_parameter/UVOffsetY = null
+shader_parameter/UVScaleX = null
+shader_parameter/UVScaleY = null
+shader_parameter/normalStrength = 0.0
+shader_parameter/normalSize = 0.0
+shader_parameter/roughnessStrength = 0.63
+shader_parameter/specularStrength = 2.55
+shader_parameter/specularColor = Color(0.832474, 0.832474, 0.832474, 1)
+shader_parameter/diffuseLightingStrength = 1.0
+shader_parameter/colorGradient = SubResource("GradientTexture1D_upmih")
+shader_parameter/specularGradient = SubResource("GradientTexture1D_pseyu")

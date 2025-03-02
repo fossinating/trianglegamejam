@@ -45,6 +45,7 @@ func pickup_item(item: GrabbableItem) -> void:
 	item.top_level = true
 	current_item = item
 	Signals.add_interaction.emit(self)
+	AudioManager.create_3d_audio_at_location(SoundEffectSettings.SOUND_EFFECT_TYPE.GRAB, item.position)
 
 func drop_item(item: GrabbableItem) -> void:
 	item.reparent(get_parent().get_parent())
@@ -52,6 +53,7 @@ func drop_item(item: GrabbableItem) -> void:
 	item.top_level = false
 	current_item = null
 	Signals.remove_interaction.emit(self)
+	AudioManager.create_3d_audio_at_location(SoundEffectSettings.SOUND_EFFECT_TYPE.DROP, item.position)
 	
 func drop_current_item() -> void:
 	if current_item:

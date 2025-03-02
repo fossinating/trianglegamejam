@@ -24,11 +24,33 @@ func play_music(name: String):
 		Global.player.music_player.stream = music_setting.sound_effect
 		Global.player.music_player.volume_db = music_setting.volume_db
 		Global.player.music_player.pitch_scale = music_setting.pitch_scale
+		Global.player.music_player.bus = "MUS"
 		Global.player.music_player.play()
 	else :
 		push_error("Audio Manager failed to find music of the name ", name)
 
-func create_3d_audio_at_location(location, type: SoundEffectSettings.SOUND_EFFECT_TYPE):
+func play(type: SoundEffectSettings.SOUND_EFFECT_TYPE):
+	if sound_effect_dict.has(type):
+		if type == SoundEffectSettings.SOUND_EFFECT_TYPE.UNASSIGNED:
+			push_warning("Audio Manager is playing a file with the Unassigned type!")
+		var sound_effect_setting: SoundEffectSettings = sound_effect_dict[type]
+		if sound_effect_setting.has_open_limit():
+			sound_effect_setting.change_audio_count(1)
+			var new_2D_audio = AudioStreamPlayer2D.new()
+			add_child(new_2D_audio)
+			
+			new_2D_audio.stream = sound_effect_setting.sound_effect
+			new_2D_audio.volume_db = sound_effect_setting.volume_db
+			new_2D_audio.pitch_scale = sound_effect_setting.pitch_scale + Global.rng.randf_range(-sound_effect_setting.pitch_randomness, sound_effect_setting.pitch_randomness)
+			new_2D_audio.finished.connect(sound_effect_setting.on_audio_finished)
+			new_2D_audio.finished.connect(new_2D_audio.queue_free)
+			new_2D_audio.bus = "SFX"
+			
+			new_2D_audio.play()
+	else :
+		push_error("Audio Manager failed to find setting for type ", type)
+
+func create_3d_audio_at_location(type: SoundEffectSettings.SOUND_EFFECT_TYPE, location: Vector3):
 	if sound_effect_dict.has(type):
 		if type == SoundEffectSettings.SOUND_EFFECT_TYPE.UNASSIGNED:
 			push_warning("Audio Manager is playing a file with the Unassigned type!")
@@ -38,12 +60,13 @@ func create_3d_audio_at_location(location, type: SoundEffectSettings.SOUND_EFFEC
 			var new_3D_audio = AudioStreamPlayer3D.new()
 			add_child(new_3D_audio)
 			
-			new_3D_audio.positon = location
+			new_3D_audio.position = location
 			new_3D_audio.stream = sound_effect_setting.sound_effect
 			new_3D_audio.volume_db = sound_effect_setting.volume_db
 			new_3D_audio.pitch_scale = sound_effect_setting.pitch_scale + Global.rng.randf_range(-sound_effect_setting.pitch_randomness, sound_effect_setting.pitch_randomness)
 			new_3D_audio.finished.connect(sound_effect_setting.on_audio_finished)
 			new_3D_audio.finished.connect(new_3D_audio.queue_free)
+			new_3D_audio.bus = "SFX"
 			
 			new_3D_audio.play()
 	else :

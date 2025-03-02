@@ -1,7 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=10 format=3 uid="uid://0mrwjrsev0kn"]
+[gd_resource type="ShaderMaterial" load_steps=13 format=3 uid="uid://0mrwjrsev0kn"]
 
 [ext_resource type="Shader" path="res://entities/props/shaders/scriptsAndDebug/posterizeImageScript.gdshader" id="1_d2n3x"]
 [ext_resource type="Texture2D" uid="uid://cf5lii2al36qa" path="res://entities/props/canvas/IMG_1226.png" id="2_rggx0"]
+[ext_resource type="Texture2D" uid="uid://bevggcgquhmw5" path="res://entities/props/canvas/NormalMap.png" id="2_s305a"]
 [ext_resource type="Texture2D" uid="uid://b2ijes2308nft" path="res://entities/props/canvas/Ua5Mn.jpg" id="2_tx4ub"]
 
 [sub_resource type="Gradient" id="Gradient_oli7n"]
@@ -12,6 +13,13 @@ colors = PackedColorArray(0.160784, 0.168627, 0.333333, 1, 0.545098, 0.623529, 0
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_upmih"]
 gradient = SubResource("Gradient_oli7n")
+
+[sub_resource type="Gradient" id="Gradient_aqpgl"]
+offsets = PackedFloat32Array(0, 0.288256, 0.329181, 0.517794, 0.80427, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.935594, 0.935594, 0.935594, 1, 0.458404, 0.458405, 0.458405, 1, 0.819655, 0.819655, 0.819655, 1, 0.986025, 0.986025, 0.986025, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fffyf"]
+gradient = SubResource("Gradient_aqpgl")
 
 [sub_resource type="Gradient" id="Gradient_8bobu"]
 offsets = PackedFloat32Array(0.0633803, 0.556338, 0.933099)
@@ -32,22 +40,23 @@ render_priority = 0
 shader = ExtResource("1_d2n3x")
 shader_parameter/baseColor = Color(1, 1, 1, 1)
 shader_parameter/postPosterizingTextureStrength = 1.0
-shader_parameter/imageShadowStrength = 0.06
+shader_parameter/imageShadowStrength = 1.0
 shader_parameter/shadingTextureStrength = 1.0
 shader_parameter/UVOffsetX = 0.47
 shader_parameter/UVOffsetY = 0.5
 shader_parameter/UVScaleX = 1.8
 shader_parameter/UVScaleY = 1.0
-shader_parameter/normalStrength = 0.21
-shader_parameter/normalSize = 1.0
-shader_parameter/roughnessStrength = 0.19
-shader_parameter/specularStrength = 7.29
+shader_parameter/normalStrength = 1.0
+shader_parameter/normalSize = 0.0
+shader_parameter/roughnessStrength = 0.67
+shader_parameter/specularStrength = 0.24
 shader_parameter/specularColor = Color(1, 1, 1, 1)
 shader_parameter/diffuseLightingStrength = 1.0
-shader_parameter/paintTextureStrength = 0.0
+shader_parameter/paintTextureStrength = 0.91
 shader_parameter/colorGradient = SubResource("GradientTexture1D_upmih")
 shader_parameter/postPosterizingTexture = ExtResource("2_rggx0")
 shader_parameter/shadingTexture = ExtResource("2_tx4ub")
 shader_parameter/roughnessGradient = SubResource("GradientTexture1D_d1ccu")
 shader_parameter/specularGradient = SubResource("GradientTexture1D_3k54u")
-shader_parameter/paintTexture = ExtResource("2_tx4ub")
+shader_parameter/paintTexture = ExtResource("2_s305a")
+shader_parameter/paintTextureGradient = SubResource("GradientTexture1D_fffyf")

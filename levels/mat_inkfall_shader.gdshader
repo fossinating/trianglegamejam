@@ -27,7 +27,7 @@ void vertex() {
 
 	vec3 fixedNorm = (MODEL_NORMAL_MATRIX * VERTEX).xyz ;
 	topVertex = clamp(fixedNorm,-10.0,10.0) * heightBias;
-	
+
 	//vec3 worldTopVertex = world_position + vec3(0.0, sin(world_pos.y * frequency + TIME*speed)*amplitude*clamp(topVertex.y-0.1,0.0,1.0),0.0);
 	vec3 worldTopVertex = world_position + vec3(0.0, sin(world_pos.y * frequency + TIME*speed)*amplitude*clamp(1.0,0.0,1.0),0.0);
 	VERTEX = (inverse(MODEL_MATRIX) * vec4(worldTopVertex, 1.0)).xyz;
@@ -71,38 +71,38 @@ float SchlickFresnel(float u)
 
 void light() {
 	float attenuation = smoothstep(0.2, 0.25, ATTENUATION);
-	
+
 	vec3 addedCam = normalize(VIEW + LIGHT);
 	float vDotL = clamp(dot(NORMAL, addedCam), 0.0, 1.0);
      // using custom attenuation for specular highlights
 	vDotL = pow(vDotL * attenuation, 120)*specular_size;
 	vDotL = smoothstep(0.8, 0.81, vDotL);
-	
+
 	float NdotL = max(dot(NORMAL, LIGHT), 0.0);
 	DIFFUSE_LIGHT += step(0.5, clamp(dot(NORMAL, LIGHT), 0.0, 1.0) * attenuation * LIGHT_COLOR);
-	
+
 	vec3 halfway = normalize(VIEW + LIGHT);
 	float NdotH = max(dot(NORMAL, halfway), 0.0);
 	float LdotH = max(dot(LIGHT, halfway), 0.0);
 	float NdotV = max(dot(NORMAL, VIEW), 0.0);
-	
+
 	float alpha_ggx = ROUGHNESS * ROUGHNESS;
 	float D = D_GGX(NdotH, alpha_ggx);
-	float G = G_GGX_2cos(NdotL, alpha_ggx) * G_GGX_2cos(NdotV, alpha_ggx);    
-	
+	float G = G_GGX_2cos(NdotL, alpha_ggx) * G_GGX_2cos(NdotV, alpha_ggx);
+
 	vec3 f0 = F0(METALLIC, SPECULAR_AMOUNT, ALBEDO);
 	float cLdotH5 = SchlickFresnel(LdotH);
 	vec3 F = mix(vec3(cLdotH5), vec3(1.0), f0);
-	
+
 	vec3 specular_brdf_NL = NdotL * D * F * G;
-	
+
 	float specular_blob_intensity = .25;
-	
+
 	float specular = pow(vDotL, specular_power) * specular_strength;
 	if(specular>0.005){
 		SPECULAR_LIGHT += specular_color.rgb;
 	}
-	
+
 	//if (length(specular_brdf_NL * LIGHT_COLOR * specular_blob_intensity * attenuation) < 0.003)
 	//{
 		//SPECULAR_LIGHT += 0.0;
@@ -115,6 +115,6 @@ void light() {
 	//{
 		//SPECULAR_LIGHT += specular_brdf_NL * LIGHT_COLOR * specular_blob_intensity * attenuation * .5;
 	//}
-	
+
 	//SPECULAR_LIGHT += step(0.005, specular_brdf_NL * LIGHT_COLOR * specular_blob_intensity * ATTENUATION);
 }

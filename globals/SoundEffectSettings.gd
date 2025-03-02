@@ -15,17 +15,11 @@ enum SOUND_EFFECT_TYPE {
 	UI_PLAY,
 	AMBIENCE
 }
-enum AUDIO_BUS {
-	MASTER,
-	MUS,
-	SFX
-}
 
 @export_range(0, 10) var limit : int = 5
 @export var name: String
 @export var type: SOUND_EFFECT_TYPE
 @export var sound_effect: AudioStream
-@export var audio_bus: AUDIO_BUS
 @export_range(-40, 20) var volume_db = 0
 @export_range(0.0, 4.0, 0.01) var pitch_scale = 1.0
 @export_range(0.0, 1.0, 0.01) var pitch_randomness = 0.0

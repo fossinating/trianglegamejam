@@ -240,7 +240,7 @@ height = 0.01
 margin = 0.05
 radius = 0.25
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_boxuu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

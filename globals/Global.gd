@@ -1,6 +1,6 @@
 extends Node
 
-var rng: RandomNumberGenerator
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var game_speed := 1.0
 var game_state: Util.GAME_STATE = Util.GAME_STATE.MENU
 @export var player: CharacterBody3D
