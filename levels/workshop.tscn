@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c44f2bnj8u4qo" path="res://entities/canvas/paintings/painting2/painting2_finished.png" id="5_gtv30"]
 [ext_resource type="Texture2D" uid="uid://budpbfbry13j2" path="res://entities/canvas/paintings/painting2/painting2_piece1.png" id="8_ndjf7"]
 [ext_resource type="Shader" path="res://entities/props/shaders/glowing.gdshader" id="9_v5gbk"]
-[ext_resource type="PackedScene" uid="uid://jl4r4yrdbtyr" path="res://entities/props/InkBottle/ink_bottle.tscn" id="10_ebf1n"]
+[ext_resource type="PackedScene" path="res://entities/props/InkBottle/ink_bottle.tscn" id="10_ebf1n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wg4r2"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
