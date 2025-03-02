@@ -19,12 +19,18 @@ func _ready() -> void:
 	setup()
 
 func get_bounding_box() -> Vector3:
-	return size * Vector3(0.15, 1.98 * (1 if is_square else 16.0/9), 1.98)
+	return size * Vector3(0.15, 1.98 * (1 if is_square() else 16.0/9), 1.98)
 
 func is_square() -> bool:
 	return incomplete_texture.get_width() == incomplete_texture.get_height()
 
 func setup() -> void:
+	if not incomplete_texture:
+		push_error("No incomplete texture assigned")
+	
+	$Pivot/canvasV1.visible = not is_square()
+	$Pivot/squareCanvasV1.visible = is_square()
+	
 	$Pivot.scale = size * Vector3.ONE
 	
 	$Pivot/Sprite3D.texture = incomplete_texture
