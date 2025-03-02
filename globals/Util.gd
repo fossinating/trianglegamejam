@@ -4,7 +4,7 @@ enum GAME_STATE { MENU, UNPAUSED, PAUSED }
 enum MATERIAL_TYPE { PLAYER, INK, PAINTING, CANVAS, FLOOR }
 enum GAME_SCENES { MENU, GAME }
 
-var GAME_PATH := "workshop" # PLACEHOLDER
+var GAME_PATH := "demolevel" # PLACEHOLDER
 var MENU_PATH := "MainMenu"
 
 func _ready() -> void:

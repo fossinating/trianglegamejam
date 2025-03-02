@@ -167,6 +167,9 @@ texture = ExtResource("8_ndjf7")
 [node name="InkBottle" parent="." instance=ExtResource("10_ebf1n")]
 transform = Transform3D(0.114937, 0, -0.993373, 0, 1, 0, 0.993373, 0, 0.114937, 13.6153, 9, -6.73415)
 
+[node name="Circle_001" parent="InkBottle/PivotPoint/Rigidbody/filledInkBottleWithCorkV2" index="0"]
+surface_material_override/0 = null
+
 [node name="floor collision" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor collision"]
