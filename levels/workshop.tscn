@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bqvbt7ofxnn0b" path="res://entities/player/player.tscn" id="1_tquhn"]
 [ext_resource type="PackedScene" uid="uid://bu7xjkbde0woe" path="res://entities/map elements/inkfall.tscn" id="2_1i02o"]
 [ext_resource type="PackedScene" uid="uid://b6sgojl10sbf2" path="res://entities/items/grabbable_item.tscn" id="2_gteoe"]
-[ext_resource type="PackedScene" uid="uid://c1tcjtlgyxua3" path="res://entities/items/item_delivery_point.tscn" id="3_nogm7"]
+[ext_resource type="PackedScene" path="res://entities/items/item_delivery_point.tscn" id="3_nogm7"]
 [ext_resource type="Texture2D" uid="uid://cbmh37afgcanw" path="res://entities/canvas/paintings/painting2/painting2_unfinished.png" id="4_7vpbe"]
 [ext_resource type="PackedScene" uid="uid://bgb3traixnsbr" path="res://entities/canvas/canvas.tscn" id="4_jxxqq"]
 [ext_resource type="Texture2D" uid="uid://c44f2bnj8u4qo" path="res://entities/canvas/paintings/painting2/painting2_finished.png" id="5_gtv30"]
@@ -165,10 +165,7 @@ pixel_size = 0.00111111
 texture = ExtResource("8_ndjf7")
 
 [node name="InkBottle" parent="." instance=ExtResource("10_ebf1n")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.91127, 9, -10.9466)
-
-[node name="Circle_001" parent="InkBottle/PivotPoint/filledInkBottleWithCorkV2" index="0"]
-surface_material_override/0 = null
+transform = Transform3D(0.114937, 0, -0.993373, 0, 1, 0, 0.993373, 0, 0.114937, 13.6153, 9, -6.73415)
 
 [node name="floor collision" type="StaticBody3D" parent="."]
 
@@ -177,3 +174,4 @@ shape = SubResource("WorldBoundaryShape3D_ffplo")
 
 [editable path="Canvas/Grabbable Item"]
 [editable path="InkBottle"]
+[editable path="InkBottle/Inkfall"]

@@ -1,10 +1,631 @@
-[gd_scene load_steps=15 format=4 uid="uid://jl4r4yrdbtyr"]
+[gd_scene load_steps=22 format=4 uid="uid://jl4r4yrdbtyr"]
 
+[ext_resource type="Script" path="res://entities/props/InkBottle/ink_bottle.gd" id="1_82vmv"]
 [ext_resource type="Script" path="res://entities/props/collision_activated_component.gd" id="1_gwhkx"]
 [ext_resource type="Material" uid="uid://clgy5ehuf80vv" path="res://entities/props/InkBottle/cork.tres" id="2_4gjyw"]
+[ext_resource type="AudioStream" uid="uid://bgs0lxiw3jj4t" path="res://audio/sfx/orblobo_spill.ogg" id="2_kvspk"]
 [ext_resource type="Material" uid="uid://blx87gtbl8apb" path="res://entities/props/InkBottle/corkMaterial.tres" id="3_tuah0"]
 [ext_resource type="Material" uid="uid://cucamqxbholpb" path="res://entities/props/InkBottle/inkInBottle.tres" id="4_l7nnm"]
 [ext_resource type="Material" uid="uid://tpx1lstry5ry" path="res://entities/props/InkBottle/glass.tres" id="5_4suy2"]
+[ext_resource type="PackedScene" uid="uid://bu7xjkbde0woe" path="res://entities/map elements/inkfall.tscn" id="7_4hwoj"]
+
+[sub_resource type="Animation" id="Animation_1x1h1"]
+resource_name = "standing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lfgss"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint:rotation:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotPoint:rotation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PivotPoint:rotation:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Cube_002:instance_shader_parameters/heightCutoff")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.0810905, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Circle_001:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.0458458, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Circle_001:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4.35454, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Circle_001:position:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.113482, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Circle_001:rotation:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Circle_001:rotation:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Circle_001:rotation:z")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Inkfall:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Inkfall/CollisionShape3D:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Inkfall/CSGCombiner3D/CSGSphere3D:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Inkfall/CSGCombiner3D/CSGSphere3D:scale:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/15/type = "bezier"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Inkfall/CSGCombiner3D/CSGSphere3D:scale:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/16/type = "bezier"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Inkfall/CSGCombiner3D/CSGSphere3D:scale:z")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Inkfall/CSGCombiner3D/FallPivot/CSGCylinder3D:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Inkfall/CSGCombiner3D/FallPivot/CSGCylinder3D/CSGSphere3D2:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "bezier"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Inkfall/CSGCombiner3D/FallPivot:scale:x")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/20/type = "bezier"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Inkfall/CSGCombiner3D/FallPivot:scale:y")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/21/type = "bezier"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Inkfall/CSGCombiner3D/FallPivot:scale:z")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/22/type = "bezier"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Inkfall/CSGCombiner3D/FallPivot/CSGCylinder3D/CSGSphere3D2:scale:x")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/23/type = "bezier"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Inkfall/CSGCombiner3D/FallPivot/CSGCylinder3D/CSGSphere3D2:scale:y")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.15, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/24/type = "bezier"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Inkfall/CSGCombiner3D/FallPivot/CSGCylinder3D/CSGSphere3D2:scale:z")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Inkfall/CollisionShape3D:disabled")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1t5we"]
+resource_name = "spill"
+length = 2.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0, -0.308669, 1.71128, -0.0666667, -0.814774, 0, 0.00978482, 1.69574, -0.166667, -0.0111219, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.766667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.566667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotPoint:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.566667)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Cube_002:instance_shader_parameters/heightCutoff")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.0810905, -0.25, 0, 0.25, 0, -2.00136, -0.0572102, 1.21874, 0.0427898, -1.051, -2.5, -0.0841166, 0.472041, 0.25, 0),
+"times": PackedFloat32Array(0, 0.533333, 0.76024)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Circle_001:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.0458458, -0.25, 0, 0.0736437, -0.0220433, -0.333766, -2.98023e-08, 0.198444, 0.0333333, -0.336047, -1.253, -0.0333333, 0.203397, 0.25, 0, -1.25281, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.4, 0.466667, 0.566667, 0.766667)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Circle_001:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(4.35454, -0.25, 0, 0.0333333, 0.0985761, 5.18, -0.0666667, -0.240479, 0, -0.0228767, 5.13566, -0.25, 0, 0.25, 0, 5.14662, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.4, 0.466667, 0.5, 0.766667)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Circle_001:position:z")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-0.113482, -0.25, 0, 0.0333333, 0.020715, 0.087, -0.0333334, -0.0493465, 0.0458091, 0.00690679, -0.226529, -0.028611, 0.12059, 0.25, 0, -0.139297, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.4, 0.466667, 0.5, 0.766667)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Circle_001:rotation:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0666666, -0.129332, -0.435046, -0.0666667, 0.0366819, 0.0186124, -0.0216438, -0.33827, -0.0480543, -0.0429675, 0.0519457, -0.0164573, -0.407065, -0.0480543, 0.027867, 0.0519457, -0.0455458, -0.426643, -0.0333334, -0.00581232, 0.0333332, 0.0127711, -0.396588, -0.0666667, 0.0227415, 0.25, 0),
+"times": PackedFloat32Array(0.4, 0.5, 0.6, 0.733333, 0.866667, 0.933333)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Circle_001:rotation:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0658928, 0.00240238, 0.0480552, -0.0333333, -0.000927791, 0.0666667, -0.000266518, 0.0461954, -0.0333334, 0.000174172, 0.0472874, 0.000319432, 0.0474562, -0.119379, -0.000292685, 0.0806208, 0.000185095, 0.0478697, -0.086046, -0.000318542, 0.0472873, -0.000318542, 0.0472452, -0.0193793, 0.000125747, 0.0472873, 3.56324e-05),
+"times": PackedFloat32Array(0.4, 0.5, 0.6, 0.733333, 0.866667, 0.933333)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PivotPoint/Rigidbody/filledInkBottleWithCorkV2/Circle_001:rotation:z")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0258119, 0.0268383, -0.0281317, -0.0783565, 0.00165838, 0.0883102, 0.00308786, 0.298103, -0.0783565, -0.00015527, 0.0883101, 9.05097e-05, 0.294642, -0.0453001, 2.85208e-05, 0.0546998, -0.000135303, 0.293621, -0.0786335, 0.000353456, 0.0546998, 0.000189632, 0.295182, -0.0453002, 2.14577e-05, 0.25, 0),
+"times": PackedFloat32Array(0.4, 0.5, 0.6, 0.733333, 0.866667, 0.933333)
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Inkfall:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Inkfall/CollisionShape3D:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Inkfall/CSGCombiner3D/CSGSphere3D:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Inkfall/CSGCombiner3D/CSGSphere3D:scale:x")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.05, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 0.7)
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Inkfall/CSGCombiner3D/CSGSphere3D:scale:y")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.03, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 0.7)
+}
+tracks/15/type = "bezier"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Inkfall/CSGCombiner3D/CSGSphere3D:scale:z")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 0.7)
+}
+tracks/16/type = "audio"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("AudioStreamPlayer3D")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_kvspk")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/16/use_blend = true
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Inkfall/CSGCombiner3D/FallPivot/CSGCylinder3D:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Inkfall/CSGCombiner3D/FallPivot/CSGCylinder3D/CSGSphere3D2:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/19/type = "bezier"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Inkfall/CSGCombiner3D/FallPivot:scale:x")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.7, 2)
+}
+tracks/20/type = "bezier"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Inkfall/CSGCombiner3D/FallPivot:scale:y")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.7, 2)
+}
+tracks/21/type = "bezier"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Inkfall/CSGCombiner3D/FallPivot:scale:z")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.7, 2)
+}
+tracks/22/type = "bezier"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Inkfall/CSGCombiner3D/FallPivot/CSGCylinder3D/CSGSphere3D2:scale:x")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0616181, 3.10192, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 2.5)
+}
+tracks/23/type = "bezier"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Inkfall/CSGCombiner3D/FallPivot/CSGCylinder3D/CSGSphere3D2:scale:y")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0949514, 0.0922555, 0.15, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 2.5)
+}
+tracks/24/type = "bezier"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Inkfall/CSGCombiner3D/FallPivot/CSGCylinder3D/CSGSphere3D2:scale:z")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0616181, 0.82386, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 2.5)
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Inkfall/CollisionShape3D:disabled")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4igfl"]
+_data = {
+"RESET": SubResource("Animation_lfgss"),
+"spill": SubResource("Animation_1t5we"),
+"standing": SubResource("Animation_1x1h1")
+}
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f4vpq"]
 points = PackedVector3Array(0.75, 0, 0.75, 0.75, 0, -0.75, -0.75, 0, 0.75, -0.75, 0, -0.75, 1.1, -3, 1.1, 1.1, -3, -1.1, -1.1, -3, 1.1, -1.1, -3, -1.1, 0.4, 1.25, 0.4, 0.4, 1.25, -0.4, -0.4, 1.25, 0.4, -0.4, 1.25, -0.4, 0.55, 1.25, 0, -0.55, 1.25, 0, 0, 1.25, 0.55, 0, 1.25, -0.55, 0, 2, 0)
@@ -124,11 +745,17 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_umth8")
 
 [node name="InkBottle" type="Node3D"]
+script = ExtResource("1_82vmv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4igfl")
+}
 
 [node name="PivotPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.15)
 
-[node name="Rigidbody" type="RigidBody3D" parent="PivotPoint"]
+[node name="Rigidbody" type="RigidBody3D" parent="PivotPoint" node_paths=PackedStringArray("script_to_activate")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, -1.05)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
@@ -144,30 +771,60 @@ contact_monitor = true
 max_contacts_reported = 3
 linear_velocity = Vector3(0.4, 1.39, 1.29)
 script = ExtResource("1_gwhkx")
+script_to_activate = NodePath("../..")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="PivotPoint/Rigidbody"]
 auto_translate_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 3, -0.1)
 shape = SubResource("ConvexPolygonShape3D_f4vpq")
 
-[node name="filledInkBottleWithCorkV2" type="Node3D" parent="PivotPoint"]
-transform = Transform3D(1, -1.58633e-15, -2.55906e-08, 0, 1, -2.90144e-09, 3.09945e-08, 6.19888e-08, 1, -0.035, -0.15, -1.04)
+[node name="filledInkBottleWithCorkV2" type="Node3D" parent="PivotPoint/Rigidbody"]
+transform = Transform3D(1, -1.58633e-15, -2.55906e-08, 0, 1, -2.90144e-09, 3.09945e-08, 6.19888e-08, 1, 0.215, -0.15, 0.00999999)
 
-[node name="Circle_001" type="MeshInstance3D" parent="PivotPoint/filledInkBottleWithCorkV2"]
+[node name="Circle_001" type="MeshInstance3D" parent="PivotPoint/Rigidbody/filledInkBottleWithCorkV2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0458458, 4.35454, -0.113482)
 material_override = ExtResource("2_4gjyw")
 mesh = SubResource("ArrayMesh_o2a3c")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_tuah0")
 
-[node name="Cube_002" type="MeshInstance3D" parent="PivotPoint/filledInkBottleWithCorkV2"]
+[node name="Cube_002" type="MeshInstance3D" parent="PivotPoint/Rigidbody/filledInkBottleWithCorkV2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0361233, 1.14939, -0.105109)
 material_override = ExtResource("4_l7nnm")
+instance_shader_parameters/heightBias = 3.0
+instance_shader_parameters/heightCutoff = 0.0810905
 mesh = SubResource("ArrayMesh_d4bfk")
 skeleton = NodePath("")
 
-[node name="Cube_004" type="MeshInstance3D" parent="PivotPoint/filledInkBottleWithCorkV2"]
+[node name="Cube_004" type="MeshInstance3D" parent="PivotPoint/Rigidbody/filledInkBottleWithCorkV2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0458458, 1.13739, -0.113482)
 material_override = ExtResource("5_4suy2")
 mesh = SubResource("ArrayMesh_kb7ba")
 skeleton = NodePath("")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="PivotPoint/Rigidbody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 2.10754, -0.1)
+size = Vector3(2, 4.26556, 2)
+
+[node name="Inkfall" parent="." instance=ExtResource("7_4hwoj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.0531579, 6.94162)
+visible = false
+
+[node name="CollisionShape3D" parent="Inkfall" index="0"]
+visible = false
+disabled = true
+
+[node name="FallPivot" parent="Inkfall/CSGCombiner3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 8.55, 0)
+
+[node name="CSGCylinder3D" parent="Inkfall/CSGCombiner3D/FallPivot" index="0"]
+visible = false
+
+[node name="CSGSphere3D2" parent="Inkfall/CSGCombiner3D/FallPivot/CSGCylinder3D" index="1"]
+visible = false
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
+bus = &"SFX"
+
+[editable path="Inkfall"]
