@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b2ft7icysrsa3"
-path="res://.godot/imported/filledInkBottleWithCorkV2.gltf-e12693753f3ca674cd245e9671efe249.scn"
+path="res://.godot/imported/filledInkBottleWithCorkV2.gltf-78c3ad556c43768a26901964b55ff8a6.scn"
 
 [deps]
 
-source_file="res://entities/props/InkBottle/filledInkBottleWithCorkV2.gltf"
-dest_files=["res://.godot/imported/filledInkBottleWithCorkV2.gltf-e12693753f3ca674cd245e9671efe249.scn"]
+source_file="res://entities/props/inkBottle/filledInkBottleWithCorkV2.gltf"
+dest_files=["res://.godot/imported/filledInkBottleWithCorkV2.gltf-78c3ad556c43768a26901964b55ff8a6.scn"]
 
 [params]
 
